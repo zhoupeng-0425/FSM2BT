@@ -7,8 +7,8 @@ from dotenv import load_dotenv
 #执行加载操作
 load_dotenv(override=True)
 
-ZHIPU_API_KEY="f2a511e97e9f4d8eb61e2fc1c29e0b2a.XsEL9AYu3NEzTEdk"
-ZHIPU_BASE_URL="https://open.bigmodel.cn/api/paas/v4"
+DEEPSEEK_API_KEY=""
+QWEN_API_KEY=""
 ChatGPT_API_KEY=""
 
 # ZHIPU_API_KEY = os.getenv('ZHIPU_API_KEY')
