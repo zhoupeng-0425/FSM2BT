@@ -1,22 +1,21 @@
-from model_factory import get_zhipu_lmm  # 我们用多模态模型来演示
+from model_factory import get_chatgpt_lmm  # 我们用多模态模型来演示
 from prompt_config import PromptConfig
 import time
 
 def main():
     """主执行函数"""
-    print("--- 开始执行多模态图片分析任务 ---")
+   
 
     # 1. 从配置中获取提示词
     system_prompt = PromptConfig.BT_to_FSM_PROMPT
     print("提示词已加载。")
 
     # 2. 从模型工厂获取模型实例
-    # 注意：这里我们使用 get_zhipu_lmm() 因为它支持图片分析
+    # 注意：这里我们使用 get_chatgpt_lmm() 
     llm1 = get_zhipu_lmm()
     print("多模态模型 (glm-4.5) 已初始化。")
 
     # 3. 准备用户输入
-    # 为了演示，我们先用纯文本。实际使用时需要附加图片数据。
     user_message_content = "要求：直接输出结果。"
 
     # 4. 构建消息列表
@@ -43,7 +42,6 @@ def main():
         #sentiment = result_data.get("imgs_aspect_sentiment", "未能分析")
 
         #print("\n--- 分析结果 ---")
-        #print(f"图片核心情感/体验: {sentiment}")
 
     except Exception as e:
         print(f"执行过程中发生错误: {e}")
