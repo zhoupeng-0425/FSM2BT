@@ -12,8 +12,8 @@ def main():
 
     # 2. 从模型工厂获取模型实例
     # 注意：这里我们使用 get_chatgpt_lmm() 
-    llm1 = get_zhipu_lmm()
-    print("多模态模型 (glm-4.5) 已初始化。")
+    llm1 = get_chatgpt_lmm()
+    print("LLM已初始化。")
 
     # 3. 准备用户输入
     user_message_content = "要求：直接输出结果。"
@@ -35,9 +35,8 @@ def main():
         print(f"服务器处理耗时：{total_time}秒")
         # 6. 处理模型输出
         print("\n--- 模型原始输出 ---")
+        
         print(response.content)
-
-        # 因为我们要求了JSON格式，所以可以安全地解析它
         #result_data = json.loads(response.content)
         #sentiment = result_data.get("imgs_aspect_sentiment", "未能分析")
 
