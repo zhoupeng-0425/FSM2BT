@@ -1,0 +1,19 @@
+<States>
+    <State name="Turn" type="initial"/>
+    <State name="Drive" />
+    <State name="Pause" />
+</States>
+
+<Transitions>
+    <!-- Turn 状态跳转 -->
+    <Transition from="Turn" to="Drive" event="/TURN_TIMEOUT"/>
+    <Transition from="Turn" to="Pause" event="/PAUSE"/>
+    
+    <!-- Drive 状态跳转 -->
+    <Transition from="Drive" to="Turn" event="/DRIVE_TIMEOUT"/>
+    <Transition from="Drive" to="Turn" event="/OBSTACLE"/>
+    <Transition from="Drive" to="Pause" event="/PAUSE"/>
+    
+    <!-- Pause 状态跳转 -->
+    <Transition from="Pause" to="Turn" event="/RESUME"/>
+</Trans>

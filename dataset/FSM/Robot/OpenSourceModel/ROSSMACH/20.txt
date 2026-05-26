@@ -1,0 +1,15 @@
+<States>
+    <State name="findWall" type="initial"/>
+    <State name="turnSx" />
+    <State name="correctSx" />
+    <State name="correctDx" />
+</States>
+
+<Transitions>
+    <Transition from="findWall" to="turnSx" event="leftBumper==1||rightBumper==1"/>
+    <Transition from="turnSx" to="correctDx" event="leftBumper==0&&rightBumper==0"/>
+    <Transition from="correctSx" to="turnSx" event="leftBumper==1||rightBumper==1"/>
+    <Transition from="correctSx" to="correctDx" event="wallSensor==0"/>
+    <Transition from="correctDx" to="turnSx" event="leftBumper==1||rightBumper==1"/>
+    <Transition from="correctDx" to="correctSx" event="wallSensor==1"/>
+</Transitions>

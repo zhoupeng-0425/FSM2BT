@@ -1,0 +1,14 @@
+<States>
+    <State name="Locked" type="initial"/>
+    <State name="Unlocked" />
+</States>
+
+<Transitions>
+    <!-- Locked 状态跳转 -->
+    <Transition from="Locked" to="Unlocked" event="COIN"/>
+    <Transition from="Locked" to="Locked" event="PUSH"/>
+    
+    <!-- Unlocked 状态跳转 -->
+    <Transition from="Unlocked" to="Unlocked" event="COIN"/>
+    <Transition from="Unlocked" to="Locked" event="PUSH"/>
+</Transitions>

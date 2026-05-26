@@ -1,0 +1,44 @@
+    <States>
+        <State name="PROCESS_RECHARGE_COMMAND" type="initial"/>
+        <State name="NAVIGATE_TO_OUTLET"/>
+        <State name="DETECT_OUTLET"/>
+        <State name="FETCH_PLUG"/>
+        <State name="PLUG_IN"/>
+        <State name="RECOVER_STOW_PLUG"/>
+        <State name="UNPLUG"/>
+        <State name="FAIL_STILL_UNPLUGGED"/>
+        <State name="FAIL_OPEN_GRIPPER"/>
+        <State name="FAIL_UNTUCK"/>
+        <State name="FAIL_LOWER_SPINE"/>
+        <State name="preempted"/>
+        <State name="aborted"/>
+        <State name="plugged_in"/>
+        <State name="unplugged"/>
+    </States>
+    <Transitions>
+        <Transition from="PROCESS_RECHARGE_COMMAND" to="NAVIGATE_TO_OUTLET" event="PROCESS_RECHARGE_COMMANDnav_plug_in"/>
+        <Transition from="PROCESS_RECHARGE_COMMAND" to="UNPLUG" event="PROCESS_RECHARGE_COMMANDunplug"/>
+        <Transition from="PROCESS_RECHARGE_COMMAND" to="unplugged" event="PROCESS_RECHARGE_COMMANDdirect_end"/>
+        <Transition from="NAVIGATE_TO_OUTLET" to="DETECT_OUTLET" event="NAVIGATE_TO_OUTLETsucceeded"/>
+        <Transition from="NAVIGATE_TO_OUTLET" to="FAIL_STILL_UNPLUGGED" event="NAVIGATE_TO_OUTLETpreempted"/>
+        <Transition from="DETECT_OUTLET" to="FETCH_PLUG" event="DETECT_OUTLETsucceeded"/>
+        <Transition from="DETECT_OUTLET" to="FAIL_STILL_UNPLUGGED" event="DETECT_OUTLETaborted"/>
+        <Transition from="FETCH_PLUG" to="PLUG_IN" event="FETCH_PLUGsucceeded"/>
+        <Transition from="FETCH_PLUG" to="FAIL_STILL_UNPLUGGED" event="FETCH_PLUGaborted"/>
+        <Transition from="FETCH_PLUG" to="aborted" event="FETCH_PLUGplug_lost"/>
+        <Transition from="PLUG_IN" to="RECOVER_STOW_PLUG" event="PLUG_INaborted_1"/>
+        <Transition from="PLUG_IN" to="FAIL_OPEN_GRIPPER" event="PLUG_INaborted_2"/>
+        <Transition from="RECOVER_STOW_PLUG" to="FAIL_OPEN_GRIPPER" event="RECOVER_STOW_PLUGaborted"/>
+        <Transition from="RECOVER_STOW_PLUG" to="FAIL_STILL_UNPLUGGED" event="RECOVER_STOW_PLUGsucceeded"/>
+        <Transition from="RECOVER_STOW_PLUG" to="plugged_in" event="RECOVER_STOW_PLUGkeep_charge"/>
+        <Transition from="FAIL_STILL_UNPLUGGED" to="FAIL_LOWER_SPINE" event="FAIL_STILL_UNPLUGGEDdone"/>
+        <Transition from="FAIL_STILL_UNPLUGGED" to="preempted" event="FAIL_STILL_UNPLUGGEDpreempted"/>
+        <Transition from="FAIL_STILL_UNPLUGGED" to="aborted" event="FAIL_STILL_UNPLUGGEDfinal_fail"/>
+        <Transition from="FAIL_OPEN_GRIPPER" to="FAIL_UNTUCK" event="FAIL_OPEN_GRIPPERsucceeded_1"/>
+        <Transition from="FAIL_OPEN_GRIPPER" to="UNPLUG" event="FAIL_OPEN_GRIPPERsucceeded_2"/>
+        <Transition from="FAIL_UNTUCK" to="FAIL_LOWER_SPINE" event="FAIL_UNTUCKsucceeded"/>
+        <Transition from="FAIL_LOWER_SPINE" to="aborted" event="FAIL_LOWER_SPINEsucceeded"/>
+        <Transition from="UNPLUG" to="FAIL_OPEN_GRIPPER" event="UNPLUGaborted"/>
+        <Transition from="UNPLUG" to="unplugged" event="UNPLUGsucceeded"/>
+        <Transition from="UNPLUG" to="preempted" event="UNPLUGpreempted"/>
+    </Transitions>
