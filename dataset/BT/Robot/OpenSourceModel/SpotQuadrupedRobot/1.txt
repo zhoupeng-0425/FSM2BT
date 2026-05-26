@@ -1,0 +1,28 @@
+<BehaviorTree ID="DemoStartupShutdown">
+    <Sequence>
+      <Sequence>
+        <Fallback>
+          <ClaimLease />
+          <IsLeaseClaimed/>
+        </Fallback>
+        <Fallback>
+          <IsPoweredOn/>
+          <PowerOn />
+        </Fallback>
+      </Sequence>
+      <Sequence>
+        <Stand/>
+        <Sit/>
+      </Sequence>
+      <Sequence>
+        <Fallback>
+          <IsPoweredOff/>
+          <PowerOff/>
+        </Fallback>
+        <Fallback>
+          <IsLeaseReleased/>
+          <ReleaseLease/>
+        </Fallback>
+      </Sequence>
+    </Sequence>
+  </BehaviorTree>
