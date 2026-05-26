@@ -1,0 +1,9 @@
+<BehaviorTree ID="Agent_BT_02_HunterAttackFirst">
+    <Sequence>
+      <Attack/>
+      <Maneuver/>
+      <Feast/>
+      <Resting/>
+      <Roam/>
+    </Sequence>
+</BehaviorTree>

@@ -1,0 +1,8 @@
+<BehaviorTree ID="Agent_BT_01_SurvivalFirst">
+    <Sequence>
+      <FindSafe/>
+      <Flee/>
+      <SeekSafety/>
+      <Attack/>
+    </Sequence>
+</BehaviorTree>

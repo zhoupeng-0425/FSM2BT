@@ -1,0 +1,9 @@
+<BehaviorTree ID="Agent_BT_08_ExplorePatrol">
+  <Fallback>
+         <Attack/>
+         <Maneuver/>
+        <SeekSafety/>
+        <Forage/>
+        <Flock/>
+     </Fallback>
+</BehaviorTree>
