@@ -1,0 +1,21 @@
+<FSM>
+  <!-- 初始状态 -->
+  <InitialState>Start</InitialState>
+
+  <!-- 状态定义 -->
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="G" />
+    <State name="L" />
+    <State name="Q" />
+  </States>
+
+  <!-- 转移定义（包含起点、终点和事件） -->
+  <Transitions>
+    <Transition from="Start" to="G" event="eventStartG"/>
+    <Transition from="G" to="L" event="eventGL"/>
+    <Transition from="L" to="Q" event="eventLQ"/>
+    <Transition from="Q" to="G" event="eventQG"/>
+    <Transition from="G" to="Q" event="eventGQ"/>
+  </Transitions>
+</FSM>
