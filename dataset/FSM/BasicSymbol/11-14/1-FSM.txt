@@ -1,0 +1,39 @@
+<FSM>
+  <!-- 初始状态 -->
+  <InitialState>Start</InitialState>
+
+  <!-- 状态定义 -->
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="A" />
+    <State name="C" />
+    <State name="F" />
+    <State name="H" />
+    <State name="K" />
+    <State name="M" />
+    <State name="Q" />
+    <State name="T" />
+    <State name="V" />
+    <State name="X" />
+    <State name="Z" />
+  </States>
+
+  <!-- 转移定义（包含起点、终点和事件） -->
+  <Transitions>
+    <Transition from="Start" to="A" event="eventStartA"/>
+    <Transition from="A" to="C" event="eventAC"/>
+    <Transition from="C" to="F" event="eventCF"/>
+    <Transition from="F" to="H" event="eventFH"/>
+    <Transition from="H" to="K" event="eventHK"/>
+    <Transition from="K" to="M" event="eventKM"/>
+    <Transition from="M" to="Q" event="eventMQ"/>
+    <Transition from="Q" to="T" event="eventQT"/>
+    <Transition from="T" to="V" event="eventTV"/>
+    <Transition from="V" to="X" event="eventVX"/>
+    <Transition from="X" to="Z" event="eventXZ"/>
+    <Transition from="Z" to="A" event="eventZA"/>
+    <Transition from="A" to="H" event="eventAH"/>
+    <Transition from="F" to="Q" event="eventFQ"/>
+    <Transition from="M" to="X" event="eventMX"/>
+  </Transitions>
+</FSM>
