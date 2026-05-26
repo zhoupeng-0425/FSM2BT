@@ -1,0 +1,38 @@
+<FSM ID="FSM_Prey_MigrationRiskControl">
+  <States>
+    <State name="StartMigrationRisk" type="initial"/>
+    <State name="Wander"/>
+    <State name="Roam"/>
+    <State name="Flock"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartMigrationRisk" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Wander" event="RouteUnclear"/>
+    <Transition from="Roam" to="Flock" event="HerdNearby"/>
+    <Transition from="Roam" to="SeekSafety" event="DangerZoneAhead"/>
+
+    <Transition from="Wander" to="Forage" event="FoodPatchFound"/>
+    <Transition from="Wander" to="Flee" event="PredatorAppears"/>
+
+    <Transition from="Flock" to="Roam" event="HerdMoving"/>
+    <Transition from="Flock" to="Flee" event="HerdAttacked"/>
+    <Transition from="Flock" to="Forage" event="GrazingAreaReached"/>
+
+    <Transition from="Forage" to="Eat" event="FoodReached"/>
+    <Transition from="Forage" to="SeekSafety" event="PredatorScent"/>
+
+    <Transition from="Eat" to="Roam" event="Full"/>
+    <Transition from="Eat" to="Flee" event="ThreatAppears"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="SeekSafety" to="Resting" event="SafeZoneReached"/>
+    <Transition from="Resting" to="Roam" event="Recovered"/>
+  </Transitions>
+</FSM>

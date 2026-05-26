@@ -1,0 +1,42 @@
+<FSM ID="FSM_Predator_TerritoryAlpha">
+  <States>
+    <State name="StartTerritoryAlpha" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Roam"/>
+    <State name="Hide"/>
+    <State name="Maneuver"/>
+    <State name="Charge"/>
+    <State name="Attack"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Feast"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartTerritoryAlpha" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Roam" event="TerritoryQuiet"/>
+    <Transition from="Patrol" to="Maneuver" event="IntruderSeen"/>
+    <Transition from="Patrol" to="FindSafe" event="Injured"/>
+
+    <Transition from="Roam" to="Patrol" event="BoundaryReached"/>
+    <Transition from="Roam" to="Hide" event="AmbushPointFound"/>
+    <Transition from="Roam" to="Maneuver" event="PreyTrackFound"/>
+
+    <Transition from="Hide" to="Charge" event="TargetClose"/>
+    <Transition from="Hide" to="Patrol" event="NoMovement"/>
+
+    <Transition from="Maneuver" to="Charge" event="PathClear"/>
+    <Transition from="Maneuver" to="Roam" event="TargetLost"/>
+
+    <Transition from="Charge" to="Attack" event="TargetReached"/>
+    <Transition from="Charge" to="Maneuver" event="ChargeMissed"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="FindSafe" event="CounterThreat"/>
+
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Patrol" event="Recovered"/>
+  </Transitions>
+</FSM>
