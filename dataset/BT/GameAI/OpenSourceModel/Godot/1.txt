@@ -1,0 +1,21 @@
+<BehaviorTree ID="LimboAIDemo">
+  <Sequence>
+    <!-- Pause before action -->
+    <Sequence>
+      <BTPlayAnimationIdle"/>
+      <BTRandomWait/>
+    </Sequence>
+    <!-- Pursue player -->
+    <Sequence>
+      <BTPlayAnimationWalk/>
+      <GetFirstInGroup/>
+       <Pursue/>
+    </Sequence>
+    <!-- Melee attack -->
+    <Sequence>
+      <FaceTarget/>
+      <BTWait/>
+      <BTPlayAnimationAttackandAwait=/>
+    </Sequence>
+  </Sequence>
+</BehaviorTree>
