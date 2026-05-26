@@ -1,0 +1,29 @@
+<BT>
+  <BehaviorTree ID="AIClinicFullRobot">
+    <Sequence>
+      <Fallback name="BatterySafety">
+        <IsBatteryOk/>
+        <Sequence>
+          <MoveToChargingStation/>
+          <ChargeBattery/>
+        </Sequence>
+      </Fallback>
+      <Fallback name="TaskScheduler">
+        <IsIdle/>
+        <Sequence name="TaskWorkflow">
+          <Fallback>
+            <IsPatientNearby/>
+            <FindPatient/>
+          </Fallback>
+          <Fallback>
+            <IsPatientAtDesk/>
+            <GuidePatientToDesk/>
+          </Fallback>
+          <WaitForDiagnosisComplete/>
+          <DismissPatient/>
+          <ReturnToHome/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,23 @@
+<BT>
+  <BehaviorTree ID="WarehouseRobot">
+    <Sequence>
+      <Fallback>
+        <IsBatteryOk/>
+        <Sequence>
+          <MoveToChargingStation/>
+          <ChargeBattery/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <RobotAtPickup/>
+        <MoveToPickupZone/>
+      </Fallback>
+      <PickupPackage/>
+      <Fallback>
+        <RobotAtDelivery/>
+        <MoveToDeliveryZone/>
+      </Fallback>
+      <DeliverPackage/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

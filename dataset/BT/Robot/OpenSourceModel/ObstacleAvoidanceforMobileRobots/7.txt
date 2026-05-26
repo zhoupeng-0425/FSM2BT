@@ -1,0 +1,13 @@
+ <BehaviorTree ID="BatteryProtection">
+    <Sequence>
+      <Fallback>
+        <IsBatteryOk/>
+        <Sequence>
+          <NotifyLowBattery/>
+          <MoveToChargingStation/>
+          <ChargeBattery/>
+          <WaitForCharge/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

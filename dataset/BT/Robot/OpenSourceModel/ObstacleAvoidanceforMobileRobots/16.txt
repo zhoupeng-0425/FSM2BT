@@ -1,0 +1,23 @@
+ <BehaviorTree ID="InspectionRobot">
+    <Sequence>
+      <RecordMissionStart/>
+      <Fallback>
+        <IsBatteryOk/>
+        <Sequence>
+          <NotifyLowBattery/>
+          <MoveToChargingStation/>
+          <ChargeBattery/>
+          <WaitForCharge/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <RobotAtInspectionPoint/>
+        <MoveToInspectionPoint/>
+      </Fallback>
+      <ExecuteSensorInspection/>
+      <LogInspectionResult/>
+      <UploadInspectionData/>
+      <ReturnToBase/>
+      <RecordMissionEnd/>
+    </Sequence>
+  </BehaviorTree>

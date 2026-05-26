@@ -1,0 +1,20 @@
+ <BehaviorTree ID="ServiceRobot">
+    <Sequence>
+      <Fallback>
+        <IsBatteryOk/>
+        <Sequence>
+          <NotifyLowBattery/>
+          <MoveToChargingStation/>
+          <ChargeBattery/>
+          <WaitForCharge/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <IsPatientPresent/>
+        <FindPatient/>
+      </Fallback>
+      <GuidePatientToDesk/>
+      <WaitForCompletion/>
+      <ReturnToHomePosition/>
+    </Sequence>
+  </BehaviorTree>
