@@ -1,0 +1,45 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback>
+        <O/>
+        <Q/>
+        <S/>
+        <U/>
+      </Fallback>
+      <Sequence>
+        <W/>
+        <Y/>
+        <A/>
+        <C/>
+      </Sequence>
+      <Fallback>
+        <Sequence>
+          <Fallback>
+            <Sequence>
+              <Fallback>
+                <E/>
+                <G/>
+              </Fallback>
+              <I/>
+            </Sequence>
+            <K/>
+          </Fallback>
+          <M/>
+        </Sequence>
+        <P/>
+      </Fallback>
+      <Sequence>
+        <Fallback>
+          <R/>
+          <T/>
+          <V/>
+        </Fallback>
+        <X/>
+        <Z/>
+        <B/>
+        <D/>
+      </Sequence>
+    </Sequence>
+  </BehaviorTree>
+</BT>
