@@ -1,0 +1,39 @@
+<BehaviorTree ID="Agent_BT_28_PatrolSearch_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <Patrol/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+        <Sequence>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

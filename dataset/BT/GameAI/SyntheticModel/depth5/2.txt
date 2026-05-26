@@ -1,0 +1,40 @@
+<BehaviorTree ID="Agent_BT_22_HuntFirst_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Patrol/>
+        </Sequence>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

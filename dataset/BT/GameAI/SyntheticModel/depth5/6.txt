@@ -1,0 +1,40 @@
+<BehaviorTree ID="Agent_BT_26_HungerDriven_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <VeryHungry/>
+          <Feast/>
+        </Sequence>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

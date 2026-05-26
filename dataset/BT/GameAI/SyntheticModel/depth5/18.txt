@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_38_DangerAvoidance_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+        <Sequence>
+          <ThreatNearby/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+        <Sequence>
+          <NeedRecovery/>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

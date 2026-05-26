@@ -1,0 +1,40 @@
+<BehaviorTree ID="Agent_BT_33_ExploreForage_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

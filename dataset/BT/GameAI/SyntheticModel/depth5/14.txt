@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_34_CounterAttack_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorNearby/>
+          <Charge/>
+        </Sequence>
+        <Sequence>
+          <AllyAttacking/>
+          <Assist/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

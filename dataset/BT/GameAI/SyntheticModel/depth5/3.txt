@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_23_CautiousForager_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+        <Sequence>
+          <LowHealth/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

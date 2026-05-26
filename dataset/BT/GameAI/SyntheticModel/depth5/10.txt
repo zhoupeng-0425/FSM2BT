@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_30_TerritorialGuard_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyInTerritory/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <OutOfTerritory/>
+          <Patrol/>
+        </Sequence>
+        <Sequence>
+          <ThreatNearby/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Tired/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

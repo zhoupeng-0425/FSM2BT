@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_31_OpportunisticAttack_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <WeakPreyVisible/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <Hide/>
+        </Sequence>
+        <Sequence>
+          <Patrol/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

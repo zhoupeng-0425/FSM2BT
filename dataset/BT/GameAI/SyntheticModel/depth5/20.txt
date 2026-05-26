@@ -1,0 +1,54 @@
+<BehaviorTree ID="Agent_BT_40_SimpleIntegrated_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+        <Sequence>
+          <LowHealth/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Tired/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

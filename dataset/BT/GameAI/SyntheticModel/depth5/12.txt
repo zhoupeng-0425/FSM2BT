@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_32_SafeZoneDependent_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <InSafeZone/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <SafeZoneNearby/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

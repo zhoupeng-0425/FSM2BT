@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_36_FastHunter_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <WeakPreyVisible/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <SinglePreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <VeryHungry/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <Patrol/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

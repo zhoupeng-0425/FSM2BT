@@ -1,0 +1,53 @@
+<BehaviorTree ID="Agent_BT_39_BalancedAgent_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Patrol/>
+        </Sequence>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

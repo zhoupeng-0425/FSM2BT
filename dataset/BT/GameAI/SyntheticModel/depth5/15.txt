@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_35_StealthSearch_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <ThreatNearby/>
+          <Hide/>
+        </Sequence>
+        <Sequence>
+          <NearHideSpot/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

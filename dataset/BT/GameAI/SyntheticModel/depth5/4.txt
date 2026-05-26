@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_24_GroupCooperation_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <AllyAttacking/>
+          <Assist/>
+        </Sequence>
+        <Sequence>
+          <AllyNumberHigh/>
+          <Charge/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorNearby/>
+          <Flee/>
+        </Sequence>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

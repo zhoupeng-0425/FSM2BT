@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_25_StealthAmbush_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <NearHideSpot/>
+          <Hide/>
+        </Sequence>
+        <Sequence>
+          <SinglePreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <Tired/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <Patrol/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>
