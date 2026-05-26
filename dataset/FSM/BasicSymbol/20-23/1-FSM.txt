@@ -1,0 +1,54 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="A" />
+    <State name="C" />
+    <State name="E" />
+    <State name="G" />
+    <State name="I" />
+    <State name="K" />
+    <State name="M" />
+    <State name="O" />
+    <State name="Q" />
+    <State name="S" />
+    <State name="U" />
+    <State name="W" />
+    <State name="Y" />
+    <State name="B" />
+    <State name="D" />
+    <State name="F" />
+    <State name="H" />
+    <State name="J" />
+    <State name="L" />
+    <State name="N" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="A" event="eventStartA"/>
+    <Transition from="A" to="C" event="eventAC"/>
+    <Transition from="C" to="E" event="eventCE"/>
+    <Transition from="E" to="G" event="eventEG"/>
+    <Transition from="G" to="I" event="eventGI"/>
+    <Transition from="I" to="K" event="eventIK"/>
+    <Transition from="K" to="M" event="eventKM"/>
+    <Transition from="M" to="O" event="eventMO"/>
+    <Transition from="O" to="Q" event="eventOQ"/>
+    <Transition from="Q" to="S" event="eventQS"/>
+    <Transition from="S" to="U" event="eventSU"/>
+    <Transition from="U" to="W" event="eventUW"/>
+    <Transition from="W" to="Y" event="eventWY"/>
+    <Transition from="Y" to="B" event="eventYB"/>
+    <Transition from="B" to="D" event="eventBD"/>
+    <Transition from="D" to="F" event="eventDF"/>
+    <Transition from="F" to="H" event="eventFH"/>
+    <Transition from="H" to="J" event="eventHJ"/>
+    <Transition from="J" to="L" event="eventJL"/>
+    <Transition from="L" to="N" event="eventLN"/>
+    <Transition from="N" to="A" event="eventNA"/>
+    <Transition from="A" to="G" event="eventAG"/>
+    <Transition from="E" to="M" event="eventEM"/>
+    <Transition from="K" to="S" event="eventKS"/>
+    <Transition from="Q" to="Y" event="eventQY"/>
+    <Transition from="D" to="J" event="eventDJ"/>
+  </Transitions>
+</FSM>
