@@ -1,0 +1,63 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_101_SafeForage_D9">
+    <Sequence>
+      <Fallback>
+        <LowHealth/>
+        <FindSafe/>
+      </Fallback>
+
+      <Fallback>
+        <PredatorNearby/>
+        <Sequence>
+          <Fallback>
+            <InSafeZone/>
+            <Sequence>
+              <Fallback>
+                <SafeZoneNearby/>
+                <Sequence>
+                  <Fallback>
+                    <NearHideSpot/>
+                    <Hide/>
+                  </Fallback>
+                  <SeekSafety/>
+                </Sequence>
+              </Fallback>
+              <Resting/>
+            </Sequence>
+          </Fallback>
+          <Fallback>
+            <ThreatNearby/>
+            <Flee/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <FoodNearby/>
+        <Forage/>
+      </Fallback>
+
+      <Fallback>
+        <InFoodZone/>
+        <Sequence>
+          <Fallback>
+            <PredatorVeryClose/>
+            <Sequence>
+              <Fallback>
+                <AllyNearby/>
+                <Flock/>
+              </Fallback>
+              <Flee/>
+            </Sequence>
+          </Fallback>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <AllyNearby/>
+        <Wander/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
