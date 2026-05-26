@@ -1,0 +1,36 @@
+<FSM ID="FSM_Prey_ForageRiskAware">
+  <States>
+    <State name="StartRiskForage" type="initial"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flock"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Hide"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartRiskForage" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Forage" event="FoodNearby"/>
+    <Transition from="Wander" to="Flock" event="AllyNearby"/>
+    <Transition from="Wander" to="SeekSafety" event="PredatorScent"/>
+
+    <Transition from="Forage" to="Eat" event="FoodReached"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Forage" to="Wander" event="FoodGone"/>
+
+    <Transition from="Eat" to="Wander" event="Full"/>
+    <Transition from="Eat" to="Flee" event="ThreatAppears"/>
+
+    <Transition from="Flock" to="Forage" event="GroupSafe"/>
+    <Transition from="Flock" to="Flee" event="GroupThreatened"/>
+
+    <Transition from="SeekSafety" to="Hide" event="CoverFound"/>
+    <Transition from="SeekSafety" to="Wander" event="AreaCleared"/>
+
+    <Transition from="Flee" to="Hide" event="CoverReached"/>
+    <Transition from="Hide" to="Wander" event="ThreatGone"/>
+  </Transitions>
+</FSM>

@@ -1,0 +1,36 @@
+<FSM ID="FSM_Predator_ScavengerHunter">
+  <States>
+    <State name="StartScavengerHunter" type="initial"/>
+    <State name="Roam"/>
+    <State name="Forage"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartScavengerHunter" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Forage" event="CarrionScentDetected"/>
+    <Transition from="Roam" to="Maneuver" event="WeakPreyVisible"/>
+    <Transition from="Roam" to="FindSafe" event="LargerPredatorNearby"/>
+
+    <Transition from="Forage" to="Feast" event="DeadPreyFound"/>
+    <Transition from="Forage" to="Roam" event="ScentLost"/>
+    <Transition from="Forage" to="FindSafe" event="CompetitorArrives"/>
+
+    <Transition from="Maneuver" to="Attack" event="PreyInRange"/>
+    <Transition from="Maneuver" to="Roam" event="PreyEscaped"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="FindSafe" event="CounterAttackDanger"/>
+
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Feast" to="FindSafe" event="ThreatApproaches"/>
+
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+    <Transition from="Resting" to="Roam" event="Recovered"/>
+  </Transitions>
+</FSM>

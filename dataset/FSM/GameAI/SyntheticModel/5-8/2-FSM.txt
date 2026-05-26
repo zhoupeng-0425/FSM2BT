@@ -1,0 +1,34 @@
+<FSM ID="FSM_Prey_SurvivalLoop">
+  <States>
+    <State name="StartPreySurvival" type="initial"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flee"/>
+    <State name="Hide"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartPreySurvival" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Forage" event="FoodScentDetected"/>
+    <Transition from="Wander" to="Flee" event="PredatorNearby"/>
+    <Transition from="Wander" to="Hide" event="SuspiciousNoise"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Wander" event="FoodLost"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Eat" to="Flee" event="ThreatAppears"/>
+
+    <Transition from="Flee" to="Hide" event="CoverReached"/>
+    <Transition from="Flee" to="Resting" event="Escaped"/>
+
+    <Transition from="Hide" to="Wander" event="ThreatGone"/>
+    <Transition from="Hide" to="Flee" event="Discovered"/>
+
+    <Transition from="Resting" to="Wander" event="Recovered"/>
+  </Transitions>
+</FSM>

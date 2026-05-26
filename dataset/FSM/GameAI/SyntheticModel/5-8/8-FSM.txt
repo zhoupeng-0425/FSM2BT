@@ -1,0 +1,35 @@
+<FSM ID="FSM_Prey_DefensiveHerd">
+  <States>
+    <State name="StartDefensiveHerd" type="initial"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartDefensiveHerd" to="Forage" event="Start"/>
+
+    <Transition from="Forage" to="Flock" event="AllyNearby"/>
+    <Transition from="Forage" to="Flee" event="PredatorNearby"/>
+    <Transition from="Forage" to="Resting" event="Tired"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Flock" to="SeekSafety" event="PredatorCircling"/>
+
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Assist" to="Flee" event="ThreatTooStrong"/>
+
+    <Transition from="Charge" to="Flock" event="PredatorRetreats"/>
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="SeekSafety" to="Resting" event="SafeZoneReached"/>
+
+    <Transition from="Resting" to="Forage" event="Recovered"/>
+  </Transitions>
+</FSM>

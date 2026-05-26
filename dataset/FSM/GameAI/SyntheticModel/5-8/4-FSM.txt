@@ -1,0 +1,36 @@
+<FSM ID="FSM_Prey_FlockEscape">
+  <States>
+    <State name="StartFlockEscape" type="initial"/>
+    <State name="Wander"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Hide"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartFlockEscape" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Flock" event="AllyNearby"/>
+    <Transition from="Wander" to="Flee" event="PredatorNearby"/>
+    <Transition from="Wander" to="SeekSafety" event="UnsafeArea"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Flock" to="Wander" event="GroupDispersed"/>
+
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Assist" to="Flee" event="DangerEscalates"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="Flee" to="Hide" event="CoverReached"/>
+
+    <Transition from="SeekSafety" to="Hide" event="ShelterFound"/>
+    <Transition from="SeekSafety" to="Resting" event="SafeZoneReached"/>
+
+    <Transition from="Hide" to="Resting" event="ThreatGone"/>
+    <Transition from="Resting" to="Wander" event="Recovered"/>
+  </Transitions>
+</FSM>

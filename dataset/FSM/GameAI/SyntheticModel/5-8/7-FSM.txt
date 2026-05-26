@@ -1,0 +1,36 @@
+<FSM ID="FSM_Predator_PackSupport">
+  <States>
+    <State name="StartPackSupport" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartPackSupport" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Flock" event="AllyNearby"/>
+    <Transition from="Patrol" to="Maneuver" event="PreyVisible"/>
+    <Transition from="Patrol" to="Resting" event="Tired"/>
+
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Flock" to="Maneuver" event="PreyEncircled"/>
+    <Transition from="Flock" to="Patrol" event="PackScattered"/>
+
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Assist" to="Flock" event="AllyRecovered"/>
+
+    <Transition from="Maneuver" to="Attack" event="PreyInRange"/>
+    <Transition from="Maneuver" to="Patrol" event="PreyLost"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="Assist" event="NeedSupport"/>
+
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Patrol" event="Recovered"/>
+  </Transitions>
+</FSM>

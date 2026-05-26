@@ -1,0 +1,37 @@
+<FSM ID="FSM_Predator_AmbushAndChase">
+  <States>
+    <State name="StartAmbushChase" type="initial"/>
+    <State name="Roam"/>
+    <State name="Hide"/>
+    <State name="Maneuver"/>
+    <State name="Charge"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartAmbushChase" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Hide" event="AmbushSpotFound"/>
+    <Transition from="Roam" to="Maneuver" event="PreyRecentlySeen"/>
+    <Transition from="Roam" to="Resting" event="LowEnergy"/>
+
+    <Transition from="Hide" to="Maneuver" event="PreyApproaching"/>
+    <Transition from="Hide" to="Roam" event="WaitTooLong"/>
+    <Transition from="Hide" to="Charge" event="PreyVeryClose"/>
+
+    <Transition from="Maneuver" to="Charge" event="ClearPath"/>
+    <Transition from="Maneuver" to="Hide" event="PreyAlerted"/>
+    <Transition from="Maneuver" to="Roam" event="PreyLost"/>
+
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+    <Transition from="Charge" to="Maneuver" event="ChargeMissed"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="Resting" event="Injured"/>
+
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Roam" event="Recovered"/>
+  </Transitions>
+</FSM>

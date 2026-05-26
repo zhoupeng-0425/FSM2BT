@@ -1,0 +1,33 @@
+<FSM ID="FSM_Predator_TerritoryGuardian">
+  <States>
+    <State name="StartGuardian" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Roam"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartGuardian" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Roam" event="TerritoryQuiet"/>
+    <Transition from="Patrol" to="Maneuver" event="IntruderSeen"/>
+    <Transition from="Patrol" to="FindSafe" event="Injured"/>
+
+    <Transition from="Roam" to="Patrol" event="BoundaryReached"/>
+    <Transition from="Roam" to="Maneuver" event="PreyTrackFound"/>
+
+    <Transition from="Maneuver" to="Attack" event="TargetInRange"/>
+    <Transition from="Maneuver" to="Patrol" event="TargetLeftTerritory"/>
+    <Transition from="Maneuver" to="FindSafe" event="Ambushed"/>
+
+    <Transition from="Attack" to="Patrol" event="IntruderDrivenAway"/>
+    <Transition from="Attack" to="FindSafe" event="CounterThreat"/>
+    <Transition from="Attack" to="Resting" event="VictoryExhaustion"/>
+
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+    <Transition from="Resting" to="Patrol" event="Recovered"/>
+  </Transitions>
+</FSM>
