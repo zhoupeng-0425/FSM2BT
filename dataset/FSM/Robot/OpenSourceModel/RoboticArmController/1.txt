@@ -1,0 +1,33 @@
+<States>
+    <State name="CUSTOM_CONTROL" type="initial"/>
+    <State name="INVALID" />
+    <State name="PASSIVE" />
+    <State name="AUTO_PERLACE_1" />
+    <State name="AUTO_PERLACE_2" />
+    <State name="AUTO_TAKEOUT_1" />
+    <State name="AUTO_TAKEOUT_2" />
+    <State name="LITTLE_SOURCE_LAND" />
+    <State name="BIG_SOURCE_LAND" />
+    <State name="DEFEND" />
+</States>
+
+<Transitions>
+<Transition from="CUSTOM_CONTROL" to="PASSIVE" event="COMMAND_PASSIVE"/>
+<Transition from="CUSTOM_CONTROL" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="INVALID" to="CUSTOM_CONTROL" event="COMMAND_CUSTOM_CONTROL"/>
+<Transition from="PASSIVE" to="AUTO_PERLACE_1" event="COMMAND_AUTO_PERLACE_1"/>
+<Transition from="PASSIVE" to="AUTO_PERLACE_2" event="COMMAND_AUTO_PERLACE_2"/>
+<Transition from="AUTO_PERLACE_1" to="AUTO_TAKEOUT_1" event="COMMAND_AUTO_TAKEOUT_1"/>
+<Transition from="AUTO_PERLACE_2" to="AUTO_TAKEOUT_2" event="COMMAND_AUTO_TAKEOUT_2"/>
+<Transition from="AUTO_TAKEOUT_1" to="LITTLE_SOURCE_LAND" event="COMMAND_LITTLE_SOURCE_LAND"/>
+<Transition from="AUTO_TAKEOUT_2" to="BIG_SOURCE_LAND" event="COMMAND_BIG_SOURCE_LAND"/>
+<Transition from="LITTLE_SOURCE_LAND" to="INVALID" event="COMMAND_INVALID"/>
+<Transition from="BIG_SOURCE_LAND" to="PASSIVE" event="COMMAND_PASSIVE"/>
+<Transition from="DEFEND" to="CUSTOM_CONTROL" event="COMMAND_CUSTOM_CONTROL"/>
+<Transition from="DEFEND" to="AUTO_PERLACE_1" event="COMMAND_AUTO_PERLACE_1"/>
+<Transition from="CUSTOM_CONTROL" to="AUTO_PERLACE_2" event="COMMAND_AUTO_PERLACE_2"/>
+<Transition from="PASSIVE" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="AUTO_PERLACE_1" to="BIG_SOURCE_LAND" event="COMMAND_BIG_SOURCE_LAND"/>
+<Transition from="LITTLE_SOURCE_LAND" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="INVALID" to="PASSIVE" event="COMMAND_PASSIVE"/>
+</Transitions>
