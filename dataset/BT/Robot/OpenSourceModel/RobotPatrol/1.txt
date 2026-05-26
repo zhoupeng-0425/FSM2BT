@@ -1,0 +1,11 @@
+<BT>
+  <BehaviorTree ID="MainTree">
+    <Fallback>
+      <Sequence>
+        <HaveEnemy/>
+        <NavEnemy/>
+      </Sequence>
+      <NpcPatrol/>
+    </Fallback>
+  </BehaviorTree>
+</BT>
