@@ -1,0 +1,23 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove20/><Recharge/></Fallback>
+      <Fallback>
+        <OrderCompleted/>
+        <Sequence>
+          <Fallback><SortingOrderReady/><LoadSortingOrder/></Fallback>
+          <Fallback>
+            <ItemInHand/>
+            <Sequence>
+              <Fallback><TargetItemFound/><SearchTargetItem/></Fallback>
+              <PickItem/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtDelivery/><MoveToDelivery/></Fallback>
+          <PlaceItem/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

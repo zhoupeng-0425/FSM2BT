@@ -1,0 +1,23 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove25/><Recharge/></Fallback>
+      <Fallback>
+        <OversizeItemDelivered/>
+        <Sequence>
+          <Fallback><OversizeItemFound/><SearchOversizeItem/></Fallback>
+          <Fallback>
+            <OversizeItemSecured/>
+            <Sequence>
+              <Fallback><RobotAtOversizeItem/><MoveToOversizeItem/></Fallback>
+              <SecureOversizeItem/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtOversizeZone/><MoveToOversizeZone/></Fallback>
+          <ReleaseOversizeItem/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

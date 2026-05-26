@@ -1,0 +1,23 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove30/><Recharge/></Fallback>
+      <Fallback>
+        <FragileItemInDelivery/>
+        <Sequence>
+          <Fallback><FragileItemFound/><SearchFragileItem/></Fallback>
+          <Fallback>
+            <FragileItemInHand/>
+            <Sequence>
+              <Fallback><RobotAtFragileItem/><MoveToFragileItem/></Fallback>
+              <CarefulPickItem/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtSafeDelivery/><MoveToSafeDelivery/></Fallback>
+          <CarefulPlaceItem/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
