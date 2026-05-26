@@ -1,0 +1,39 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="SearchCubes" />
+    <State name="VerifyCube" />
+    <State name="MoveToCube" />
+    <State name="AlignToCube" />
+    <State name="PickCube" />
+    <State name="MoveToDelivery" />
+    <State name="PlaceCube" />
+    <State name="ErrorRecovery" />
+    <State name="ReturnToBase" />
+    <State name="Dock" />
+    <State name="Recharge" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="SearchCubes" event="SortTaskAssigned"/>
+    <Transition from="SearchCubes" to="VerifyCube" event="CubeDetected"/>
+    <Transition from="SearchCubes" to="ReturnToBase" event="SortBatchFinished"/>
+    <Transition from="ReturnToBase" to="Idel" event="BasePoseReached"/>
+    <Transition from="VerifyCube" to="MoveToCube" event="CubeVerified"/>
+    <Transition from="VerifyCube" to="SearchCubes" event="CubeRejected"/>
+    <Transition from="MoveToCube" to="AlignToCube" event="CubeReached"/>
+    <Transition from="MoveToCube" to="ErrorRecovery" event="NavigationFault"/>
+    <Transition from="ErrorRecovery" to="SearchCubes" event="FaultCleared"/>
+    <Transition from="AlignToCube" to="PickCube" event="AlignmentDone"/>
+    <Transition from="PickCube" to="MoveToDelivery" event="CubeINHand"/>
+    <Transition from="PickCube" to="AlignToCube" event="GripFailed"/>
+    <Transition from="MoveToDelivery" to="PlaceCube" event="DeliveryPoseReached"/>
+    <Transition from="PlaceCube" to="SearchCubes" event="CubePlace"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="SearchCubes" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+  </Transitions>
+</FSM>

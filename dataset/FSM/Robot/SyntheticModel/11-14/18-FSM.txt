@@ -1,0 +1,40 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="H" />
+    <State name="K" />
+    <State name="O" />
+    <State name="S" />
+    <State name="V" />
+    <State name="Y" />
+    <State name="B" />
+    <State name="E" />
+    <State name="I" />
+    <State name="L" />
+    <State name="P" />
+    <State name="U" />
+    <State name="X" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="H" event="eventStartH"/>
+    <Transition from="H" to="K" event="eventHK"/>
+    <Transition from="K" to="O" event="eventKO"/>
+    <Transition from="O" to="S" event="eventOS"/>
+    <Transition from="S" to="V" event="eventSV"/>
+    <Transition from="V" to="Y" event="eventVY"/>
+    <Transition from="Y" to="B" event="eventYB"/>
+    <Transition from="B" to="E" event="eventBE"/>
+    <Transition from="E" to="I" event="eventEI"/>
+    <Transition from="I" to="L" event="eventIL"/>
+    <Transition from="L" to="P" event="eventLP"/>
+    <Transition from="P" to="U" event="eventPU"/>
+    <Transition from="U" to="X" event="eventUX"/>
+    <Transition from="X" to="H" event="eventXH"/>
+    <Transition from="H" to="S" event="eventHS"/>
+    <Transition from="K" to="V" event="eventKV"/>
+    <Transition from="O" to="B" event="eventOB"/>
+    <Transition from="E" to="P" event="eventEP"/>
+    <Transition from="I" to="X" event="eventIX"/>
+  </Transitions>
+</FSM>

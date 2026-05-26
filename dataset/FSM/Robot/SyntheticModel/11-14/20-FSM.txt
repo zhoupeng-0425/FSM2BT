@@ -1,0 +1,41 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="ScanShelf" />
+    <State name="SearchCubes" />
+    <State name="MoveToCube" />
+    <State name="AvoidObstacle" />
+    <State name="AlignToCube" />
+    <State name="PickCube" />
+    <State name="QualityCheck" />
+    <State name="MoveToDelivery" />
+    <State name="PlaceCube" />
+    <State name="Dock" />
+    <State name="Recharge" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="ScanShelf" event="SortTaskAssigned"/>
+    <Transition from="ScanShelf" to="SearchCubes" event="ShelfScanDone"/>
+    <Transition from="ScanShelf" to="Idel" event="TaskCancelled"/>
+    <Transition from="SearchCubes" to="MoveToCube" event="CubeDetected"/>
+    <Transition from="SearchCubes" to="Idel" event="NoCubeFound"/>
+    <Transition from="MoveToCube" to="AvoidObstacle" event="ObstacleDetected"/>
+    <Transition from="AvoidObstacle" to="MoveToCube" event="ObstacleCleared"/>
+    <Transition from="MoveToCube" to="AlignToCube" event="CubeReached"/>
+    <Transition from="MoveToCube" to="SearchCubes" event="CubeLost"/>
+    <Transition from="AlignToCube" to="PickCube" event="AlignmentDone"/>
+    <Transition from="AlignToCube" to="MoveToCube" event="AlignmentFailed"/>
+    <Transition from="PickCube" to="QualityCheck" event="CubeINHand"/>
+    <Transition from="PickCube" to="AlignToCube" event="GripFailed"/>
+    <Transition from="QualityCheck" to="MoveToDelivery" event="CubeQualityOK"/>
+    <Transition from="QualityCheck" to="PlaceCube" event="CubeQualityNG"/>
+    <Transition from="MoveToDelivery" to="PlaceCube" event="DeliveryPoseReached"/>
+    <Transition from="PlaceCube" to="ScanShelf" event="CubePlace"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+  </Transitions>
+</FSM>
