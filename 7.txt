@@ -1,0 +1,24 @@
+<BehaviorTree ID="RandomAttackSelector">
+  <Sequence>
+    <GenerateRandomNumberR1/>
+    <Selector>
+      <Sequence>
+        <RGreaterOrEqual0.9/>
+        <AllRangeShot/>
+        <NWayShot1/>
+      </Sequence>
+
+      <Sequence>
+        <RInRange0.8To0.9/>
+        <NormalShot2/>
+      </Sequence>
+
+      <Sequence>
+        <RLessThan0.8/>
+        <NormalShot3/>
+      </Sequence>
+    </Selector>
+
+    <ReleaseRFromStack1/>
+  </Sequence>
+</BehaviorTree>

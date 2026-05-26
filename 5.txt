@@ -1,0 +1,13 @@
+<BehaviorTree ID="MeleeFirstRangedBackup">
+  <Selector>
+    <Sequence>
+      <DistanceToPlayerLessThanL/>
+      <MeleeAttack/>
+    </Sequence>
+
+    <Sequence>
+      <DistanceToPlayerMoreThanL/>
+      <NormalShot/>
+    </Sequence>
+  </Selector>
+</BehaviorTree>
