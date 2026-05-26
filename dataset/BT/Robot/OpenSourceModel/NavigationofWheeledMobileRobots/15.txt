@@ -1,0 +1,16 @@
+<BehaviorTree ID="MainTree">
+    <Sequence>
+      <SetLocations/>
+      <Fallback>
+        <Sequence>
+          <GoToPose1/>
+          <LookForObject1/>
+        </Sequence>
+        <Sequence>
+          <GetLocationFromQueue/>
+          <GoToPose/>
+          <LookForObject/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

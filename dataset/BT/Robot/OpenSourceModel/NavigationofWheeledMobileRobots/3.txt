@@ -1,0 +1,23 @@
+    <BehaviorTree ID="MainTree">
+        <Sequence>
+            <SetLocations/>
+            <Fallback>
+                <Sequence>
+                    <GoToPose1/>
+                    <LookForObject1/>
+                </Sequence>
+                <Sequence">
+                    <GoToPose2/>
+                    <LookForObject2 />
+                </Sequence>
+                <Sequence>
+                    <GoToPose3/>
+                    <LookForObject3/>
+                </Sequence>
+                <Sequence">
+                    <GoToPose4/>
+                    <LookForObject4 />
+                </Sequence> 
+            </Fallback>
+        </Sequence>
+    </BehaviorTree>

@@ -1,0 +1,14 @@
+<BehaviorTree ID="MainTree">
+    <Sequence>
+      <SetLocations/>
+      <GetLocationFromQueue/>
+      <GoToPose/>
+      <LookForObject/>
+      <GoToPose2/>
+      <LookForObject2/>
+      <GoToPose3/>
+      <LookForObject3/>
+      <GoToPose4/>
+      <LookForObject4/>
+    </Sequence>
+  </BehaviorTree>
