@@ -1,0 +1,51 @@
+<FSM ID="FSM_Prey_CautiousCommunity">
+  <States>
+    <State name="StartCautiousCommunity" type="initial"/>
+    <State name="Wander"/>
+    <State name="Roam"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Hide"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Patrol"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartCautiousCommunity" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Forage" event="FoodNearby"/>
+    <Transition from="Wander" to="Flock" event="AllyNearby"/>
+    <Transition from="Wander" to="Hide" event="SuspiciousNoise"/>
+
+    <Transition from="Roam" to="Patrol" event="OpenGroundReached"/>
+    <Transition from="Roam" to="SeekSafety" event="PredatorScentStrong"/>
+
+    <Transition from="Patrol" to="Wander" event="AreaClear"/>
+    <Transition from="Patrol" to="Flee" event="PredatorSeen"/>
+
+    <Transition from="Forage" to="Eat" event="FoodReached"/>
+    <Transition from="Forage" to="Roam" event="FoodTrailMoves"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Eat" to="Hide" event="ThreatAppears"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Flock" to="Forage" event="GroupSafe"/>
+
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="SeekSafety" to="Hide" event="CoverFound"/>
+    <Transition from="Hide" to="FindSafe" event="ThreatPersists"/>
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+  </Transitions>
+</FSM>

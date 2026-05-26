@@ -1,0 +1,50 @@
+<FSM ID="FSM_Predator_PackAmbushNetwork">
+  <States>
+    <State name="StartPackAmbush" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Roam"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Hide"/>
+    <State name="Maneuver"/>
+    <State name="Charge"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Forage"/>
+    <State name="Wander"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartPackAmbush" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Flock" event="PackNearby"/>
+    <Transition from="Patrol" to="Roam" event="NoTarget"/>
+    <Transition from="Patrol" to="Resting" event="LowEnergy"/>
+
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Hide" event="AmbushSpotFound"/>
+    <Transition from="Roam" to="Maneuver" event="PreySpotted"/>
+
+    <Transition from="Forage" to="Feast" event="DeadPreyFound"/>
+    <Transition from="Forage" to="Wander" event="TrailConfused"/>
+
+    <Transition from="Wander" to="Patrol" event="RouteRecovered"/>
+    <Transition from="Wander" to="FindSafe" event="RivalScent"/>
+
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Flock" to="Maneuver" event="PreyEncircled"/>
+    <Transition from="Flock" to="Patrol" event="PackScattered"/>
+
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Assist" to="Flock" event="AllyRecovered"/>
+
+    <Transition from="Hide" to="Charge" event="PreyClose"/>
+    <Transition from="Maneuver" to="Charge" event="FlankReady"/>
+    <Transition from="Charge" to="Attack" event="ImpactRange"/>
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+    <Transition from="Resting" to="Patrol" event="Recovered"/>
+  </Transitions>
+</FSM>
