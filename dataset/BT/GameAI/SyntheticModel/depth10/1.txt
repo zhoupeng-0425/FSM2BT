@@ -1,0 +1,73 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_111_AdvancedSafeForage_D10">
+    <Sequence>
+      <Fallback>
+        <HealthAbove30/>
+        <Sequence>
+          <Fallback>
+            <InSafeZone/>
+            <Sequence>
+              <Fallback>
+                <SafeZoneNearby/>
+                <Sequence>
+                  <Fallback>
+                    <NearHideSpot/>
+                    <Sequence>
+                      <Fallback>
+                        <ThreatNearby/>
+                        <Hide/>
+                      </Fallback>
+                      <FindSafe/>
+                    </Sequence>
+                  </Fallback>
+                  <SeekSafety/>
+                </Sequence>
+              </Fallback>
+              <Resting/>
+            </Sequence>
+          </Fallback>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <NoPredatorNearby/>
+        <Sequence>
+          <Fallback>
+            <PredatorNearby/>
+            <Sequence>
+              <Fallback>
+                <PredatorVeryClose/>
+                <Flee/>
+              </Fallback>
+              <SeekSafety/>
+            </Sequence>
+          </Fallback>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <FoodSecured/>
+        <Sequence>
+          <Fallback>
+            <FoodNearby/>
+            <Sequence>
+              <Fallback>
+                <InFoodZone/>
+                <Forage/>
+              </Fallback>
+              <Eat/>
+            </Sequence>
+          </Fallback>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <AllyNearby/>
+        <Wander/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
