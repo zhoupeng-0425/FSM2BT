@@ -1,0 +1,62 @@
+<FSM ID="FSM_Predator_ApexTerritoryNetwork">
+  <States>
+    <State name="StartApexTerritoryNetwork" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="GuardDen"/>
+    <State name="MarkTerritory"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartApexTerritoryNetwork" to="GuardDen" event="Start"/>
+    <Transition from="GuardDen" to="Patrol" event="DenSecured"/>
+    <Transition from="GuardDen" to="Attack" event="EnemyAtDen"/>
+
+    <Transition from="Patrol" to="MarkTerritory" event="BoundaryReached"/>
+    <Transition from="Patrol" to="Roam" event="NoIntruder"/>
+    <Transition from="Patrol" to="Maneuver" event="IntruderTrail"/>
+
+    <Transition from="MarkTerritory" to="Flock" event="PackResponds"/>
+    <Transition from="MarkTerritory" to="Patrol" event="ScentPlaced"/>
+
+    <Transition from="Roam" to="ScoutRoute" event="UnknownPassage"/>
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Hide" event="AmbushCover"/>
+
+    <Transition from="ScoutRoute" to="Wander" event="RouteConfusing"/>
+    <Transition from="ScoutRoute" to="SeekSafety" event="RivalTrailFound"/>
+
+    <Transition from="Wander" to="Patrol" event="LandmarkFound"/>
+    <Transition from="Wander" to="FindSafe" event="RivalClose"/>
+
+    <Transition from="Forage" to="Eat" event="ScrapsFound"/>
+    <Transition from="Forage" to="Feast" event="FreshKillFound"/>
+
+    <Transition from="Eat" to="Resting" event="SmallMealDone"/>
+    <Transition from="Feast" to="Resting" event="Full"/>
+
+    <Transition from="Flock" to="Assist" event="AllyCalls"/>
+    <Transition from="Flock" to="Maneuver" event="PackFlankReady"/>
+
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Hide" to="Charge" event="TargetClose"/>
+    <Transition from="Maneuver" to="Charge" event="StrikePathClear"/>
+    <Transition from="Charge" to="Attack" event="ImpactMade"/>
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+  </Transitions>
+</FSM>
