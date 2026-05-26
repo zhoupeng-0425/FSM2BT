@@ -1,0 +1,57 @@
+<FSM ID="FSM_Prey_MigrationColonyDefense">
+  <States>
+    <State name="StartMigrationColonyDefense" type="initial"/>
+    <State name="Wander"/>
+    <State name="Roam"/>
+    <State name="Patrol"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Hide"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartMigrationColonyDefense" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Wander" event="RouteUnclear"/>
+    <Transition from="Roam" to="Flock" event="HerdNearby"/>
+    <Transition from="Roam" to="SeekSafety" event="DangerZoneAhead"/>
+
+    <Transition from="Wander" to="Forage" event="FoodPatchFound"/>
+    <Transition from="Wander" to="Patrol" event="UnknownGround"/>
+    <Transition from="Wander" to="Flee" event="PredatorAppears"/>
+
+    <Transition from="Patrol" to="Roam" event="AreaMapped"/>
+    <Transition from="Patrol" to="Hide" event="SuspiciousMovement"/>
+
+    <Transition from="Forage" to="Eat" event="FoodReached"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Forage" to="Maneuver" event="HerdShifts"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Eat" to="Hide" event="NoiseHeard"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Flock" to="Forage" event="GrazingSafe"/>
+
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Assist" to="Attack" event="DesperateDefense"/>
+
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+    <Transition from="Attack" to="Feast" event="PredatorDrivenAway"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="SeekSafety" to="FindSafe" event="ShelterRouteFound"/>
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+  </Transitions>
+</FSM>

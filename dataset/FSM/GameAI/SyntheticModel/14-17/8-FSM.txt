@@ -1,0 +1,53 @@
+<FSM ID="FSM_Predator_ScavengerWarband">
+  <States>
+    <State name="StartScavengerWarband" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Roam"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Hide"/>
+    <State name="Maneuver"/>
+    <State name="Charge"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Flee"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartScavengerWarband" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Maneuver" event="WeakPreyVisible"/>
+    <Transition from="Roam" to="Patrol" event="KnownTrailFound"/>
+
+    <Transition from="Patrol" to="Flock" event="PackCall"/>
+    <Transition from="Patrol" to="FindSafe" event="LargerPredatorNearby"/>
+
+    <Transition from="Wander" to="Roam" event="ScentRecovered"/>
+    <Transition from="Wander" to="Hide" event="UnknownNoise"/>
+
+    <Transition from="Forage" to="Feast" event="DeadPreyFound"/>
+    <Transition from="Forage" to="Wander" event="ScentLost"/>
+    <Transition from="Forage" to="Hide" event="CompetitorHeard"/>
+
+    <Transition from="Hide" to="Forage" event="CompetitorGone"/>
+    <Transition from="Hide" to="Flee" event="Discovered"/>
+
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+
+    <Transition from="Maneuver" to="Charge" event="PreyInSight"/>
+    <Transition from="Maneuver" to="Roam" event="PreyLost"/>
+
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="FindSafe" event="CounterAttackDanger"/>
+
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Roam" event="Recovered"/>
+  </Transitions>
+</FSM>
