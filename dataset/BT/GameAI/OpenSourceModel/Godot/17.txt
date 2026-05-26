@@ -1,0 +1,28 @@
+<BehaviorTree ID="PlayerController">
+  <Selector>
+    <!-- 闪避状态 (最高优先级) -->
+    <Sequence>
+      <DodgeCooldownReady/>
+      <Dodge/>
+    </Sequence>
+    
+    <!-- 攻击状态 -->
+    <Sequence>
+      <AttackInput/>
+      <RandomAttackAnimationAttack/>
+      <EnableHitbox/>
+      <WaitForAnimationEnd/>
+      <DisableHitbox/>
+    </Sequence>
+    
+    <!-- 移动状态 -->
+    <Sequence>
+      <MoveInputActive/>
+      <PlayAnimationWalk/>
+      <MoveToDirection/>
+    </Sequence>
+    
+    <!-- 待机状态 (默认) -->
+    <PlayAnimationIdle/>
+  </Selector>
+</BehaviorTree>

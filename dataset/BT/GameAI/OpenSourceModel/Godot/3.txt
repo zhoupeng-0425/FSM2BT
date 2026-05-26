@@ -1,0 +1,25 @@
+<BehaviorTree ID="ChaoticAI">
+  <Selector>
+      <Sequence>
+        <BTPlayAnimationWalk1/>
+        <SelectRandomNearbyPos/>
+        <ArrivePos/>
+      </Sequence>
+    <Sequence>
+      <Sequence>
+        <BTPlayAnimationIdle/>
+        <BTRandomWait/>
+      </Sequence>
+      <Sequence>
+        <BTPlayAnimationWalk2/>
+        <GetFirstInGroup/>
+        <Pursue/>
+      </Sequence>
+      <Sequence>
+        <FaceTarget/>
+        <BTWait/>
+        <BTPlayAnimationAattack/>
+      </Sequence>
+    </Sequence>
+  </Selector>
+</BehaviorTree>

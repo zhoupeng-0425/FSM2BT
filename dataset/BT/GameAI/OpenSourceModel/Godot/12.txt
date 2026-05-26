@@ -1,0 +1,26 @@
+<BehaviorTree ID="SummonerAI">
+  <Selector>
+    <Sequence>
+      <BTPlayAnimationIdle1/>
+      <BTRandomWait1/>
+    </Sequence>
+    <Sequence>
+      <CheckAgentProperty/>
+      <CheckVar/>
+      <BTPlayAnimationSummon/>
+      <BTWait1/>
+      <SelectRandomNearbyPos/>
+      <Cooldown>
+      <BTCallMethodSummonMinion/>
+    </Sequence>
+    <Sequence>
+      <SelectRandomNearbyPos/>
+      <BTPlayAnimationWalk/>
+      <ArrivePos/>
+      <Sequence>
+        <BTPlayAnimationIdle2/>
+        <BTRandomWait2/>
+      </Sequence>
+    </Sequence>
+  </Selector>
+</BehaviorTree>

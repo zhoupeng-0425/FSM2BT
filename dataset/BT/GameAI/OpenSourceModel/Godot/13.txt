@@ -1,0 +1,25 @@
+<BehaviorTree ID="ComboAttackAI">
+  <Sequence>
+    <Sequence>
+      <BTPlayAnimationIdle/>
+      <BTRandomWait/>
+      <GetFirstInGroup/>
+    </Sequence>
+    <Sequence>
+      <SelectFlankingPos/>
+      <BTPlayAnimationWalk/>
+      <ArrivePos/>
+    </Sequence>
+    <Sequence>
+      <FaceTarget/>
+      <BTPlayAnimationAttack2andSpeedVar/>
+      <BTWait3/>
+      <BTPlayAnimationAttack2andSpeedVar/>
+      <BTWait4/>
+      <BTPlayAnimation Animation="idle"/>
+      <BTWait1/>
+      <BTPlayAnimationAttack1andSpeedVar/>
+      <BTWait2/>
+    </Sequence>
+  </Sequence>
+</BehaviorTree>

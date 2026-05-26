@@ -1,0 +1,30 @@
+<BehaviorTree ID="ChargeAttack">
+  <Sequence>
+    <!-- Short break -->
+    <Sequence>
+      <BTPlayAnimationIdle/>
+      <BTRandomWait />
+    </Sequence>
+    
+    <!-- Flank target -->
+    <Sequence>
+      <GetFirstInGroup/>
+      <SelectFlankingPos/>
+      <BTPlayAnimationWalk/>
+      <ArrivePos/>
+    </Sequence>
+
+    <!-- Anticipation -->
+    <Sequence>
+      <FaceTarget/>
+      <BTPlayAnimationChargeandAwait/>
+      <BTWait/>
+    </Sequence>
+    
+    <!-- Charge! -->
+    <Sequence>
+      <BTPlayAnimationCharge/>
+      <MoveForward/>
+    </Sequence>
+  </Sequence>
+</BehaviorTree>
