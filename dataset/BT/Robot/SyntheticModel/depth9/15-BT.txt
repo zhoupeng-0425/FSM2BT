@@ -1,0 +1,31 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove20/><Recharge/></Fallback>
+      <Fallback>
+        <ThreeCubesSorted/>
+        <Sequence>
+          <Fallback><CubesFound/><SearchCubes/></Fallback>
+          <Fallback>
+            <Cube2InHand/>
+            <Sequence>
+              <Fallback>
+                <RobotAtCube2/>
+                <Sequence>
+                  <Fallback><ForkAligned/><AlignFork/></Fallback>
+                  <MoveToCube2/>
+                </Sequence>
+              </Fallback>
+              <PickCube2/>
+            </Sequence>
+          </Fallback>
+          <Fallback><Cube3InHand/><Sequence><Fallback><RobotAtCube3/><MoveToCube3/></Fallback><PickCube3/></Sequence></Fallback>
+          <Fallback><Cube4InHand/><Sequence><Fallback><RobotAtCube4/><MoveToCube4/></Fallback><PickCube4/></Sequence></Fallback>
+          <Fallback><RobotAtDelivery5/><MoveToDelivery5/></Fallback>
+          <PlaceCube/><PlaceCube/><PlaceCube/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
