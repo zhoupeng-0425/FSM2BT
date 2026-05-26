@@ -1,0 +1,48 @@
+<FSM ID="FSM_Predator_TerritorySiege">
+  <States>
+    <State name="StartTerritorySiege" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="GuardDen"/>
+    <State name="MarkTerritory"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartTerritorySiege" to="GuardDen" event="Start"/>
+
+    <Transition from="GuardDen" to="Patrol" event="DenSecured"/>
+    <Transition from="GuardDen" to="Attack" event="EnemyAtDen"/>
+
+    <Transition from="Patrol" to="MarkTerritory" event="BoundaryReached"/>
+    <Transition from="Patrol" to="Roam" event="NoIntruder"/>
+    <Transition from="Patrol" to="Maneuver" event="IntruderTrailFound"/>
+
+    <Transition from="MarkTerritory" to="Patrol" event="ScentPlaced"/>
+    <Transition from="MarkTerritory" to="Flock" event="PackResponds"/>
+
+    <Transition from="Roam" to="Wander" event="TrailConfused"/>
+    <Transition from="Roam" to="Forage" event="CarrionDetected"/>
+    <Transition from="Roam" to="Hide" event="AmbushCoverLocated"/>
+
+    <Transition from="Wander" to="FindSafe" event="RivalScentStrong"/>
+    <Transition from="Wander" to="Patrol" event="LandmarkFound"/>
+
+    <Transition from="Forage" to="Eat" event="ScrapsFound"/>
+    <Transition from="Forage" to="Feast" event="FreshKillFound"/>
+
+    <Transition from="Eat" to="Resting" event="SmallMealFinished"/>
+    <Transition from="Feast" to="Resting"

@@ -1,0 +1,61 @@
+<FSM ID="FSM_Prey_RiverCrossingSurvival">
+  <States>
+    <State name="StartRiverCrossingSurvival" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="CrossRiver"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartRiverCrossingSurvival" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="CrossRiver" event="RiverReached"/>
+    <Transition from="Roam" to="Wander" event="RouteLost"/>
+    <Transition from="Roam" to="Flock" event="HerdNearby"/>
+
+    <Transition from="CrossRiver" to="SeekSafety" event="CurrentStrong"/>
+    <Transition from="CrossRiver" to="Forage" event="OppositeBankReached"/>
+    <Transition from="CrossRiver" to="Flee" event="PredatorAtShore"/>
+
+    <Transition from="Wander" to="Patrol" event="UnknownBank"/>
+    <Transition from="Wander" to="Forage" event="GrassFound"/>
+
+    <Transition from="Patrol" to="Roam" event="AreaMapped"/>
+    <Transition from="Patrol" to="Hide" event="PredatorTracksFound"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Forage" to="Maneuver" event="HerdShifts"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Eat" to="Hide" event="NoiseHeard"/>
+
+    <Transition from="Flock" to="Assist" event="AllyStruggling"/>
+    <Transition from="Flock" to="Charge" event="GroupDefends"/>
+    <Transition from="Flock" to="CrossRiver" event="HerdCrosses"/>
+
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Assist" to="Attack" event="DesperateKick"/>
+
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+    <Transition from="Attack" to="Feast" event="PredatorDrivenAway"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="SeekSafety" to="FindSafe" event="SafeBankFound"/>
+    <Transition from="FindSafe" to="Resting" event="SafePlaceReached"/>
+  </Transitions>
+</FSM>

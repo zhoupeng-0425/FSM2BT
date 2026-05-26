@@ -1,0 +1,66 @@
+<FSM ID="FSM_Predator_NightRaidNetwork">
+  <States>
+    <State name="StartNightRaidNetwork" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="Stalk"/>
+    <State name="CirclePrey"/>
+    <State name="GuardKill"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartNightRaidNetwork" to="Stalk" event="Start"/>
+
+    <Transition from="Stalk" to="Hide" event="MoonlightBright"/>
+    <Transition from="Stalk" to="CirclePrey" event="PreyCampFound"/>
+    <Transition from="Stalk" to="Roam" event="ScentFades"/>
+
+    <Transition from="CirclePrey" to="Maneuver" event="WeakSideFound"/>
+    <Transition from="CirclePrey" to="Flock" event="PackReady"/>
+    <Transition from="CirclePrey" to="Flee" event="PreyAlarmed"/>
+
+    <Transition from="Patrol" to="Roam" event="TerritoryQuiet"/>
+    <Transition from="Patrol" to="FindSafe" event="RivalNearby"/>
+
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Wander" event="PathLost"/>
+    <Transition from="Roam" to="Patrol" event="BoundaryFound"/>
+
+    <Transition from="Wander" to="Stalk" event="FreshTracksFound"/>
+    <Transition from="Wander" to="SeekSafety" event="DangerScent"/>
+
+    <Transition from="Forage" to="Eat" event="SmallFoodFound"/>
+    <Transition from="Forage" to="Feast" event="CarcassFound"/>
+
+    <Transition from="Eat" to="Resting" event="MealFinished"/>
+    <Transition from="Feast" to="GuardKill" event="LargeKillSecured"/>
+
+    <Transition from="GuardKill" to="Feast" event="NoCompetitor"/>
+    <Transition from="GuardKill" to="Attack" event="CompetitorArrives"/>
+
+    <Transition from="Flock" to="Assist" event="AllySignals"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+
+    <Transition from="Hide" to="Charge" event="PreyClose"/>
+    <Transition from="Maneuver" to="Charge" event="AttackLaneOpen"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="Flee" event="CounterattackRises"/>
+    <Transition from="Flee" to="FindSafe" event="EscapedDanger"/>
+  </Transitions>
+</FSM>

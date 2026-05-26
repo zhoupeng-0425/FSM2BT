@@ -1,0 +1,63 @@
+<FSM ID="FSM_Agent_AdaptiveFrontierLife">
+  <States>
+    <State name="StartAdaptiveFrontierLife" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="GuardFood"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartAdaptiveFrontierLife" to="ScoutRoute" event="Start"/>
+
+    <Transition from="ScoutRoute" to="Wander" event="RouteFound"/>
+    <Transition from="ScoutRoute" to="Patrol" event="AreaUnknown"/>
+    <Transition from="ScoutRoute" to="SeekSafety" event="DangerDetected"/>
+
+    <Transition from="Wander" to="Forage" event="FoodNearby"/>
+    <Transition from="Wander" to="Flock" event="AllyNearby"/>
+    <Transition from="Wander" to="Maneuver" event="WeakPreySeen"/>
+
+    <Transition from="Patrol" to="Roam" event="AreaClear"/>
+    <Transition from="Patrol" to="Flee" event="StrongPredatorSeen"/>
+
+    <Transition from="Roam" to="Hide" event="CoverNearby"/>
+    <Transition from="Roam" to="Forage" event="FoodScent"/>
+    <Transition from="Roam" to="GuardFood" event="FoodCacheFound"/>
+
+    <Transition from="GuardFood" to="Attack" event="ThiefApproaches"/>
+    <Transition from="GuardFood" to="Eat" event="CacheSecure"/>
+    <Transition from="GuardFood" to="FindSafe" event="Outmatched"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Feast" event="LargeFoodFound"/>
+    <Transition from="Forage" to="Flee" event="ThreatDetected"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Feast" to="Resting" event="Overfed"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="SeekSafety" event="GroupThreatened"/>
+
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Hide" to="Charge" event="TargetClose"/>
+
+    <Transition from="Maneuver" to="Charge" event="TargetInRange"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+  </Transitions>
+</FSM>

@@ -1,0 +1,60 @@
+<FSM ID="FSM_Predator_ScavengerEmpire">
+  <States>
+    <State name="StartScavengerEmpire" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="GuardCarcass"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartScavengerEmpire" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Patrol" event="KnownTrailFound"/>
+    <Transition from="Roam" to="Maneuver" event="WeakPreyVisible"/>
+
+    <Transition from="Patrol" to="Flock" event="PackCall"/>
+    <Transition from="Patrol" to="FindSafe" event="LargerPredatorNearby"/>
+
+    <Transition from="Wander" to="Roam" event="ScentRecovered"/>
+    <Transition from="Wander" to="Hide" event="UnknownNoise"/>
+
+    <Transition from="Forage" to="Feast" event="DeadPreyFound"/>
+    <Transition from="Forage" to="Eat" event="SmallRemainsFound"/>
+    <Transition from="Forage" to="GuardCarcass" event="FreshCarcassClaimed"/>
+
+    <Transition from="GuardCarcass" to="Attack" event="CompetitorApproaches"/>
+    <Transition from="GuardCarcass" to="Feast" event="CarcassSecured"/>
+    <Transition from="GuardCarcass" to="Flee" event="Outnumbered"/>
+
+    <Transition from="Eat" to="Resting" event="EnoughFoodTaken"/>
+    <Transition from="Feast" to="Resting" event="Full"/>
+
+    <Transition from="Hide" to="Forage" event="CompetitorGone"/>
+    <Transition from="Hide" to="SeekSafety" event="Discovered"/>
+
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+
+    <Transition from="Maneuver" to="Charge" event="PreyInSight"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="FindSafe" event="CounterAttackDanger"/>
+    <Transition from="Flee" to="FindSafe" event="EscapedThreat"/>
+  </Transitions>
+</FSM>
