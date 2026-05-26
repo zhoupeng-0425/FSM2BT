@@ -1,0 +1,10 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Fallback>
+        <A/>
+        <H/>
+        <O/>
+        <R/>
+    </Fallback>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,9 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+        <F/>
+        <G/>
+        <H/>
+    </Sequence>
+  </BehaviorTree>
+</BT>
