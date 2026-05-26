@@ -1,0 +1,45 @@
+<BehaviorTree ID="Agent_BT_16_HungerDriven_D4">
+  <Fallback>
+    <Sequence>
+      <VeryHungry/>
+      <Fallback>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyNotInHaven/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+
+    <Fallback>
+      <Sequence>
+        <Forage/>
+      </Sequence>
+      <Sequence>
+        <Roam/>
+      </Sequence>
+    </Fallback>
+  </Fallback>
+</BehaviorTree>

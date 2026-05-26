@@ -1,0 +1,55 @@
+<BehaviorTree ID="Agent_BT_12_Hunter_D4">
+  <Fallback>
+    <Sequence>
+      <PreyVisible/>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <PreyNotInHaven/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyAlive/>
+          <PreyNotInHaven/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <PreyRecentlySeen/>
+      <Fallback>
+        <Sequence>
+          <WeakPreyVisible/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Fallback>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+        <Sequence>
+          <VeryHungry/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Fallback>
+      <Sequence>
+        <Patrol/>
+      </Sequence>
+      <Sequence>
+        <Roam/>
+      </Sequence>
+    </Fallback>
+  </Fallback>
+</BehaviorTree>

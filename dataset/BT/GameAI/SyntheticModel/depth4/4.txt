@@ -1,0 +1,54 @@
+<BehaviorTree ID="Agent_BT_14_StealthAmbush_D4">
+  <Fallback>
+    <Sequence>
+      <PreyNearby/>
+      <Fallback>
+        <Sequence>
+          <NearHideSpot/>
+          <Hide/>
+        </Sequence>
+        <Sequence>
+          <SinglePreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <PreyNotInHaven/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyAlive/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Fallback>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+        <Sequence>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Fallback>
+      <Sequence>
+        <Patrol/>
+      </Sequence>
+      <Sequence>
+        <Roam/>
+      </Sequence>
+    </Fallback>
+  </Fallback>
+</BehaviorTree>

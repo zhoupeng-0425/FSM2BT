@@ -1,0 +1,56 @@
+<BehaviorTree ID="Agent_BT_15_GroupCombat_D4">
+  <Fallback>
+    <Sequence>
+      <AllyNearby/>
+      <Fallback>
+        <Sequence>
+          <AllyAttacking/>
+          <Assist/>
+        </Sequence>
+        <Sequence>
+          <AllyNumberHigh/>
+          <Charge/>
+        </Sequence>
+        <Sequence>
+          <Flock/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyAlive/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Fallback>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+        <Sequence>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Fallback>
+      <Sequence>
+        <Wander/>
+      </Sequence>
+      <Sequence>
+        <Roam/>
+      </Sequence>
+    </Fallback>
+  </Fallback>
+</BehaviorTree>

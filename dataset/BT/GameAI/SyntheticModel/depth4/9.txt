@@ -1,0 +1,39 @@
+<BehaviorTree ID="Agent_BT_19_Territorial_D4">
+  <Fallback>
+    <Sequence>
+      <PreyInTerritory/>
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <ThreatNearby/>
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+        <Sequence>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Fallback>
+      <Sequence>
+        <Patrol/>
+      </Sequence>
+      <Sequence>
+        <Resting/>
+      </Sequence>
+    </Fallback>
+  </Fallback>
+</BehaviorTree>
