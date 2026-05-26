@@ -1,0 +1,30 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback>
+        <BatteryAbove30/>
+        <Recharge/>
+      </Fallback>
+      <Fallback>
+        <SortingTaskReady/>
+        <LoadSortingTask/>
+      </Fallback>
+      <Fallback>
+        <TargetItemFound/>
+        <SearchTargetItem/>
+      </Fallback>
+      <Fallback>
+        <ItemInHand/>
+        <PickItem/>
+      </Fallback>
+      <Fallback>
+        <RobotAtSortSlot/>
+        <MoveToSortSlot/>
+      </Fallback>
+      <Fallback>
+        <ItemInSortSlot/>
+        <PlaceItem/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

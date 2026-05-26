@@ -1,0 +1,24 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback>
+        <BatteryAbove20/>
+        <Recharge/>
+      </Fallback>
+      <Fallback>
+        <ShelfLocated/>
+        <SearchShelf/>
+      </Fallback>
+      <Fallback>
+        <RobotAtShelf/>
+        <MoveToShelf/>
+      </Fallback>
+      <Fallback>
+        <BoxInHand/>
+        <PickBox/>
+      </Fallback>
+      <MoveToDelivery/>
+      <PlaceBox/>
+    </Sequence>
+  </BehaviorTree>
+</BT>
