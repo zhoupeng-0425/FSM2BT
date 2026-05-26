@@ -1,0 +1,66 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_118_CautiousExplorer_D10">
+    <Sequence>
+      <Fallback>
+        <ExplorationSafe/>
+        <Sequence>
+          <Fallback>
+            <PredatorNearby/>
+            <Sequence>
+              <Fallback>
+                <PredatorVeryClose/>
+                <Sequence>
+                  <Fallback>
+                    <EscapeRouteClear/>
+                    <Sequence>
+                      <Fallback>
+                        <SafeZoneNearby/>
+                        <NearHideSpot/>
+                      </Fallback>
+                      <SeekSafety/>
+                    </Sequence>
+                  </Fallback>
+                  <Flee/>
+                </Sequence>
+              </Fallback>
+              <Hide/>
+            </Sequence>
+          </Fallback>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <ResourceChecked/>
+        <Sequence>
+          <Fallback>
+            <FoodNearby/>
+            <Sequence>
+              <Fallback>
+                <InFoodZone/>
+                <Sequence>
+                  <Fallback>
+                    <AllyNearby/>
+                    <Flock/>
+                  </Fallback>
+                  <Eat/>
+                </Sequence>
+              </Fallback>
+              <Forage/>
+            </Sequence>
+          </Fallback>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <NeedRecovery/>
+        <Resting/>
+        <AllyNearby/>
+        <Flock/>
+      </Fallback>
+
+      <Wander/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

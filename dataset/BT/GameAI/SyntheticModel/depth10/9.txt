@@ -1,0 +1,75 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_119_OpportunisticAttackRetreat_D10">
+    <Sequence>
+      <Fallback>
+        <RiskAcceptable/>
+        <Sequence>
+          <Fallback>
+            <LowHealth/>
+            <Sequence>
+              <Fallback>
+                <SafeZoneNearby/>
+                <Sequence>
+                  <Fallback>
+                    <NearHideSpot/>
+                    <Sequence>
+                      <Fallback>
+                        <ThreatNearby/>
+                        <Hide/>
+                      </Fallback>
+                      <FindSafe/>
+                    </Sequence>
+                  </Fallback>
+                  <SeekSafety/>
+                </Sequence>
+              </Fallback>
+              <Resting/>
+            </Sequence>
+          </Fallback>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <OpportunityResolved/>
+        <Sequence>
+          <Fallback>
+            <WeakPreyVisible/>
+            <Sequence>
+              <Fallback>
+                <SinglePreyVisible/>
+                <Sequence>
+                  <Fallback>
+                    <PreyInAttackRange/>
+                    <Sequence>
+                      <Fallback>
+                        <PreyAlive/>
+                        <PreyNotInHaven/>
+                      </Fallback>
+                      <Attack/>
+                    </Sequence>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Patrol/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Fallback>
+        <PredatorNearby/>
+        <Flee/>
+      </Fallback>
+
+      <Roam/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

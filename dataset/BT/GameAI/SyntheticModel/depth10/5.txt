@@ -1,0 +1,63 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_115_RecoverySafeZoneDependent_D10">
+    <Sequence>
+      <Fallback>
+        <RecoveryComplete/>
+        <Sequence>
+          <Fallback>
+            <NeedRecovery/>
+            <Sequence>
+              <Fallback>
+                <LowHealth/>
+                <Sequence>
+                  <Fallback>
+                    <InSafeZone/>
+                    <Sequence>
+                      <Fallback>
+                        <SafeZoneNearby/>
+                        <FindSafe/>
+                      </Fallback>
+                      <Resting/>
+                    </Sequence>
+                  </Fallback>
+                  <FindSafe/>
+                </Sequence>
+              </Fallback>
+              <Resting/>
+            </Sequence>
+          </Fallback>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <NoImmediateThreat/>
+        <Sequence>
+          <Fallback>
+            <ThreatNearby/>
+            <Sequence>
+              <Fallback>
+                <NearHideSpot/>
+                <Hide/>
+              </Fallback>
+              <SeekSafety/>
+            </Sequence>
+          </Fallback>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <FoodNearby/>
+        <Forage/>
+      </Fallback>
+
+      <Fallback>
+        <InFoodZone/>
+        <Eat/>
+      </Fallback>
+
+      <Wander/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

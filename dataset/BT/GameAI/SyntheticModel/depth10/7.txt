@@ -1,0 +1,75 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_117_HungerDrivenIntegrated_D10">
+    <Sequence>
+      <Fallback>
+        <HungerControlled/>
+        <Sequence>
+          <Fallback>
+            <VeryHungry/>
+            <Sequence>
+              <Fallback>
+                <DeadPreyNearby/>
+                <Sequence>
+                  <Fallback>
+                    <FoodNearby/>
+                    <Sequence>
+                      <Fallback>
+                        <InFoodZone/>
+                        <Forage/>
+                      </Fallback>
+                      <Eat/>
+                    </Sequence>
+                  </Fallback>
+                  <Feast/>
+                </Sequence>
+              </Fallback>
+              <Forage/>
+            </Sequence>
+          </Fallback>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <HuntResolved/>
+        <Sequence>
+          <Fallback>
+            <PreyVisible/>
+            <Sequence>
+              <Fallback>
+                <PreyInAttackRange/>
+                <Sequence>
+                  <Fallback>
+                    <WeakPreyVisible/>
+                    <Sequence>
+                      <Fallback>
+                        <PreyNotInHaven/>
+                        <PreyAlive/>
+                      </Fallback>
+                      <Attack/>
+                    </Sequence>
+                  </Fallback>
+                  <Attack/>
+                </Sequence>
+              </Fallback>
+              <Maneuver/>
+            </Sequence>
+          </Fallback>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <LowHealth/>
+        <FindSafe/>
+      </Fallback>
+
+      <Fallback>
+        <ThreatNearby/>
+        <Hide/>
+      </Fallback>
+
+      <Roam/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

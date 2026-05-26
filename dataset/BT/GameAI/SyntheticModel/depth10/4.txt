@@ -1,0 +1,69 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_114_StealthAmbushPredator_D10">
+    <Sequence>
+      <Fallback>
+        <AmbushPositionReady/>
+        <Sequence>
+          <Fallback>
+            <NearHideSpot/>
+            <Sequence>
+              <Fallback>
+                <PreyVisible/>
+                <Sequence>
+                  <Fallback>
+                    <SinglePreyVisible/>
+                    <Sequence>
+                      <Fallback>
+                        <PreyNotInHaven/>
+                        <PreyAlive/>
+                      </Fallback>
+                      <Hide/>
+                    </Sequence>
+                  </Fallback>
+                  <Hide/>
+                </Sequence>
+              </Fallback>
+              <Hide/>
+            </Sequence>
+          </Fallback>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <AttackWindowOpen/>
+        <Sequence>
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <WeakPreyVisible/>
+                <Sequence>
+                  <Fallback>
+                    <PreyNotInHaven/>
+                    <SinglePreyVisible/>
+                  </Fallback>
+                  <Attack/>
+                </Sequence>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Fallback>
+        <ThreatNearby/>
+        <Hide/>
+      </Fallback>
+
+      <Patrol/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,69 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_116_TerritoryPatrolStrike_D10">
+    <Sequence>
+      <Fallback>
+        <InsideTerritory/>
+        <Sequence>
+          <Fallback>
+            <OutOfTerritory/>
+            <Sequence>
+              <Fallback>
+                <ReturnPathClear/>
+                <Sequence>
+                  <Fallback>
+                    <ThreatNearby/>
+                    <Hide/>
+                  </Fallback>
+                  <Patrol/>
+                </Sequence>
+              </Fallback>
+              <Maneuver/>
+            </Sequence>
+          </Fallback>
+          <Patrol/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <IntruderHandled/>
+        <Sequence>
+          <Fallback>
+            <PreyInTerritory/>
+            <Sequence>
+              <Fallback>
+                <PreyVisible/>
+                <Sequence>
+                  <Fallback>
+                    <PreyInAttackRange/>
+                    <Sequence>
+                      <Fallback>
+                        <PreyAlive/>
+                        <WeakPreyVisible/>
+                      </Fallback>
+                      <Attack/>
+                    </Sequence>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Patrol/>
+            </Sequence>
+          </Fallback>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Tired/>
+        <Resting/>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Patrol/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

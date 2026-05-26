@@ -1,0 +1,78 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_112_AdvancedHunterExecute_D10">
+    <Sequence>
+      <Fallback>
+        <EnergyEnough/>
+        <Sequence>
+          <Fallback>
+            <Tired/>
+            <Resting/>
+          </Fallback>
+          <Fallback>
+            <LowHealth/>
+            <FindSafe/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <TargetLocked/>
+        <Sequence>
+          <Fallback>
+            <PreyVisible/>
+            <Sequence>
+              <Fallback>
+                <PreyRecentlySeen/>
+                <Sequence>
+                  <Fallback>
+                    <TrackPathClear/>
+                    <Sequence>
+                      <Fallback>
+                        <NearHideSpot/>
+                        <Hide/>
+                      </Fallback>
+                      <Forage/>
+                    </Sequence>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Maneuver/>
+            </Sequence>
+          </Fallback>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <AttackReady/>
+        <Sequence>
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyNotInHaven/>
+                <Sequence>
+                  <Fallback>
+                    <WeakPreyVisible/>
+                    <SinglePreyVisible/>
+                  </Fallback>
+                  <Attack/>
+                </Sequence>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Patrol/>
+    </Sequence>
+  </BehaviorTree>
+</BT>
