@@ -1,0 +1,66 @@
+<FSM ID="FSM_Predator_ApexFrontierDominance">
+  <States>
+    <State name="StartApexFrontierDominance" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="TrackScent"/>
+    <State name="GuardDen"/>
+    <State name="MarkTerritory"/>
+    <State name="ChallengeRival"/>
+    <State name="GuardKill"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartApexFrontierDominance" to="GuardDen" event="Start"/>
+    <Transition from="GuardDen" to="Patrol" event="DenSecured"/>
+    <Transition from="GuardDen" to="Attack" event="EnemyAtDen"/>
+
+    <Transition from="Patrol" to="MarkTerritory" event="BoundaryReached"/>
+    <Transition from="Patrol" to="TrackScent" event="FreshTrailFound"/>
+    <Transition from="Patrol" to="Roam" event="TerritoryQuiet"/>
+
+    <Transition from="MarkTerritory" to="Flock" event="PackResponds"/>
+    <Transition from="MarkTerritory" to="ChallengeRival" event="RivalMarkFound"/>
+
+    <Transition from="ChallengeRival" to="Attack" event="RivalClose"/>
+    <Transition from="ChallengeRival" to="SeekSafety" event="RivalStronger"/>
+
+    <Transition from="TrackScent" to="Maneuver" event="TrailStrong"/>
+    <Transition from="TrackScent" to="Wander" event="TrailConfused"/>
+    <Transition from="TrackScent" to="Forage" event="CarrionTrace"/>
+
+    <Transition from="Roam" to="ScoutRoute" event="UnknownPassage"/>
+    <Transition from="Roam" to="Hide" event="AmbushCoverFound"/>
+    <Transition from="ScoutRoute" to="FindSafe" event="DangerRouteFound"/>
+    <Transition from="ScoutRoute" to="Roam" event="RouteCleared"/>
+
+    <Transition from="Wander" to="Patrol" event="LandmarkFound"/>
+    <Transition from="Forage" to="Eat" event="SmallFoodFound"/>
+    <Transition from="Forage" to="Feast" event="FreshKillFound"/>
+
+    <Transition from="Eat" to="Resting" event="MealFinished"/>
+    <Transition from="Feast" to="GuardKill" event="LargeKillSecured"/>
+    <Transition from="GuardKill" to="Feast" event="KillSafe"/>
+    <Transition from="GuardKill" to="Attack" event="ScavengerApproaches"/>
+
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Maneuver" to="Charge" event="AttackLaneOpen"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+  </Transitions>
+</FSM>
