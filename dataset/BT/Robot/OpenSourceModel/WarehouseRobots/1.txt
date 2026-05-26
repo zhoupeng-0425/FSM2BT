@@ -1,0 +1,22 @@
+<BehaviorTree ID="Untitled">
+  <Fallback>
+    <Cube2inDelivery/>
+    <Sequence>
+      <Fallback>
+        <Cube2inHand/>
+        <Sequence>
+          <Fallback>
+            <RobotAtCube2/>
+            <MoveToCube2/>
+          </Fallback>
+          <PickCube2/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <RobotAtDelivery/>
+        <MoveToDelivery/>
+      </Fallback>
+      <PlaceCube2/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>
