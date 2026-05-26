@@ -1,0 +1,29 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove25/><Recharge/></Fallback>
+      <Fallback>
+        <DamagedItemAtInspection/>
+        <Sequence>
+          <Fallback><DamagedItemFound/><SearchDamagedItem/></Fallback>
+          <Fallback>
+            <DamagedItemInHand/>
+            <Sequence>
+              <Fallback>
+                <RobotAtDamagedItem/>
+                <Sequence>
+                  <Fallback><ProtectiveModeOn/><EnableProtectiveMode/></Fallback>
+                  <MoveToDamagedItem/>
+                </Sequence>
+              </Fallback>
+              <CarefulPickItem/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtInspection/><MoveToInspection/></Fallback>
+          <CarefulPlaceItem/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtDock/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

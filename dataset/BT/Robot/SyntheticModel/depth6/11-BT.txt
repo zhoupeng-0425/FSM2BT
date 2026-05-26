@@ -1,0 +1,29 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove25/><Recharge/></Fallback>
+      <Fallback>
+        <ReturnItemStored/>
+        <Sequence>
+          <Fallback><ReturnItemFound/><SearchReturnItem/></Fallback>
+          <Fallback>
+            <ReturnItemInHand/>
+            <Sequence>
+              <Fallback>
+                <RobotAtReturnItem/>
+                <Sequence>
+                  <Fallback><ReturnPathClear/><ClearReturnPath/></Fallback>
+                  <MoveToReturnItem/>
+                </Sequence>
+              </Fallback>
+              <PickReturnItem/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtReturnShelf/><MoveToReturnShelf/></Fallback>
+          <PlaceReturnItem/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

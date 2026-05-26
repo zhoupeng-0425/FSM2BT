@@ -1,0 +1,29 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove30/><Recharge/></Fallback>
+      <Fallback>
+        <ReworkBoxStored/>
+        <Sequence>
+          <Fallback><ReworkBoxFound/><SearchReworkBox/></Fallback>
+          <Fallback>
+            <ReworkBoxInHand/>
+            <Sequence>
+              <Fallback>
+                <RobotAtReworkBox/>
+                <Sequence>
+                  <Fallback><ReworkRouteClear/><ClearReworkRoute/></Fallback>
+                  <MoveToReworkBox/>
+                </Sequence>
+              </Fallback>
+              <PickReworkBox/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtReworkShelf/><MoveToReworkShelf/></Fallback>
+          <PlaceReworkBox/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

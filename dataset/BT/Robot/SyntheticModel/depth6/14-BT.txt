@@ -1,0 +1,29 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove25/><Recharge/></Fallback>
+      <Fallback>
+        <ColdItemStored/>
+        <Sequence>
+          <Fallback><ColdItemFound/><SearchColdItem/></Fallback>
+          <Fallback>
+            <ColdItemInHand/>
+            <Sequence>
+              <Fallback>
+                <RobotAtColdItem/>
+                <Sequence>
+                  <Fallback><ColdRoomDoorOpen/><OpenColdRoomDoor/></Fallback>
+                  <MoveToColdItem/>
+                </Sequence>
+              </Fallback>
+              <PickColdItem/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtColdStorage/><MoveToColdStorage/></Fallback>
+          <PlaceColdItem/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

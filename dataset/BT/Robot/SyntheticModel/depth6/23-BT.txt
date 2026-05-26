@@ -1,0 +1,29 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove20/><Recharge/></Fallback>
+      <Fallback>
+        <ExpressParcelDelivered/>
+        <Sequence>
+          <Fallback><ExpressParcelFound/><SearchExpressParcel/></Fallback>
+          <Fallback>
+            <ExpressParcelInHand/>
+            <Sequence>
+              <Fallback>
+                <RobotAtExpressParcel/>
+                <Sequence>
+                  <Fallback><ExpressLaneClear/><ClearExpressLane/></Fallback>
+                  <MoveToExpressParcel/>
+                </Sequence>
+              </Fallback>
+              <PickExpressParcel/>
+            </Sequence>
+          </Fallback>
+          <Fallback><RobotAtExpressDelivery/><MoveToExpressDelivery/></Fallback>
+          <PlaceExpressParcel/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
