@@ -1,0 +1,70 @@
+<FSM ID="FSM_Prey_GrandColonyMigration">
+  <States>
+    <State name="StartGrandColonyMigration" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="SignalAlarm"/>
+    <State name="GuardYoung"/>
+    <State name="CrossRiver"/>
+    <State name="Regroup"/>
+    <State name="WatchSky"/>
+    <State name="ClimbRidge"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartGrandColonyMigration" to="WatchSky" event="Start"/>
+    <Transition from="WatchSky" to="ScoutRoute" event="SkyClear"/>
+    <Transition from="WatchSky" to="SignalAlarm" event="AerialThreatSeen"/>
+
+    <Transition from="ScoutRoute" to="Roam" event="RouteFound"/>
+    <Transition from="ScoutRoute" to="CrossRiver" event="RiverRouteFound"/>
+    <Transition from="ScoutRoute" to="ClimbRidge" event="HighPathSeen"/>
+
+    <Transition from="CrossRiver" to="Forage" event="OppositeBankReached"/>
+    <Transition from="CrossRiver" to="Flee" event="PredatorAtWater"/>
+    <Transition from="CrossRiver" to="SeekSafety" event="CurrentStrong"/>
+
+    <Transition from="ClimbRidge" to="FindSafe" event="CaveFound"/>
+    <Transition from="ClimbRidge" to="Flee" event="PredatorClimbing"/>
+
+    <Transition from="Roam" to="Wander" event="RouteUnclear"/>
+    <Transition from="Roam" to="GuardYoung" event="YoungLagging"/>
+    <Transition from="Roam" to="Flock" event="HerdNearby"/>
+
+    <Transition from="GuardYoung" to="Assist" event="YoungThreatened"/>
+    <Transition from="GuardYoung" to="Flock" event="YoungSafe"/>
+
+    <Transition from="SignalAlarm" to="Flee" event="AlarmConfirmed"/>
+    <Transition from="SignalAlarm" to="Regroup" event="FalseAlarm"/>
+    <Transition from="Regroup" to="Flock" event="HerdReformed"/>
+    <Transition from="Regroup" to="SeekSafety" event="PanicContinues"/>
+
+    <Transition from="Wander" to="Patrol" event="UnknownGround"/>
+    <Transition from="Wander" to="Forage" event="FoodPatchFound"/>
+    <Transition from="Patrol" to="Roam" event="AreaMapped"/>
+    <Transition from="Patrol" to="Hide" event="PredatorTracksFound"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Eat" to="Resting" event="Full"/>
+
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Assist" to="Attack" event="CorneredDefense"/>
+  </Transitions>
+</FSM>

@@ -1,0 +1,69 @@
+<FSM ID="FSM_Prey_MountainPassSurvival">
+  <States>
+    <State name="StartMountainPassSurvival" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="ClimbRidge"/>
+    <State name="WatchValley"/>
+    <State name="NarrowPass"/>
+    <State name="LooseRock"/>
+    <State name="GuardYoung"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartMountainPassSurvival" to="WatchValley" event="Start"/>
+
+    <Transition from="WatchValley" to="ScoutRoute" event="ValleySafe"/>
+    <Transition from="WatchValley" to="SeekSafety" event="PredatorInValley"/>
+    <Transition from="WatchValley" to="Hide" event="EagleShadowSeen"/>
+
+    <Transition from="ScoutRoute" to="ClimbRidge" event="HighPathSeen"/>
+    <Transition from="ScoutRoute" to="NarrowPass" event="PassFound"/>
+    <Transition from="ScoutRoute" to="Roam" event="RouteClear"/>
+
+    <Transition from="ClimbRidge" to="FindSafe" event="CaveFound"/>
+    <Transition from="ClimbRidge" to="Flee" event="PredatorClimbing"/>
+    <Transition from="ClimbRidge" to="Forage" event="AlpineGrassFound"/>
+
+    <Transition from="NarrowPass" to="LooseRock" event="RockfallHeard"/>
+    <Transition from="NarrowPass" to="Flock" event="HerdQueues"/>
+    <Transition from="NarrowPass" to="Flee" event="PredatorBlocksPass"/>
+
+    <Transition from="LooseRock" to="Maneuver" event="SafeStepFound"/>
+    <Transition from="LooseRock" to="SeekSafety" event="PathCollapses"/>
+
+    <Transition from="Roam" to="Wander" event="PathUnclear"/>
+    <Transition from="Roam" to="GuardYoung" event="YoungLagging"/>
+
+    <Transition from="GuardYoung" to="Assist" event="YoungThreatened"/>
+    <Transition from="GuardYoung" to="Flock" event="YoungSafe"/>
+
+    <Transition from="Wander" to="Patrol" event="UnknownSlope"/>
+    <Transition from="Wander" to="Forage" event="FoodPatchFound"/>
+    <Transition from="Patrol" to="Roam" event="AreaMapped"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Eat" to="Resting" event="Full"/>
+
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Assist" to="Attack" event="DesperateDefense"/>
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+  </Transitions>
+</FSM>

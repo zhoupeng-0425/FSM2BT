@@ -1,0 +1,80 @@
+<FSM ID="FSM_Predator_PackSiegeCampaign">
+  <States>
+    <State name="StartPackSiegeCampaign" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="TrackScent"/>
+    <State name="RallyPack"/>
+    <State name="SplitFlank"/>
+    <State name="CirclePrey"/>
+    <State name="GuardKill"/>
+    <State name="ChallengeRival"/>
+    <State name="HowlSignal"/>
+    <State name="BlockEscape"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartPackSiegeCampaign" to="RallyPack" event="Start"/>
+
+    <Transition from="RallyPack" to="Flock" event="PackAssembled"/>
+    <Transition from="RallyPack" to="Patrol" event="PackAbsent"/>
+    <Transition from="RallyPack" to="HowlSignal" event="DistantPackHeard"/>
+
+    <Transition from="HowlSignal" to="ChallengeRival" event="RivalHowl"/>
+    <Transition from="HowlSignal" to="TrackScent" event="PreyHowlEcho"/>
+
+    <Transition from="ChallengeRival" to="Attack" event="RivalClose"/>
+    <Transition from="ChallengeRival" to="SeekSafety" event="RivalSuperior"/>
+
+    <Transition from="Patrol" to="Roam" event="TerritoryQuiet"/>
+    <Transition from="Patrol" to="TrackScent" event="FreshTrail"/>
+    <Transition from="Patrol" to="FindSafe" event="InjuryFelt"/>
+
+    <Transition from="TrackScent" to="CirclePrey" event="PreyHerdFound"/>
+    <Transition from="TrackScent" to="Wander" event="TrailConfused"/>
+    <Transition from="TrackScent" to="Forage" event="CarrionTrace"/>
+
+    <Transition from="CirclePrey" to="SplitFlank" event="WeakSideFound"/>
+    <Transition from="CirclePrey" to="BlockEscape" event="EscapeRouteSeen"/>
+    <Transition from="CirclePrey" to="Flee" event="HerdCountercharges"/>
+
+    <Transition from="BlockEscape" to="Maneuver" event="ExitSealed"/>
+    <Transition from="BlockEscape" to="Charge" event="PreyPanics"/>
+
+    <Transition from="SplitFlank" to="Maneuver" event="FlankReady"/>
+    <Transition from="SplitFlank" to="Assist" event="AllyNeedsSupport"/>
+
+    <Transition from="Roam" to="ScoutRoute" event="UnknownPassage"/>
+    <Transition from="Roam" to="Hide" event="CoverFound"/>
+    <Transition from="ScoutRoute" to="Roam" event="RouteCleared"/>
+    <Transition from="ScoutRoute" to="Hide" event="PreyCampNearby"/>
+
+    <Transition from="Wander" to="Patrol" event="LandmarkFound"/>
+    <Transition from="Forage" to="Eat" event="SmallFoodFound"/>
+    <Transition from="Forage" to="Feast" event="DeadPreyFound"/>
+
+    <Transition from="Eat" to="Resting" event="MealFinished"/>
+    <Transition from="Feast" to="GuardKill" event="LargeKillSecured"/>
+    <Transition from="GuardKill" to="Feast" event="KillSafe"/>
+
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Maneuver" to="Charge" event="AttackLaneOpen"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+  </Transitions>
+</FSM>

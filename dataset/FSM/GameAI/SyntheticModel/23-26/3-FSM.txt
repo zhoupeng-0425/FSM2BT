@@ -1,0 +1,73 @@
+<FSM ID="FSM_Predator_NightHuntDominion">
+  <States>
+    <State name="StartNightHuntDominion" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="TrackScent"/>
+    <State name="Stalk"/>
+    <State name="CirclePrey"/>
+    <State name="Listen"/>
+    <State name="GuardKill"/>
+    <State name="HowlSignal"/>
+    <State name="ShadowTrail"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartNightHuntDominion" to="Listen" event="Start"/>
+    <Transition from="Listen" to="Stalk" event="PreyNoiseHeard"/>
+    <Transition from="Listen" to="Patrol" event="NightQuiet"/>
+    <Transition from="Listen" to="FindSafe" event="RivalHowlHeard"/>
+
+    <Transition from="Stalk" to="ShadowTrail" event="MoonlightBright"/>
+    <Transition from="Stalk" to="CirclePrey" event="PreyCampFound"/>
+    <Transition from="Stalk" to="Roam" event="ScentFades"/>
+
+    <Transition from="ShadowTrail" to="Hide" event="DarkCoverFound"/>
+    <Transition from="ShadowTrail" to="TrackScent" event="FreshTracksSeen"/>
+
+    <Transition from="CirclePrey" to="Maneuver" event="WeakSideFound"/>
+    <Transition from="CirclePrey" to="HowlSignal" event="PackNeeded"/>
+    <Transition from="CirclePrey" to="Flee" event="PreyAlarmed"/>
+
+    <Transition from="HowlSignal" to="Flock" event="PackAnswers"/>
+    <Transition from="HowlSignal" to="Attack" event="SoloOpening"/>
+
+    <Transition from="Patrol" to="Roam" event="TerritoryQuiet"/>
+    <Transition from="Patrol" to="TrackScent" event="FreshTrail"/>
+    <Transition from="Roam" to="ScoutRoute" event="UnknownPassage"/>
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Wander" event="PathLost"/>
+
+    <Transition from="ScoutRoute" to="Hide" event="PreyCampNearby"/>
+    <Transition from="ScoutRoute" to="SeekSafety" event="DangerRouteFound"/>
+
+    <Transition from="TrackScent" to="Maneuver" event="TrailStrong"/>
+    <Transition from="TrackScent" to="Wander" event="TrailBroken"/>
+
+    <Transition from="Wander" to="Patrol" event="LandmarkFound"/>
+    <Transition from="Forage" to="Eat" event="SmallFoodFound"/>
+    <Transition from="Forage" to="Feast" event="CarcassFound"/>
+    <Transition from="Eat" to="Resting" event="MealFinished"/>
+    <Transition from="Feast" to="GuardKill" event="LargeKillSecured"/>
+
+    <Transition from="GuardKill" to="Feast" event="NoCompetitor"/>
+    <Transition from="Flock" to="Assist" event="AllySignals"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+  </Transitions>
+</FSM>
