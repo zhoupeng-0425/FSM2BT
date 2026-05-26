@@ -1,0 +1,13 @@
+States: [
+    "e_stance",
+    "l_stance",
+    "e_swing",
+    "l_swing"
+]
+
+Transitions: [
+    {from: "e_stance", to: "l_stance", event: "foot_flat"},
+    {from: "l_stance", to: "e_swing", event: "heel_off"},
+    {from: "e_swing", to: "l_swing", event: "toe_off"},
+    {from: "l_swing", to: "e_stance", event: "heel_strike"}
+]
