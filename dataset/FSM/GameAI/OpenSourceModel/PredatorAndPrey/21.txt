@@ -1,0 +1,45 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idle"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="Resting"/>
+    <State name="Forage"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="Patrol"/>
+    <State name="Roam"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idle" event="eventStart"/>
+    <Transition from="Idle" to="FindSafe" event="LowHealth"/>
+    <Transition from="Patrol" to="FindSafe" event="LowHealth"/>
+    <Transition from="Roam" to="FindSafe" event="LowHealth"/>
+    <Transition from="Forage" to="FindSafe" event="LowHealth"/>
+    <Transition from="Maneuver" to="FindSafe" event="LowHealth"/>
+    <Transition from="Attack" to="FindSafe" event="LowHealth"/>
+    <Transition from="FindSafe" to="Hide" event="SafePlaceNearby"/>
+    <Transition from="Hide" to="Resting" event="HiddenSuccessfully"/>
+    <Transition from="Resting" to="Idle" event="HealthRecovered"/>
+    <Transition from="Idle" to="Forage" event="Hungry"/>
+    <Transition from="Forage" to="Feast" event="FoodNearby"/>
+    <Transition from="Forage" to="Maneuver" event="PreyVisibleButFarAndNotInHaven"/>
+    <Transition from="Maneuver" to="Attack" event="PreyInAttackRange"/>
+    <Transition from="Attack" to="Feast" event="PreyKilled"/>
+    <Transition from="Feast" to="Resting" event="FullOrTired"/>
+    <Transition from="Idle" to="Patrol" event="NotHungryAndNoPrey"/>
+    <Transition from="Patrol" to="Maneuver" event="PreyVisibleButFarAndNotInHaven"/>
+    <Transition from="Patrol" to="Attack" event="PreyInAttackRangeAndNotInHaven"/>
+    <Transition from="Patrol" to="Roam" event="NoPreyForLongTime"/>
+    <Transition from="Roam" to="Forage" event="PreyTrailDetected"/>
+    <Transition from="Roam" to="Maneuver" event="PreyVisibleButFarAndNotInHaven"/>
+    <Transition from="Attack" to="Maneuver" event="PreyEscapedButVisible"/>
+    <Transition from="Attack" to="Patrol" event="PreyEnteredHaven"/>
+    <Transition from="Maneuver" to="Forage" event="PreyLostButRecentlySeen"/>
+    <Transition from="Forage" to="Patrol" event="TrailLost"/>
+    <Transition from="Roam" to="Patrol" event="TerritoryReached"/>
+  </Transitions>
+</FSM>

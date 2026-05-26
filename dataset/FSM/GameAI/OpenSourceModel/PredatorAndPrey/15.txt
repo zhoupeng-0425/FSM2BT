@@ -1,0 +1,32 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idle"/>
+    <State name="Forage"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="Patrol"/>
+    <State name="Resting"/>
+    <State name="Roam"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idle" event="eventStart"/>
+
+    <Transition from="Idle" to="Forage" event="Hungry"/>
+    <Transition from="Forage" to="Attack" event="PreyVisibleAndNotInHaven"/>
+    <Transition from="Forage" to="Feast" event="FoodNearby"/>
+    <Transition from="Attack" to="Feast" event="PreyKilled"/>
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Idle" event="Recovered"/>
+
+    <Transition from="Idle" to="Patrol" event="NotHungryAndNoPrey"/>
+    <Transition from="Patrol" to="Attack" event="PreyVisibleAndNotInHaven"/>
+    <Transition from="Patrol" to="Roam" event="NoPreyForLongTime"/>
+    <Transition from="Roam" to="Forage" event="Hungry"/>
+    <Transition from="Roam" to="Attack" event="PreyVisibleAndNotInHaven"/>
+
+    <Transition from="Attack" to="Forage" event="PreyLostAndStillHungry"/>
+    <Transition from="Attack" to="Patrol" event="PreyEnteredHaven"/>
+  </Transitions>
+</FSM>

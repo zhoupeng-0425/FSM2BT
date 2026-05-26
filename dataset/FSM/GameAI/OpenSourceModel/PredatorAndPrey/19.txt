@@ -1,0 +1,35 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idle"/>
+    <State name="Hide"/>
+    <State name="FindSafe"/>
+    <State name="Roam"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="Resting"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idle" event="eventStart"/>
+
+    <Transition from="Idle" to="Hide" event="ManyPreysNearby"/>
+    <Transition from="Roam" to="Hide" event="ManyPreysNearby"/>
+    <Transition from="Maneuver" to="Hide" event="ManyPreysNearby"/>
+    <Transition from="Attack" to="FindSafe" event="SurroundedByPreys"/>
+
+    <Transition from="Hide" to="Maneuver" event="SinglePreyVisible"/>
+    <Transition from="FindSafe" to="Hide" event="SafePlaceReached"/>
+    <Transition from="Hide" to="Roam" event="NoPreyNearby"/>
+
+    <Transition from="Idle" to="Roam" event="NoPreyDetected"/>
+    <Transition from="Roam" to="Maneuver" event="SinglePreyVisibleAndNotInHaven"/>
+    <Transition from="Maneuver" to="Attack" event="PreyInAttackRange"/>
+    <Transition from="Attack" to="Feast" event="PreyKilled"/>
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Idle" event="Recovered"/>
+
+    <Transition from="Attack" to="Roam" event="PreyLostOrEnteredHaven"/>
+  </Transitions>
+</FSM>

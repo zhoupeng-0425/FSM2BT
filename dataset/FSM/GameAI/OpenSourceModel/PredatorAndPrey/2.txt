@@ -1,0 +1,20 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="SeekSafety"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Wander" event="eventStart"/>
+    <Transition from="Wander" to="Forage" event="FoodDetected"/>
+    <Transition from="Forage" to="Eat" event="EnterFoodZone"/>
+    <Transition from="Eat" to="Wander" event="FoodConsumed"/>
+    <Transition from="Wander" to="SeekSafety" event="PredatorDetected"/>
+    <Transition from="Forage" to="SeekSafety" event="PredatorDetected"/>
+    <Transition from="Eat" to="SeekSafety" event="PredatorDetected"/>
+    <Transition from="SeekSafety" to="Wander" event="PredatorLost"/>
+  </Transitions>
+</FSM>

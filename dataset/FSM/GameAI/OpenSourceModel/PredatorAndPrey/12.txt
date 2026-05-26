@@ -1,0 +1,28 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idle"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Feast"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idle" event="eventStart"/>
+
+    <Transition from="Idle" to="Patrol" event="NoPreyDetected"/>
+    <Transition from="Patrol" to="Attack" event="PreyVisibleAndNotInHaven"/>
+    <Transition from="Idle" to="Attack" event="PreyVisibleAndNotInHaven"/>
+
+    <Transition from="Attack" to="Feast" event="PreyKilled"/>
+    <Transition from="Feast" to="Idle" event="FeastFinished"/>
+
+    <Transition from="Attack" to="Patrol" event="PreyLost"/>
+    <Transition from="Attack" to="Patrol" event="PreyEnteredHaven"/>
+
+    <Transition from="Patrol" to="Roam" event="PatrolRouteFinished"/>
+    <Transition from="Roam" to="Patrol" event="ReturnToTerritory"/>
+    <Transition from="Roam" to="Attack" event="PreyVisibleAndNotInHaven"/>
+  </Transitions>
+</FSM>

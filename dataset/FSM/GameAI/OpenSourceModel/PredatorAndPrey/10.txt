@@ -1,0 +1,37 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idle"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Flock"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Wander"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idle" event="eventStart"/>
+
+    <Transition from="Idle" to="SeekSafety" event="PredatorDetected"/>
+    <Transition from="SeekSafety" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Flee" to="SeekSafety" event="HavenDetected"/>
+    <Transition from="SeekSafety" to="Idle" event="SafeInHaven"/>
+    <Transition from="Flee" to="Idle" event="PredatorLost"/>
+
+    <Transition from="Idle" to="Flock" event="AllyNearby"/>
+    <Transition from="Flock" to="Idle" event="AllyLost"/>
+    <Transition from="Flock" to="SeekSafety" event="PredatorDetected"/>
+
+    <Transition from="Idle" to="Forage" event="FoodDetected"/>
+    <Transition from="Forage" to="Eat" event="FoodReached"/>
+    <Transition from="Eat" to="Idle" event="EatingFinished"/>
+
+    <Transition from="Idle" to="Wander" event="NoFoodNoAllyNoPredator"/>
+    <Transition from="Wander" to="Idle" event="StimulusDetected"/>
+
+    <Transition from="Forage" to="SeekSafety" event="PredatorDetected"/>
+    <Transition from="Eat" to="SeekSafety" event="PredatorDetected"/>
+    <Transition from="Wander" to="SeekSafety" event="PredatorDetected"/>
+  </Transitions>
+</FSM>

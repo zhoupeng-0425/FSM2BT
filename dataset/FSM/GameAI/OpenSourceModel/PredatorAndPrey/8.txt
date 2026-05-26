@@ -1,0 +1,28 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flock"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Wander" event="eventStart"/>
+    <Transition from="Wander" to="Forage" event="FoodDetected"/>
+    <Transition from="Forage" to="Eat" event="EnterFoodZone"/>
+    <Transition from="Eat" to="Wander" event="FoodConsumed"/>
+    <Transition from="Wander" to="Flock" event="AllyDetected"/>
+    <Transition from="Flock" to="Assist" event="AllyAttacking"/>
+    <Transition from="Assist" to="Charge" event="EnemyWeak"/>
+    <Transition from="Charge" to="Wander" event="AttackFinished"/>
+    <Transition from="Wander" to="Flee" event="PredatorDetected"/>
+    <Transition from="Flock" to="Flee" event="PredatorDetected"/>
+    <Transition from="Flee" to="SeekSafety" event="HavenDetected"/>
+    <Transition from="SeekSafety" to="Wander" event="SafeReached"/>
+  </Transitions>
+</FSM>

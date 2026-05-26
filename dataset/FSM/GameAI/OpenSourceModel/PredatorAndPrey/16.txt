@@ -1,0 +1,34 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idle"/>
+    <State name="Hide"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Patrol"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idle" event="eventStart"/>
+
+    <Transition from="Idle" to="FindSafe" event="LowHealth"/>
+    <Transition from="Patrol" to="FindSafe" event="LowHealth"/>
+    <Transition from="Maneuver" to="FindSafe" event="LowHealth"/>
+    <Transition from="Attack" to="FindSafe" event="LowHealth"/>
+
+    <Transition from="FindSafe" to="Hide" event="SafePlaceNearby"/>
+    <Transition from="Hide" to="Resting" event="HiddenSuccessfully"/>
+    <Transition from="Resting" to="Idle" event="HealthRecovered"/>
+
+    <Transition from="Idle" to="Patrol" event="HealthyAndNoPrey"/>
+    <Transition from="Patrol" to="Maneuver" event="PreyVisibleButFar"/>
+    <Transition from="Maneuver" to="Attack" event="PreyInAttackRange"/>
+    <Transition from="Attack" to="Feast" event="PreyKilled"/>
+    <Transition from="Feast" to="Idle" event="FeastFinished"/>
+
+    <Transition from="Attack" to="Patrol" event="PreyLostOrEnteredHaven"/>
+  </Transitions>
+</FSM>

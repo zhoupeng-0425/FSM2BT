@@ -1,0 +1,24 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Wander"/>
+    <State name="Flock"/>
+    <State name="Charge"/>
+    <State name="Assist"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Wander" event="eventStart"/>
+    <Transition from="Wander" to="Flock" event="AllyDetected"/>
+    <Transition from="Flock" to="Charge" event="PredatorDetectedAndAllyAdvantage"/>
+    <Transition from="Charge" to="Assist" event="AllyNeedsSupport"/>
+    <Transition from="Assist" to="Flock" event="EnemyRetreated"/>
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+    <Transition from="Wander" to="Flee" event="PredatorDetectedAndNoAdvantage"/>
+    <Transition from="Flock" to="Flee" event="PredatorDetectedAndNoAdvantage"/>
+    <Transition from="Flee" to="SeekSafety" event="HavenDetected"/>
+    <Transition from="SeekSafety" to="Wander" event="SafeReached"/>
+  </Transitions>
+</FSM>
