@@ -1,0 +1,11 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/><State name="A" /><State name="B" /><State name="C" /><State name="D" /><State name="E" /><State name="F" /><State name="G" /><State name="H" /><State name="I" /><State name="J" /><State name="K" /><State name="L" /><State name="M" /><State name="N" /><State name="O" /><State name="P" /><State name="Q" /><State name="R" /><State name="S" /><State name="T" /><State name="U" /><State name="V" /><State name="W" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="A" event="eventStartA"/>
+    <Transition from="A" to="B" event="eventAB"/><Transition from="B" to="C" event="eventBC"/><Transition from="C" to="D" event="eventCD"/><Transition from="D" to="E" event="eventDE"/><Transition from="E" to="F" event="eventEF"/><Transition from="F" to="G" event="eventFG"/><Transition from="G" to="H" event="eventGH"/><Transition from="H" to="I" event="eventHI"/><Transition from="I" to="J" event="eventIJ"/><Transition from="J" to="K" event="eventJK"/><Transition from="K" to="L" event="eventKL"/><Transition from="L" to="M" event="eventLM"/><Transition from="M" to="N" event="eventMN"/><Transition from="N" to="O" event="eventNO"/><Transition from="O" to="P" event="eventOP"/><Transition from="P" to="Q" event="eventPQ"/><Transition from="Q" to="R" event="eventQR"/><Transition from="R" to="S" event="eventRS"/><Transition from="S" to="T" event="eventST"/><Transition from="T" to="U" event="eventTU"/><Transition from="U" to="V" event="eventUV"/><Transition from="V" to="W" event="eventVW"/><Transition from="W" to="A" event="eventWA"/>
+    <Transition from="A" to="H" event="eventAH"/><Transition from="D" to="K" event="eventDK"/><Transition from="G" to="N" event="eventGN"/><Transition from="M" to="T" event="eventMT"/><Transition from="Q" to="C" event="eventQC"/>
+  </Transitions>
+</FSM>
