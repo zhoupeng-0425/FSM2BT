@@ -1,0 +1,38 @@
+<FSM>
+    <States>
+         <State name="PASSIVE" type="initial"/>
+        <State name="JOINT_PD"/>
+        <State name="IMPEDANCE_CONTROL"/>
+        <State name="STAND_UP"/>
+        <State name="BALANCE_STAND"/>
+        <State name="LOCOMOTION"/>
+        <State name="RECOVERY_STAND"/>
+        <State name="VISION"/>
+        <State name="BACKFLIP"/>
+        <State name="FRONTJUMP"/>
+    </States>
+    <Transitions>
+        <Transition from="PASSIVE" to="JOINT_PD" event="MODE_JOINT_PD"/>
+        <Transition from="PASSIVE" to="IMPEDANCE_CONTROL" event="MODE_IMPEDANCE"/>
+        <Transition from="PASSIVE" to="STAND_UP" event="MODE_STAND_UP"/>
+        <Transition from="PASSIVE" to="BALANCE_STAND" event="MODE_BALANCE_STAND"/>
+        <Transition from="PASSIVE" to="LOCOMOTION" event="MODE_LOCOMOTION"/>
+        <Transition from="PASSIVE" to="RECOVERY_STAND" event="MODE_RECOVERY_STAND"/>
+        <Transition from="PASSIVE" to="VISION" event="MODE_VISION"/>
+        <Transition from="PASSIVE" to="BACKFLIP" event="MODE_BACKFLIP"/>
+        <Transition from="PASSIVE" to="FRONTJUMP" event="MODE_FRONTJUMP"/>
+        <Transition from="JOINT_PD" to="BALANCE_STAND" event="DIRECT_STAND"/>
+        <Transition from="IMPEDANCE_CONTROL" to="LOCOMOTION" event="DIRECT_MOVE"/>
+        <Transition from="STAND_UP" to="BALANCE_STAND" event="STAND_FINISH"/>
+        <Transition from="BALANCE_STAND" to="RECOVERY_STAND" event="ABNORMAL_POSTURE"/>
+        <Transition from="LOCOMOTION" to="VISION" event="AUTO_NAV"/>
+        <Transition from="RECOVERY_STAND" to="BALANCE_STAND" event="RECOVERY_FINISH"/>
+        <Transition from="VISION" to="BACKFLIP" event="VISION_FLIP"/>
+        <Transition from="BACKFLIP" to="BALANCE_STAND" event="FLIP_FINISH"/>
+        <Transition from="FRONTJUMP" to="VISION" event="JUMP_TO_NAV"/>
+        <Transition from="BALANCE_STAND" to="FRONTJUMP" event="ACTION_JUMP"/>
+        <Transition from="LOCOMOTION" to="FRONTJUMP" event="MOVE_TO_JUMP"/>
+        <Transition from="RECOVERY_STAND" to="PASSIVE" event="RESET_ROBOT"/>
+        <Transition from="VISION" to="JOINT_PD" event="CALIBRATION"/>
+    </Transitions>
+</FSM>

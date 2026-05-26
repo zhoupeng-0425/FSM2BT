@@ -1,0 +1,38 @@
+<FSM>
+    <States>
+         <State name="PASSIVE" type="initial"/>
+        <State name="JOINT_PD"/>
+        <State name="IMPEDANCE_CONTROL"/>
+        <State name="STAND_UP"/>
+        <State name="BALANCE_STAND"/>
+        <State name="LOCOMOTION"/>
+        <State name="RECOVERY_STAND"/>
+        <State name="VISION"/>
+        <State name="BACKFLIP"/>
+        <State name="FRONTJUMP"/>
+    </States>
+    <Transitions>
+        <Transition from="PASSIVE" to="JOINT_PD" event="MODE_JOINT_PD"/>
+        <Transition from="PASSIVE" to="IMPEDANCE_CONTROL" event="MODE_IMPEDANCE"/>
+        <Transition from="PASSIVE" to="STAND_UP" event="MODE_STAND_UP"/>
+        <Transition from="PASSIVE" to="BALANCE_STAND" event="MODE_BALANCE_STAND"/>
+        <Transition from="PASSIVE" to="LOCOMOTION" event="MODE_LOCOMOTION"/>
+        <Transition from="PASSIVE" to="RECOVERY_STAND" event="MODE_RECOVERY_STAND"/>
+        <Transition from="PASSIVE" to="VISION" event="MODE_VISION"/>
+        <Transition from="PASSIVE" to="BACKFLIP" event="MODE_BACKFLIP"/>
+        <Transition from="PASSIVE" to="FRONTJUMP" event="MODE_FRONTJUMP"/>
+        <Transition from="JOINT_PD" to="STAND_UP" event="INIT_STAND"/>
+        <Transition from="IMPEDANCE_CONTROL" to="BALANCE_STAND" event="STABLE_MODE"/>
+        <Transition from="STAND_UP" to="BALANCE_STAND" event="STAND_FINISH"/>
+        <Transition from="BALANCE_STAND" to="BACKFLIP" event="SKILL_FLIP"/>
+        <Transition from="LOCOMOTION" to="VISION" event="SMART_MOVE"/>
+        <Transition from="RECOVERY_STAND" to="BALANCE_STAND" event="RECOVERY_FINISH"/>
+        <Transition from="VISION" to="BALANCE_STAND" event="TARGET_REACH"/>
+        <Transition from="BACKFLIP" to="LOCOMOTION" event="SKIP_MOVE"/>
+        <Transition from="FRONTJUMP" to="VISION" event="JUMP_NAV"/>
+        <Transition from="BALANCE_STAND" to="FRONTJUMP" event="SKILL_JUMP"/>
+        <Transition from="LOCOMOTION" to="BACKFLIP" event="DYNAMIC_FLIP"/>
+        <Transition from="RECOVERY_STAND" to="JOINT_PD" event="JOINT_RESET"/>
+        <Transition from="VISION" to="RECOVERY_STAND" event="OBSTACLE_FAIL"/>
+    </Transitions>
+</FSM>

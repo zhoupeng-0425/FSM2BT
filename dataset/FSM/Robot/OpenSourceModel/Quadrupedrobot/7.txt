@@ -1,0 +1,38 @@
+<FSM>
+    <States>
+         <State name="PASSIVE" type="initial"/>
+        <State name="JOINT_PD"/>
+        <State name="IMPEDANCE_CONTROL"/>
+        <State name="STAND_UP"/>
+        <State name="BALANCE_STAND"/>
+        <State name="LOCOMOTION"/>
+        <State name="RECOVERY_STAND"/>
+        <State name="VISION"/>
+        <State name="BACKFLIP"/>
+        <State name="FRONTJUMP"/>
+    </States>
+    <Transitions>
+        <Transition from="PASSIVE" to="JOINT_PD" event="MODE_JOINT_PD"/>
+        <Transition from="PASSIVE" to="IMPEDANCE_CONTROL" event="MODE_IMPEDANCE"/>
+        <Transition from="PASSIVE" to="STAND_UP" event="MODE_STAND_UP"/>
+        <Transition from="PASSIVE" to="BALANCE_STAND" event="MODE_BALANCE_STAND"/>
+        <Transition from="PASSIVE" to="LOCOMOTION" event="MODE_LOCOMOTION"/>
+        <Transition from="PASSIVE" to="RECOVERY_STAND" event="MODE_RECOVERY_STAND"/>
+        <Transition from="PASSIVE" to="VISION" event="MODE_VISION"/>
+        <Transition from="PASSIVE" to="BACKFLIP" event="MODE_BACKFLIP"/>
+        <Transition from="PASSIVE" to="FRONTJUMP" event="MODE_FRONTJUMP"/>
+        <Transition from="JOINT_PD" to="IMPEDANCE_CONTROL" event="SWITCH_MODE"/>
+        <Transition from="IMPEDANCE_CONTROL" to="STAND_UP" event="PRE_STAND"/>
+        <Transition from="STAND_UP" to="BALANCE_STAND" event="STAND_FINISH"/>
+        <Transition from="BALANCE_STAND" to="LOCOMOTION" event="RC_MOVE"/>
+        <Transition from="LOCOMOTION" to="RECOVERY_STAND" event="FALL"/>
+        <Transition from="RECOVERY_STAND" to="BALANCE_STAND" event="RECOVERY_FINISH"/>
+        <Transition from="VISION" to="BALANCE_STAND" event="NAV_STOP"/>
+        <Transition from="BACKFLIP" to="LOCOMOTION" event="FLIP_END"/>
+        <Transition from="FRONTJUMP" to="LOCOMOTION" event="JUMP_END"/>
+        <Transition from="BALANCE_STAND" to="FRONTJUMP" event="RC_JUMP"/>
+        <Transition from="VISION" to="BACKFLIP" event="AUTO_FLIP"/>
+        <Transition from="LOCOMOTION" to="VISION" event="RC_NAV"/>
+        <Transition from="BACKFLIP" to="RECOVERY_STAND" event="ACTION_FAIL"/>
+    </Transitions>
+</FSM>
