@@ -1,0 +1,12 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+        <Recharge/>
+       	<SearchCubes/>
+        <MoveToCube/>
+        <PickCube/>
+      <MoveToDelivery/>
+      <PlaceCube/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

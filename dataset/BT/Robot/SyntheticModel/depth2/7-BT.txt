@@ -1,0 +1,10 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Fallback>
+        <RequestNewOrder/>
+        <SearchItem/>
+        <PickItem/>
+      <PlaceItem/>
+    </Fallback>
+  </BehaviorTree>
+</BT>

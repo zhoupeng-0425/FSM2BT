@@ -1,0 +1,10 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+        <RequestNewOrder/>
+        <SearchItem/>
+        <PickItem/>
+      <PlaceItem/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

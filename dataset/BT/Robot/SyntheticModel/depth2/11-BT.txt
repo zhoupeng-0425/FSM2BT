@@ -1,0 +1,11 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+       <Recharge/>
+       <SearchParcel/>
+      <PickParcel/>
+      <MoveToConveyor/>
+      <PlaceParcel/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

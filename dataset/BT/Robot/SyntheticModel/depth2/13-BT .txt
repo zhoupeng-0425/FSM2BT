@@ -1,0 +1,12 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+     <Recharge/>
+     <LoadSortingTask/>
+     <SearchTargetItem/>
+     <PickItem/>
+     <MoveToSortSlot/>
+     <PlaceItem/>
+    </Sequence>
+  </BehaviorTree>
+</BT>
