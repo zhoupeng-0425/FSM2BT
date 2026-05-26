@@ -1,0 +1,25 @@
+States: [
+    "Passive",
+    "FixedStand",
+    "FreeStand",
+    "Trotting",
+    "MoveBase",
+    "StepTest",
+    "SwingTest",
+    "BalanceTest"
+]
+
+Transitions: [
+    {from: "Passive", to: "FixedStand", event: "press key '2'"},
+    {from: "FixedStand", to: "Passive", event: "press key '1'"},
+    {from: "FreeStand", to: "Passive", event: "press key '1'"},
+    {from: "Trotting", to: "FixedStand", event: "press key '2'"},
+    {from: "FixedStand", to: "FreeStand", event: "press key '3'"},
+    {from: "FixedStand", to: "Trotting", event: "press key '4'"},
+    {from: "FreeStand", to: "Trotting", event: "press key '4'"},
+    {from: "FixedStand", to: "MoveBase", event: "press key '5'"},
+    {from: "FixedStand", to: "StepTest", event: "press key '8'"},
+    {from: "FixedStand", to: "SwingTest", event: "press key '9'"},
+    {from: "FixedStand", to: "BalanceTest", event: "press key '0'"},
+    {from: "Trotting", to: "FixedStand", event: "press Spacebar"}
+]
