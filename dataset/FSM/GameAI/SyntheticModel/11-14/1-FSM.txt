@@ -1,0 +1,47 @@
+<FSM ID="FSM_Predator_GrandHuntCycle">
+  <States>
+    <State name="StartGrandHunt" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Roam"/>
+    <State name="Forage"/>
+    <State name="Hide"/>
+    <State name="Maneuver"/>
+    <State name="Charge"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Resting"/>
+    <State name="Flock"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartGrandHunt" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Roam" event="NoPreyDetected"/>
+    <Transition from="Patrol" to="Maneuver" event="PreyTrailFound"/>
+    <Transition from="Patrol" to="Flock" event="PackScentFound"/>
+
+    <Transition from="Roam" to="Forage" event="CarrionScent"/>
+    <Transition from="Roam" to="Hide" event="AmbushCoverFound"/>
+    <Transition from="Roam" to="Patrol" event="BoundaryReached"/>
+
+    <Transition from="Forage" to="Feast" event="DeadPreyFound"/>
+    <Transition from="Forage" to="Roam" event="ScentLost"/>
+
+    <Transition from="Hide" to="Maneuver" event="PreyApproaching"/>
+    <Transition from="Hide" to="Roam" event="WaitTooLong"/>
+
+    <Transition from="Maneuver" to="Charge" event="ClearPath"/>
+    <Transition from="Maneuver" to="Patrol" event="PreyLost"/>
+
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+    <Transition from="Charge" to="Maneuver" event="ChargeMissed"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="FindSafe" event="Wounded"/>
+
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="FindSafe" to="Resting" event="SafePlaceFound"/>
+    <Transition from="Resting" to="Patrol" event="Recovered"/>
+  </Transitions>
+</FSM>
