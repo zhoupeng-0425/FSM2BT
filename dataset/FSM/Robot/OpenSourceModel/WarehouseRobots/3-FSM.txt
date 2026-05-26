@@ -1,0 +1,19 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="SearchCubes" />
+    <State name="MoveToCube" />
+    <State name="Dock" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="SearchCubes" event="SortTaskAssigned"/>
+    <Transition from="SearchCubes" to="MoveToCube" event="CubeDetected"/>
+    <Transition from="MoveToCube" to="SearchCubes" event="CubeLost"/>
+    <Transition from="MoveToCube" to="Idel" event="CubeReached"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Idel" event="DockPoseReached"/>
+  </Transitions>
+</FSM>

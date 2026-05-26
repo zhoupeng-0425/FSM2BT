@@ -1,0 +1,17 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="Recharge" />
+    <State name="Dock" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+    <Transition from="Idel" to="Dock" event="ShiftFinished"/>
+    <Transition from="Dock" to="Idel" event="UndockCommand"/>
+  </Transitions>
+</FSM>

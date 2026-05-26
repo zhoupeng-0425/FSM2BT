@@ -1,0 +1,48 @@
+<FSM>
+  <InitialState>SM_ROOT</InitialState>
+
+  <States>
+    <State name="SM_ROOT" type="initial"/>
+    <State name="Move-To cube2"/>
+    <State name="Pick cube2"/>
+    <State name="Move-To delivery"/>
+    <State name="Place cube2"/>
+    <State name="Dock"/>
+    <State name="Recharge!"/>
+    <State name="IDLE"/>
+    <State name="Success" type="final"/>
+  </States>
+
+  <Transitions>
+    <Transition from="SM_ROOT" to="Move-To cube2" event="eventStart"/>
+
+    <Transition from="Move-To cube2" to="Pick cube2" event="Cube2 reached"/>
+    <Transition from="Move-To cube2" to="Recharge!" event="Battery below 20%"/>
+    <Transition from="Move-To cube2" to="IDLE" event="MovecubeFAILURE"/>
+
+    <Transition from="Pick cube2" to="Move-To delivery" event="Cube2 in Hand"/>
+    <Transition from="Pick cube2" to="Recharge!" event="Battery below 20%"/>
+    <Transition from="Pick cube2" to="IDLE" event="PickFAILURE"/>
+
+    <Transition from="Move-To delivery" to="Place cube2" event="Delivery pose reached"/>
+    <Transition from="Move-To delivery" to="Recharge!" event="Battery below 20%"/>
+    <Transition from="Move-To delivery" to="IDLE" event="MovedeliveryFAILURE"/>
+
+    <Transition from="Place cube2" to="Dock" event="Cube2 placed"/>
+    <Transition from="Place cube2" to="Recharge!" event="Battery below 20%"/>
+    <Transition from="Place cube2" to="IDLE" event="PlaceFAILURE"/>
+
+    <Transition from="Dock" to="Success" event="Dock pose reached"/>
+    <Transition from="Dock" to="Recharge!" event="Battery below 20%"/>
+    <Transition from="Dock" to="IDLE" event="DockFAILURE"/>
+
+    <Transition from="Recharge!" to="IDLE" event="RechargeSUCCESS"/>
+
+    <Transition from="IDLE" to="Move-To cube2" event="Restart the task"/>
+    <Transition from="IDLE" to="Pick cube2" event="Cube2 reached"/>
+    <Transition from="IDLE" to="Move-To delivery" event="Cube2 in Hand"/>
+    <Transition from="IDLE" to="Place cube2" event="Delivery pose reached"/>
+    <Transition from="IDLE" to="Dock" event="Cube2 placed"/>
+    <Transition from="IDLE" to="Success" event="Dock pose reached"/>
+  </Transitions>
+</FSM>
