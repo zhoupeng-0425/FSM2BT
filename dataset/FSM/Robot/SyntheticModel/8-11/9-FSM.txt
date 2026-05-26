@@ -1,0 +1,31 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="SearchCubes" />
+    <State name="MoveToCube" />
+    <State name="PickCube" />
+    <State name="MoveToDelivery" />
+    <State name="PlaceCube" />
+    <State name="Dock" />
+    <State name="Recharge" />
+    <State name="ReturnToBase" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="SearchCubes" event="SortTaskAssigned"/>
+    <Transition from="SearchCubes" to="MoveToCube" event="CubeDetected"/>
+    <Transition from="MoveToCube" to="PickCube" event="CubeReached"/>
+    <Transition from="PickCube" to="MoveToDelivery" event="CubeINHand"/>
+    <Transition from="MoveToDelivery" to="PlaceCube" event="DeliveryPoseReached"/>
+    <Transition from="PlaceCube" to="SearchCubes" event="CubePlace"/>
+    <Transition from="SearchCubes" to="ReturnToBase" event="SortBatchFinished"/>
+    <Transition from="ReturnToBase" to="Idel" event="BasePoseReached"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="SearchCubes" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="MoveToCube" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+  </Transitions>
+</FSM>

@@ -1,0 +1,37 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="SearchCubes" />
+    <State name="MoveToCube" />
+    <State name="PickCube" />
+    <State name="MoveToDelivery" />
+    <State name="PlaceCube" />
+    <State name="Dock" />
+    <State name="Recharge" />
+    <State name="PlanPath" />
+    <State name="WaitPath" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="SearchCubes" event="SortTaskAssigned"/>
+    <Transition from="SearchCubes" to="PlanPath" event="CubeDetected"/>
+    <Transition from="PlanPath" to="MoveToCube" event="PathPlanned"/>
+    <Transition from="PlanPath" to="WaitPath" event="PathPlanFailed"/>
+    <Transition from="WaitPath" to="PlanPath" event="PathCleared"/>
+    <Transition from="MoveToCube" to="PickCube" event="CubeReached"/>
+    <Transition from="MoveToCube" to="SearchCubes" event="CubeLost"/>
+    <Transition from="PickCube" to="MoveToDelivery" event="CubeINHand"/>
+    <Transition from="PickCube" to="MoveToCube" event="GripFailed"/>
+    <Transition from="MoveToDelivery" to="PlaceCube" event="DeliveryPoseReached"/>
+    <Transition from="MoveToDelivery" to="WaitPath" event="DeliveryPathBlocked"/>
+    <Transition from="WaitPath" to="MoveToDelivery" event="DeliveryPathCleared"/>
+    <Transition from="PlaceCube" to="SearchCubes" event="CubePlace"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="SearchCubes" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="PlanPath" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+  </Transitions>
+</FSM>
