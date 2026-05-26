@@ -1,0 +1,27 @@
+<FSM ID="FSM_Prey_ForageAndEat">
+  <States>
+    <State name="StartForage" type="initial"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartForage" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Forage" event="FoodScentDetected"/>
+    <Transition from="Wander" to="SeekSafety" event="PredatorNearby"/>
+    <Transition from="Wander" to="Wander" event="NoFoodDetected"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+
+    <Transition from="Eat" to="Wander" event="Full"/>
+    <Transition from="Eat" to="Flee" event="ThreatAppears"/>
+
+    <Transition from="SeekSafety" to="Wander" event="AreaSafe"/>
+    <Transition from="Flee" to="SeekSafety" event="EscapedImmediateDanger"/>
+  </Transitions>
+</FSM>

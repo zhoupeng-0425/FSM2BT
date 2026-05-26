@@ -1,0 +1,27 @@
+<FSM ID="FSM_Predator_Ambush">
+  <States>
+    <State name="StartAmbush" type="initial"/>
+    <State name="Roam"/>
+    <State name="Hide"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartAmbush" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Hide" event="AmbushSpotFound"/>
+    <Transition from="Roam" to="Roam" event="NoAmbushSpot"/>
+    <Transition from="Roam" to="Maneuver" event="PreyRecentlySeen"/>
+
+    <Transition from="Hide" to="Maneuver" event="PreyApproaching"/>
+    <Transition from="Hide" to="Roam" event="WaitTooLong"/>
+
+    <Transition from="Maneuver" to="Attack" event="PreyInRange"/>
+    <Transition from="Maneuver" to="Hide" event="PreyAlerted"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Feast" to="Roam" event="FeastDone"/>
+  </Transitions>
+</FSM>

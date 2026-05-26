@@ -1,0 +1,26 @@
+<FSM ID="FSM_Prey_FlockDefense">
+  <States>
+    <State name="StartFlockDefense" type="initial"/>
+    <State name="Wander"/>
+    <State name="Flock"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="Flee"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartFlockDefense" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Flock" event="AllyNearby"/>
+    <Transition from="Wander" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Wander" to="Wander" event="NoAllyFound"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Flock" to="Flee" event="GroupScattered"/>
+
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+    <Transition from="Flee" to="Flock" event="ReachedGroup"/>
+  </Transitions>
+</FSM>

@@ -1,0 +1,27 @@
+<FSM ID="FSM_Prey_EscapeSurvival">
+  <States>
+    <State name="StartPreyEscape" type="initial"/>
+    <State name="Forage"/>
+    <State name="Flee"/>
+    <State name="SeekSafety"/>
+    <State name="Hide"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartPreyEscape" to="Forage" event="Start"/>
+
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+    <Transition from="Forage" to="SeekSafety" event="PredatorNearby"/>
+    <Transition from="Forage" to="Forage" event="FoodSearching"/>
+
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="Flee" to="Hide" event="HideSpotNearby"/>
+
+    <Transition from="SeekSafety" to="Hide" event="ReachedCover"/>
+    <Transition from="SeekSafety" to="Resting" event="ReachedSafeZone"/>
+
+    <Transition from="Hide" to="Resting" event="ThreatGone"/>
+    <Transition from="Resting" to="Forage" event="Recovered"/>
+  </Transitions>
+</FSM>

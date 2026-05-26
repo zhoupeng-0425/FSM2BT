@@ -1,0 +1,27 @@
+<FSM ID="FSM_Predator_HungerDriven">
+  <States>
+    <State name="StartHungerPredator" type="initial"/>
+    <State name="Roam"/>
+    <State name="Patrol"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartHungerPredator" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="Patrol" event="HungerHigh"/>
+    <Transition from="Roam" to="Roam" event="HungerLow"/>
+    <Transition from="Roam" to="Feast" event="DeadPreyNearby"/>
+
+    <Transition from="Patrol" to="Maneuver" event="PreyVisible"/>
+    <Transition from="Patrol" to="Roam" event="NoPreyFound"/>
+
+    <Transition from="Maneuver" to="Attack" event="PreyInRange"/>
+    <Transition from="Maneuver" to="Patrol" event="PreyLost"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Feast" to="Roam" event="HungerSatisfied"/>
+  </Transitions>
+</FSM>

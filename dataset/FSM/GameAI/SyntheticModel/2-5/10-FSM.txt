@@ -1,0 +1,27 @@
+<FSM ID="FSM_Agent_BalancedSurvival">
+  <States>
+    <State name="StartBalanced" type="initial"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Flock"/>
+    <State name="Flee"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartBalanced" to="Forage" event="Start"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Flock" event="AllyNearby"/>
+    <Transition from="Forage" to="Flee" event="PredatorNearby"/>
+
+    <Transition from="Eat" to="Resting" event="FullAndTired"/>
+    <Transition from="Eat" to="Flee" event="ThreatAppears"/>
+
+    <Transition from="Flock" to="Forage" event="GroupSafe"/>
+    <Transition from="Flock" to="Flee" event="GroupThreatened"/>
+
+    <Transition from="Flee" to="Resting" event="Escaped"/>
+    <Transition from="Resting" to="Forage" event="Recovered"/>
+  </Transitions>
+</FSM>

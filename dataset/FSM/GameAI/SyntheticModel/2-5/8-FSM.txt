@@ -1,0 +1,27 @@
+<FSM ID="FSM_Prey_CautiousExplorer">
+  <States>
+    <State name="StartCautiousExplorer" type="initial"/>
+    <State name="Wander"/>
+    <State name="Forage"/>
+    <State name="Eat"/>
+    <State name="Hide"/>
+    <State name="Flee"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartCautiousExplorer" to="Wander" event="Start"/>
+
+    <Transition from="Wander" to="Forage" event="FoodNearby"/>
+    <Transition from="Wander" to="Hide" event="SuspiciousNoise"/>
+    <Transition from="Wander" to="Flee" event="PredatorVeryClose"/>
+
+    <Transition from="Forage" to="Eat" event="FoodReached"/>
+    <Transition from="Forage" to="Hide" event="ThreatNearby"/>
+
+    <Transition from="Eat" to="Wander" event="Full"/>
+    <Transition from="Eat" to="Flee" event="PredatorAppears"/>
+
+    <Transition from="Hide" to="Wander" event="ThreatGone"/>
+    <Transition from="Flee" to="Hide" event="CoverReached"/>
+  </Transitions>
+</FSM>

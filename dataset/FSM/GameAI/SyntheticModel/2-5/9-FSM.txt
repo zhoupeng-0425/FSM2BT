@@ -1,0 +1,27 @@
+<FSM ID="FSM_Agent_OpportunisticCombat">
+  <States>
+    <State name="StartOpportunist" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Hide"/>
+    <State name="FindSafe"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartOpportunist" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Maneuver" event="WeakPreyVisible"/>
+    <Transition from="Patrol" to="FindSafe" event="DangerNearby"/>
+    <Transition from="Patrol" to="Patrol" event="AreaClear"/>
+
+    <Transition from="Maneuver" to="Attack" event="AttackChanceOpen"/>
+    <Transition from="Maneuver" to="Hide" event="PreyGroupTooLarge"/>
+
+    <Transition from="Attack" to="Patrol" event="AttackSucceeded"/>
+    <Transition from="Attack" to="Hide" event="AttackFailed"/>
+
+    <Transition from="Hide" to="FindSafe" event="ThreatPersists"/>
+    <Transition from="FindSafe" to="Patrol" event="SafeAgain"/>
+  </Transitions>
+</FSM>
