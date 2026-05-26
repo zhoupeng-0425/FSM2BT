@@ -1,0 +1,68 @@
+<FSM ID="FSM_Predator_ScavengerDominion">
+  <States>
+    <State name="StartScavengerDominion" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="GuardCarcass"/>
+    <State name="TrackScent"/>
+    <State name="InspectBones"/>
+    <State name="ClaimKill"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartScavengerDominion" to="Roam" event="Start"/>
+
+    <Transition from="Roam" to="TrackScent" event="CarrionScent"/>
+    <Transition from="Roam" to="Patrol" event="KnownTrailFound"/>
+    <Transition from="Roam" to="Maneuver" event="WeakPreyVisible"/>
+
+    <Transition from="TrackScent" to="Forage" event="ScentStrong"/>
+    <Transition from="TrackScent" to="Wander" event="ScentBroken"/>
+
+    <Transition from="Wander" to="ScoutRoute" event="NewPathSeen"/>
+    <Transition from="Wander" to="Hide" event="UnknownNoise"/>
+
+    <Transition from="ScoutRoute" to="FindSafe" event="RivalRouteFound"/>
+    <Transition from="ScoutRoute" to="Roam" event="RouteUseful"/>
+
+    <Transition from="Forage" to="InspectBones" event="OldRemainsFound"/>
+    <Transition from="Forage" to="ClaimKill" event="FreshKillFound"/>
+    <Transition from="Forage" to="Eat" event="SmallFoodFound"/>
+
+    <Transition from="InspectBones" to="Forage" event="BonesWorthless"/>
+    <Transition from="InspectBones" to="Eat" event="MarrowFound"/>
+
+    <Transition from="ClaimKill" to="GuardCarcass" event="KillClaimed"/>
+    <Transition from="ClaimKill" to="Attack" event="CompetitorChallenges"/>
+
+    <Transition from="GuardCarcass" to="Feast" event="CarcassSecured"/>
+    <Transition from="GuardCarcass" to="Flee" event="Outnumbered"/>
+
+    <Transition from="Eat" to="Resting" event="EnoughFood"/>
+    <Transition from="Feast" to="Resting" event="Full"/>
+
+    <Transition from="Patrol" to="Flock" event="PackCall"/>
+    <Transition from="Flock" to="Assist" event="AllyEngaged"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+
+    <Transition from="Hide" to="Charge" event="PreyClose"/>
+    <Transition from="Maneuver" to="Charge" event="PreyInSight"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+  </Transitions>
+</FSM>

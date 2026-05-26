@@ -1,0 +1,64 @@
+<FSM ID="FSM_Prey_HighlandRefugeMigration">
+  <States>
+    <State name="StartHighlandRefugeMigration" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="ClimbRidge"/>
+    <State name="WatchValley"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartHighlandRefugeMigration" to="WatchValley" event="Start"/>
+
+    <Transition from="WatchValley" to="ScoutRoute" event="ValleySafe"/>
+    <Transition from="WatchValley" to="SeekSafety" event="PredatorInValley"/>
+
+    <Transition from="ScoutRoute" to="Roam" event="RouteFound"/>
+    <Transition from="ScoutRoute" to="ClimbRidge" event="HighPathSeen"/>
+    <Transition from="ScoutRoute" to="Hide" event="TrailAmbushed"/>
+
+    <Transition from="ClimbRidge" to="FindSafe" event="CaveFound"/>
+    <Transition from="ClimbRidge" to="Flee" event="PredatorClimbing"/>
+    <Transition from="ClimbRidge" to="Forage" event="AlpineGrassFound"/>
+
+    <Transition from="Roam" to="Wander" event="PathUnclear"/>
+    <Transition from="Roam" to="Flock" event="HerdNearby"/>
+
+    <Transition from="Wander" to="Patrol" event="UnknownSlope"/>
+    <Transition from="Wander" to="Forage" event="FoodPatchFound"/>
+    <Transition from="Wander" to="Flee" event="PredatorAppears"/>
+
+    <Transition from="Patrol" to="Roam" event="AreaMapped"/>
+    <Transition from="Patrol" to="WatchValley" event="RidgeReached"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Flee" event="PredatorVeryClose"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Eat" to="Hide" event="NoiseHeard"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Flock" to="Charge" event="GroupAdvantage"/>
+    <Transition from="Assist" to="Flock" event="AllySafe"/>
+    <Transition from="Assist" to="Attack" event="DesperateDefense"/>
+
+    <Transition from="Charge" to="Flee" event="ChargeFailed"/>
+    <Transition from="Flee" to="SeekSafety" event="DistanceOpened"/>
+    <Transition from="FindSafe" to="Resting" event="SafeShelterReached"/>
+  </Transitions>
+</FSM>

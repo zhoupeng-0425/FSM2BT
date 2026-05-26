@@ -1,0 +1,67 @@
+<FSM ID="FSM_Agent_FrontierDominanceCycle">
+  <States>
+    <State name="StartFrontierDominanceCycle" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Attack"/>
+    <State name="Roam"/>
+    <State name="Resting"/>
+    <State name="Maneuver"/>
+    <State name="Feast"/>
+    <State name="FindSafe"/>
+    <State name="Hide"/>
+    <State name="SeekSafety"/>
+    <State name="Flee"/>
+    <State name="Eat"/>
+    <State name="Forage"/>
+    <State name="Flock"/>
+    <State name="Wander"/>
+    <State name="Assist"/>
+    <State name="Charge"/>
+    <State name="ScoutRoute"/>
+    <State name="GuardFood"/>
+    <State name="SignalAlarm"/>
+    <State name="TrackScent"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartFrontierDominanceCycle" to="ScoutRoute" event="Start"/>
+
+    <Transition from="ScoutRoute" to="Wander" event="RouteFound"/>
+    <Transition from="ScoutRoute" to="Patrol" event="RegionUnknown"/>
+    <Transition from="ScoutRoute" to="SignalAlarm" event="ThreatTrailFound"/>
+
+    <Transition from="SignalAlarm" to="Flee" event="AlarmConfirmed"/>
+    <Transition from="SignalAlarm" to="Flock" event="AlliesRespond"/>
+
+    <Transition from="Wander" to="Forage" event="FoodNearby"/>
+    <Transition from="Wander" to="TrackScent" event="ScentFound"/>
+    <Transition from="Wander" to="Hide" event="SuspiciousNoise"/>
+
+    <Transition from="TrackScent" to="Maneuver" event="WeakPreyTracked"/>
+    <Transition from="TrackScent" to="Roam" event="TrailFades"/>
+
+    <Transition from="Patrol" to="Roam" event="AreaClear"/>
+    <Transition from="Patrol" to="SeekSafety" event="DangerNearby"/>
+
+    <Transition from="Roam" to="GuardFood" event="FoodCacheFound"/>
+    <Transition from="Roam" to="Flock" event="AllyNearby"/>
+    <Transition from="Roam" to="FindSafe" event="RivalAppears"/>
+
+    <Transition from="GuardFood" to="Attack" event="CompetitorApproaches"/>
+    <Transition from="GuardFood" to="Eat" event="CacheSecure"/>
+    <Transition from="GuardFood" to="Flee" event="Outnumbered"/>
+
+    <Transition from="Forage" to="Eat" event="FoodFound"/>
+    <Transition from="Forage" to="Feast" event="LargeFoodFound"/>
+
+    <Transition from="Eat" to="Resting" event="Full"/>
+    <Transition from="Feast" to="Resting" event="Satiated"/>
+
+    <Transition from="Flock" to="Assist" event="AllyThreatened"/>
+    <Transition from="Assist" to="Attack" event="OpeningCreated"/>
+
+    <Transition from="Maneuver" to="Charge" event="AttackLaneOpen"/>
+    <Transition from="Charge" to="Attack" event="ContactMade"/>
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+  </Transitions>
+</FSM>
