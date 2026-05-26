@@ -1,0 +1,17 @@
+States: [
+    "FORWARD",
+    "VEER_LEFT",
+    "VEER_RIGHT",
+    "STOP"
+]
+
+Transitions: [
+    {from: "FORWARD", to: "VEER_LEFT", event: "line lost to right"},
+    {from: "FORWARD", to: "VEER_RIGHT", event: "line lost to left"},
+    {from: "VEER_LEFT", to: "FORWARD", event: "line detected"},
+    {from: "VEER_RIGHT", to: "FORWARD", event: "line detected"},
+    {from: "FORWARD", to: "STOP", event: "obstacle detected"},
+    {from: "VEER_LEFT", to: "STOP", event: "obstacle detected"},
+    {from: "VEER_RIGHT", to: "STOP", event: "obstacle detected"},
+    {from: "STOP", to: "FORWARD", event: "obstacle cleared"}
+]
