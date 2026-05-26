@@ -1,0 +1,55 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_105_StealthAmbush_D9">
+    <Sequence>
+      <Fallback>
+        <NearHideSpot/>
+        <Hide/>
+      </Fallback>
+
+      <Fallback>
+        <PreyVisible/>
+        <Sequence>
+          <Fallback>
+            <SinglePreyVisible/>
+            <Sequence>
+              <Fallback>
+                <PreyRecentlySeen/>
+                <Sequence>
+                  <Fallback>
+                    <PreyNotInHaven/>
+                    <PreyAlive/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Hide/>
+            </Sequence>
+          </Fallback>
+
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <WeakPreyVisible/>
+                <PreyNotInHaven/>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Fallback>
+        <ThreatNearby/>
+        <Hide/>
+      </Fallback>
+
+      <Roam/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

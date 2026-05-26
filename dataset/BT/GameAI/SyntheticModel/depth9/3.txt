@@ -1,0 +1,54 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_103_GroupDefense_D9">
+    <Sequence>
+      <Fallback>
+        <AllyNearby/>
+        <Flock/>
+      </Fallback>
+
+      <Fallback>
+        <PredatorNearby/>
+        <Sequence>
+          <Fallback>
+            <AllyNumberHigh/>
+            <Sequence>
+              <Fallback>
+                <AllyAttacking/>
+                <Sequence>
+                  <Fallback>
+                    <PredatorVeryClose/>
+                    <ThreatNearby/>
+                  </Fallback>
+                  <Charge/>
+                </Sequence>
+              </Fallback>
+              <Assist/>
+            </Sequence>
+          </Fallback>
+
+          <Fallback>
+            <SafeZoneNearby/>
+            <SeekSafety/>
+          </Fallback>
+
+          <Fallback>
+            <NearHideSpot/>
+            <Hide/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <FoodNearby/>
+        <Forage/>
+      </Fallback>
+
+      <Fallback>
+        <InFoodZone/>
+        <Eat/>
+      </Fallback>
+
+      <Wander/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

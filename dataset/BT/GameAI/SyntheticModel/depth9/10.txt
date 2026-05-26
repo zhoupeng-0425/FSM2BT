@@ -1,0 +1,80 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_110_IntegratedMission_D9">
+    <Sequence>
+      <Fallback>
+        <LowHealth/>
+        <Sequence>
+          <Fallback>
+            <InSafeZone/>
+            <Sequence>
+              <Fallback>
+                <SafeZoneNearby/>
+                <Sequence>
+                  <Fallback>
+                    <NearHideSpot/>
+                    <Hide/>
+                  </Fallback>
+                  <FindSafe/>
+                </Sequence>
+              </Fallback>
+              <Resting/>
+            </Sequence>
+          </Fallback>
+          <SeekSafety/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <PredatorNearby/>
+        <Sequence>
+          <Fallback>
+            <PredatorVeryClose/>
+            <Flee/>
+          </Fallback>
+          <Fallback>
+            <AllyNearby/>
+            <Flock/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <PreyVisible/>
+        <Sequence>
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyNotInHaven/>
+                <WeakPreyVisible/>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <FoodNearby/>
+        <Sequence>
+          <Fallback>
+            <InFoodZone/>
+            <DeadPreyNearby/>
+          </Fallback>
+          <Fallback>
+            <Eat/>
+            <Feast/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <AllyAttacking/>
+        <Assist/>
+      </Fallback>
+
+      <Patrol/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

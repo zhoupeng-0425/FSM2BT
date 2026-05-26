@@ -1,0 +1,52 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_102_StandardHunter_D9">
+    <Sequence>
+      <Fallback>
+        <NeedRecovery/>
+        <Resting/>
+      </Fallback>
+
+      <Fallback>
+        <PreyVisible/>
+        <Sequence>
+          <Fallback>
+            <PreyRecentlySeen/>
+            <Forage/>
+          </Fallback>
+
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyNotInHaven/>
+                <Sequence>
+                  <Fallback>
+                    <WeakPreyVisible/>
+                    <SinglePreyVisible/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+
+          <Fallback>
+            <PreyAlive/>
+            <Maneuver/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Fallback>
+        <Tired/>
+        <Patrol/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

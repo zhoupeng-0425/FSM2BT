@@ -1,0 +1,50 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_107_TerritoryPatrolAttack_D9">
+    <Sequence>
+      <Fallback>
+        <OutOfTerritory/>
+        <Patrol/>
+      </Fallback>
+
+      <Fallback>
+        <PreyInTerritory/>
+        <Sequence>
+          <Fallback>
+            <PreyVisible/>
+            <Sequence>
+              <Fallback>
+                <PreyRecentlySeen/>
+                <Sequence>
+                  <Fallback>
+                    <SinglePreyVisible/>
+                    <WeakPreyVisible/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Patrol/>
+            </Sequence>
+          </Fallback>
+
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyAlive/>
+                <PreyNotInHaven/>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Tired/>
+        <Resting/>
+      </Fallback>
+
+      <Roam/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

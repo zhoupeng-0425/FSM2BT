@@ -1,0 +1,59 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_109_OpportunisticBalanced_D9">
+    <Sequence>
+      <Fallback>
+        <LowHealth/>
+        <FindSafe/>
+      </Fallback>
+
+      <Fallback>
+        <WeakPreyVisible/>
+        <Sequence>
+          <Fallback>
+            <PreyVisible/>
+            <Sequence>
+              <Fallback>
+                <PreyRecentlySeen/>
+                <Sequence>
+                  <Fallback>
+                    <SinglePreyVisible/>
+                    <PreyNotInHaven/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Forage/>
+            </Sequence>
+          </Fallback>
+
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyAlive/>
+                <WeakPreyVisible/>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+
+      <Fallback>
+        <FoodNearby/>
+        <Forage/>
+      </Fallback>
+
+      <Fallback>
+        <ThreatNearby/>
+        <Hide/>
+      </Fallback>
+
+    </Sequence>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,54 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_104_RecoveryCautious_D9">
+    <Sequence>
+      <Fallback>
+        <LowHealth/>
+        <Sequence>
+          <Fallback>
+            <InSafeZone/>
+            <Sequence>
+              <Fallback>
+                <SafeZoneNearby/>
+                <Sequence>
+                  <Fallback>
+                    <NearHideSpot/>
+                    <Hide/>
+                  </Fallback>
+                  <FindSafe/>
+                </Sequence>
+              </Fallback>
+              <Resting/>
+            </Sequence>
+          </Fallback>
+          <Fallback>
+            <NeedRecovery/>
+            <Resting/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <ThreatNearby/>
+        <Sequence>
+          <Fallback>
+            <PredatorVeryClose/>
+            <Flee/>
+          </Fallback>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <FoodNearby/>
+        <Forage/>
+      </Fallback>
+
+      <Fallback>
+        <AllyNearby/>
+        <Flock/>
+      </Fallback>
+
+      <Patrol/>
+    </Sequence>
+  </BehaviorTree>
+</BT>
