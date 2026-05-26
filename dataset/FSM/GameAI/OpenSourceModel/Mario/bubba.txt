@@ -1,0 +1,12 @@
+<States>
+        <State name="StartBubba" type="initial"/>
+        <State name="SWIM_IDLE" />
+        <State name="CHASE_MARIO" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBubba" to="SWIM_IDLE" event="init_done"/>
+        <Transition from="SWIM_IDLE" to="CHASE_MARIO" event="mario_near"/>
+        <Transition from="CHASE_MARIO" to="SWIM_IDLE" event="mario_far"/>
+        <Transition from="CHASE_MARIO" to="SWIM_IDLE" event="attack_finish"/>
+</Transitions>

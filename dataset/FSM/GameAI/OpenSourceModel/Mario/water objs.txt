@@ -1,0 +1,15 @@
+<States>
+    <State name="INIT" type="initial"/>
+    <State name="RISE"/>
+    <State name="CHASE_MARIO"/>
+    <State name="DESTROY"/>
+</States>
+
+<Transitions>
+    <Transition from="INIT" to="RISE" event="start"/>
+    <Transition from="RISE" to="CHASE_MARIO" event="timer_30"/>
+    <Transition from="CHASE_MARIO" to="DESTROY" event="touch_mario_or_timer_200"/>
+    <Transition from="INIT" to="DESTROY" event="out_of_water"/>
+    <Transition from="RISE" to="DESTROY" event="out_of_water"/>
+    <Transition from="CHASE_MARIO" to="DESTROY" event="out_of_water"/>
+</Transitions>

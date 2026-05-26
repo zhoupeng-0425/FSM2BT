@@ -1,0 +1,18 @@
+<States>
+    <State name="StartH" type="initial"/>
+    <State name="INACTIVE" />
+    <State name="APPEAR" />
+    <State name="CHASE" />
+    <State name="GIVE_UP" />
+    <State name="ATTACK_COOLDOWN" />
+</States>
+
+<Transitions>
+    <Transition from="StartH" to="INACTIVE" event="init_done"/>
+    <Transition from="INACTIVE" to="APPEAR" event="mario_in_range"/>
+    <Transition from="APPEAR" to="CHASE" event="appear_done"/>
+    <Transition from="CHASE" to="ATTACK_COOLDOWN" event="hit_mario"/>
+    <Transition from="CHASE" to="GIVE_UP" event="mario_too_far"/>
+    <Transition from="GIVE_UP" to="INACTIVE" event="reset_done"/>
+    <Transition from="ATTACK_COOLDOWN" to="CHASE" event="cooldown_done"/>
+</Transitions>

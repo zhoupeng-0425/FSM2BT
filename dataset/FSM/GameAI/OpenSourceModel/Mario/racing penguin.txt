@@ -1,0 +1,32 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="WAIT_FOR_MARIO" />
+    <State name="SHOW_INIT_TEXT" />
+    <State name="PREPARE_FOR_RACE" />
+    <State name="RACE" />
+    <State name="FINISH_RACE" />
+    <State name="SHOW_FINAL_TEXT" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="WAIT_FOR_MARIO" event="init_done"/>
+
+    <!-- 等待 → 对话 -->
+    <Transition from="WAIT_FOR_MARIO" to="SHOW_INIT_TEXT" event="mario_near"/>
+
+    <!-- 对话：拒绝 → 回到等待 -->
+    <Transition from="SHOW_INIT_TEXT" to="WAIT_FOR_MARIO" event="dialog_no"/>
+
+    <!-- 对话：同意 → 准备比赛 -->
+    <Transition from="SHOW_INIT_TEXT" to="PREPARE_FOR_RACE" event="dialog_yes"/>
+
+    <!-- 准备 → 开始比赛 -->
+    <Transition from="PREPARE_FOR_RACE" to="RACE" event="countdown_done"/>
+
+    <!-- 比赛 → 抵达终点 -->
+    <Transition from="RACE" to="FINISH_RACE" event="path_end_reached"/>
+
+    <!-- 终点 → 显示结果 -->
+    <Transition from="FINISH_RACE" to="SHOW_FINAL_TEXT" event="anim_done"/>
+</Transitions>

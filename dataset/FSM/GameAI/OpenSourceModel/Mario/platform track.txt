@@ -1,0 +1,33 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="INIT" />
+    <State name="WAIT_FOR_MARIO" />
+    <State name="MOVE_ALONG_TRACK" />
+    <State name="PAUSE_BRIEFLY" />
+    <State name="FALL" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="INIT" event="init_done"/>
+    <Transition from="INIT" to="WAIT_FOR_MARIO" event="setup_done"/>
+
+    <!-- 等待马里奥 -->
+    <Transition from="WAIT_FOR_MARIO" to="MOVE_ALONG_TRACK" event="mario_stands_20_frames"/>
+    <Transition from="WAIT_FOR_MARIO" to="INIT" event="room_left"/>
+
+    <!-- 沿轨道移动 -->
+    <Transition from="MOVE_ALONG_TRACK" to="PAUSE_BRIEFLY" event="hit_pause_waypoint"/>
+    <Transition from="MOVE_ALONG_TRACK" to="INIT" event="reach_end_waypoint"/>
+    <Transition from="MOVE_ALONG_TRACK" to="FALL" event="reach_final_waypoint"/>
+
+    <!-- 短暂暂停 -->
+    <Transition from="PAUSE_BRIEFLY" to="MOVE_ALONG_TRACK" event="pause_20_frames"/>
+
+    <!-- 掉落 -->
+    <Transition from="FALL" to="INIT" event="timeout_disappear"/>
+
+    <!-- 全局重置 -->
+    <Transition from="MOVE_ALONG_TRACK" to="INIT" event="platform_reset"/>
+    <Transition from="FALL" to="INIT" event="platform_reset"/>
+</Transitions>

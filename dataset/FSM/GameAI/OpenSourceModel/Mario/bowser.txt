@@ -1,0 +1,49 @@
+<States>
+        <State name="StartBowser" type="initial"/>
+        <State name="WAIT" />
+        <State name="INTRO_WALK" />
+        <State name="DEFAULT" />
+        <State name="WALK_TO_MARIO" />
+        <State name="CHARGE_MARIO" />
+        <State name="BREATH_FIRE" />
+        <State name="SPIT_FIRE_INTO_SKY" />
+        <State name="SPIT_FIRE_ONTO_FLOOR" />
+        <State name="TELEPORT" />
+        <State name="BIG_JUMP" />
+        <State name="QUICK_JUMP" />
+        <State name="HIT_EDGE" />
+        <State name="TURN_FROM_EDGE" />
+        <State name="DANCE" />
+        <State name="TILT_LAVA_PLATFORM" />
+        <State name="HIT_MINE" />
+        <State name="THROWN" />
+        <State name="JUMP_ONTO_STAGE" />
+        <State name="DEAD" />
+</States>
+
+<Transitions>
+        <Transition from="StartBowser" to="WAIT" event="init_done"/>
+        <Transition from="WAIT" to="INTRO_WALK" event="cutscene_start"/>
+        <Transition from="INTRO_WALK" to="DEFAULT" event="intro_done"/>
+        <Transition from="DEFAULT" to="WALK_TO_MARIO" event="chase_mario"/>
+        <Transition from="DEFAULT" to="CHARGE_MARIO" event="attack_charge"/>
+        <Transition from="DEFAULT" to="BREATH_FIRE" event="attack_fire_breath"/>
+        <Transition from="DEFAULT" to="SPIT_FIRE_INTO_SKY" event="attack_fire_sky"/>
+        <Transition from="DEFAULT" to="SPIT_FIRE_ONTO_FLOOR" event="attack_fire_floor"/>
+        <Transition from="DEFAULT" to="TELEPORT" event="teleport"/>
+        <Transition from="DEFAULT" to="BIG_JUMP" event="jump_big"/>
+        <Transition from="DEFAULT" to="QUICK_JUMP" event="jump_quick"/>
+        <Transition from="DEFAULT" to="DANCE" event="taunt_dance"/>
+        <Transition from="BIG_JUMP" to="TILT_LAVA_PLATFORM" event="land_bitfs"/>
+        <Transition from="*" to="HIT_EDGE" event="touch_edge"/>
+        <Transition from="HIT_EDGE" to="TURN_FROM_EDGE" event="turn_around"/>
+        <Transition from="TURN_FROM_EDGE" to="DEFAULT" event="turn_done"/>
+        <Transition from="*" to="HIT_MINE" event="hit_bomb"/>
+        <Transition from="HIT_MINE" to="DEFAULT" event="recover"/>
+        <Transition from="*" to="THROWN" event="thrown_by_mario"/>
+        <Transition from="THROWN" to="DEFAULT" event="land_recover"/>
+        <Transition from="THROWN" to="DEAD" event="health_zero"/>
+        <Transition from="*" to="JUMP_ONTO_STAGE" event="fall_off_stage"/>
+        <Transition from="JUMP_ONTO_STAGE" to="DEFAULT" event="land_safe"/>
+        <Transition from="*" to="DEAD" event="defeated"/>
+</Transitions>

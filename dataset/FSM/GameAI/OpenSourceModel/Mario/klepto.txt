@@ -1,0 +1,34 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="WAIT_FOR_MARIO" />
+    <State name="TURN_TOWARD_MARIO" />
+    <State name="DIVE_AT_MARIO" />
+    <State name="CIRCLE_TARGET_HOLDING" />
+    <State name="APPROACH_TARGET_HOLDING" />
+    <State name="STRUCK_BY_MARIO" />
+    <State name="RETREAT" />
+    <State name="RESET_POSITION" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="WAIT_FOR_MARIO" event="init_done"/>
+    
+    <Transition from="WAIT_FOR_MARIO" to="TURN_TOWARD_MARIO" event="mario_in_1000u"/>
+    <Transition from="TURN_TOWARD_MARIO" to="DIVE_AT_MARIO" event="face_mario_and_ready"/>
+    
+    <Transition from="DIVE_AT_MARIO" to="WAIT_FOR_MARIO" event="dive_end_no_item"/>
+    <Transition from="DIVE_AT_MARIO" to="CIRCLE_TARGET_HOLDING" event="got_cap_or_star"/>
+    
+    <Transition from="CIRCLE_TARGET_HOLDING" to="APPROACH_TARGET_HOLDING" event="target_far"/>
+    <Transition from="APPROACH_TARGET_HOLDING" to="CIRCLE_TARGET_HOLDING" event="target_near"/>
+    
+    <Transition from="WAIT_FOR_MARIO" to="STRUCK_BY_MARIO" event="hit_by_mario"/>
+    <Transition from="TURN_TOWARD_MARIO" to="STRUCK_BY_MARIO" event="hit_by_mario"/>
+    <Transition from="DIVE_AT_MARIO" to="STRUCK_BY_MARIO" event="hit_by_mario"/>
+    <Transition from="CIRCLE_TARGET_HOLDING" to="STRUCK_BY_MARIO" event="hit_by_mario"/>
+    <Transition from="APPROACH_TARGET_HOLDING" to="STRUCK_BY_MARIO" event="hit_by_mario"/>
+    <Transition from="RESET_POSITION" to="STRUCK_BY_MARIO" event="hit_by_mario"/>
+    <Transition from="STRUCK_BY_MARIO" to="RETREAT" event="hurt_anim_end"/>
+    <Transition from="RETREAT" to="RESET_POSITION" event="turn_complete"/>
+    <Transition from="RESET_POSITION" to="WAIT_FOR_MARIO" event="reset_done"/>
+</Transitions>

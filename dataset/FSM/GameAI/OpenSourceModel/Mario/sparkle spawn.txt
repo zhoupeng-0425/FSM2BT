@@ -1,0 +1,25 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="SPAWN_RISE"/>
+    <State name="FLOAT_HOVER"/>
+    <State name="WAIT_CUTSCENE"/>
+    <State name="COLLECTIBLE"/>
+    <State name="DESTROYED"/>
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="SPAWN_RISE" event="init_done"/>
+
+    <!-- 上升 → 漂浮（到达目标高度） -->
+    <Transition from="SPAWN_RISE" to="FLOAT_HOVER" event="reach_home_y"/>
+
+    <!-- 漂浮 → 等待过场（落地） -->
+    <Transition from="FLOAT_HOVER" to="WAIT_CUTSCENE" event="landed"/>
+
+    <!-- 过场结束 → 可收集 -->
+    <Transition from="WAIT_CUTSCENE" to="COLLECTIBLE" event="cutscene_done"/>
+
+    <!-- 可收集状态：马里奥触碰 → 消失 -->
+    <Transition from="COLLECTIBLE" to="DESTROYED" event="mario_collected"/>
+</Transitions>

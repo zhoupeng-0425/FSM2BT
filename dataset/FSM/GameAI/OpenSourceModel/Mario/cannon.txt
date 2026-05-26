@@ -1,0 +1,22 @@
+<States>
+        <State name="StartCannon" type="initial"/>
+        <State name="IDLE" />
+        <State name="OPENING" />
+        <State name="ROTATE_YAW" />
+        <State name="ROTATE_PITCH" />
+        <State name="SHOOT" />
+        <State name="RESETTING" />
+        <State name="WAIT" />
+</States>
+      
+<Transitions>
+        <Transition from="StartCannon" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="OPENING" event="mario_enter"/>
+        <Transition from="OPENING" to="ROTATE_YAW" event="open_done"/>
+        <Transition from="ROTATE_YAW" to="ROTATE_PITCH" event="yaw_done"/>
+        <Transition from="ROTATE_PITCH" to="SHOOT" event="pitch_done"/>
+        <Transition from="SHOOT" to="RESETTING" event="shoot_done"/>
+        <Transition from="RESETTING" to="WAIT" event="reset_done"/>
+        <Transition from="WAIT" to="IDLE" event="wait_done"/>
+</Transitions>

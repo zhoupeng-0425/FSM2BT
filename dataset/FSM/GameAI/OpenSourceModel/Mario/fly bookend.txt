@@ -1,0 +1,23 @@
+<States>
+        <State name="StartManager" type="initial"/>
+        <State name="SPAWN_SWITCHES" />
+        <State name="WAIT_FOR_INPUT" />
+        <State name="CHECK_SWITCHES" />
+        <State name="UNLOCK_BOOKSHELF" />
+        <State name="RESET" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartManager" to="SPAWN_SWITCHES" event="init_done"/>
+        
+        <Transition from="SPAWN_SWITCHES" to="WAIT_FOR_INPUT" event="switches_spawned"/>
+        
+        <Transition from="WAIT_FOR_INPUT" to="CHECK_SWITCHES" event="mario_activate"/>
+        
+        <Transition from="CHECK_SWITCHES" to="UNLOCK_BOOKSHELF" event="all_correct"/>
+        <Transition from="CHECK_SWITCHES" to="RESET" event="wrong_answer"/>
+        
+        <Transition from="UNLOCK_BOOKSHELF" to="DELETED" event="bookshelf_unlocked"/>
+        <Transition from="RESET" to="SPAWN_SWITCHES" event="reset_finish"/>
+</Transitions>

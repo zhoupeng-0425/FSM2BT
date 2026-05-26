@@ -1,0 +1,24 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="HELD_BY_LAKITU"/>
+    <State name="THROWN"/>
+    <State name="WALK"/>
+    <State name="ATTACKED"/>
+</States>
+
+<Transitions>
+    <!-- 初始化：云龟生成 → 被持有 -->
+    <Transition from="START" to="HELD_BY_LAKITU" event="spawned_by_lakitu"/>
+
+    <!-- 云龟投掷 → 飞行中 -->
+    <Transition from="HELD_BY_LAKITU" to="THROWN" event="lakitu_throws"/>
+
+    <!-- 投掷落地 → 正常行走 -->
+    <Transition from="THROWN" to="WALK" event="landed_on_ground"/>
+
+    <!-- 行走中被攻击 → 受击硬直 -->
+    <Transition from="WALK" to="ATTACKED" event="attacked_by_mario"/>
+
+    <!-- 硬直结束 → 返回行走 -->
+    <Transition from="ATTACKED" to="WALK" event="hit_stun_end"/>
+</Transitions>

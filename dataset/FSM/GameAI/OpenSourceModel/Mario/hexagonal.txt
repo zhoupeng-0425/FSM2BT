@@ -1,0 +1,21 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="ROTATE_SLOW" />
+    <State name="ROTATE_ACCELERATE" />
+    <State name="STOP_SPAWN_FLAMES" />
+    <State name="ROTATE_DECELERATE" />
+    <State name="RESET" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="ROTATE_SLOW" event="init_done"/>
+    
+    <Transition from="ROTATE_SLOW" to="ROTATE_ACCELERATE" event="mario_step_on"/>
+    
+    <Transition from="ROTATE_ACCELERATE" to="STOP_SPAWN_FLAMES" event="timer_128_end"/>
+    
+    <Transition from="STOP_SPAWN_FLAMES" to="ROTATE_DECELERATE" event="mario_off_or_timer_end"/>
+    
+    <Transition from="ROTATE_DECELERATE" to="ROTATE_SLOW" event="timer_128_end"/>
+    <Transition from="RESET" to="ROTATE_SLOW" event="force_reset"/>
+</Transitions>

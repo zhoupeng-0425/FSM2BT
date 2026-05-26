@@ -1,0 +1,15 @@
+<States>
+        <State name="StartBP" type="initial"/>
+        <State name="WAIT" />
+        <State name="POKE_OUT" />
+        <State name="EXTEND" />
+        <State name="RETRACT" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBP" to="WAIT" event="init_done"/>
+        <Transition from="WAIT" to="POKE_OUT" event="timer_done"/>
+        <Transition from="POKE_OUT" to="EXTEND" event="timer_15"/>
+        <Transition from="EXTEND" to="RETRACT" event="timer_60"/>
+        <Transition from="RETRACT" to="POKE_OUT" event="timer_90"/>
+</Trans>

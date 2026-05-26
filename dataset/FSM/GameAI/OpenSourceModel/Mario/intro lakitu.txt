@@ -1,0 +1,17 @@
+<States>
+        <State name="Start" type="initial"/>
+        <State name="HIDDEN" />
+        <State name="INTRO_CAMERA_PATH" />
+        <State name="EXIT_PATH" />
+        <State name="ENDING_SCENE" />
+        <State name="ENDING_FLY_AWAY" />
+</States>
+      
+<Transitions>
+        <Transition from="Start" to="HIDDEN" event="init_done"/>
+        <Transition from="HIDDEN" to="INTRO_CAMERA_PATH" event="cutscene_start"/>
+        <Transition from="INTRO_CAMERA_PATH" to="EXIT_PATH" event="spline_end"/>
+        <Transition from="EXIT_PATH" to="DELETED" event="fly_away"/>
+        <Transition from="HIDDEN" to="ENDING_SCENE" event="ending_cutscene"/>
+        <Transition from="ENDING_SCENE" to="ENDING_FLY_AWAY" event="timer_end"/>
+</Transitions>

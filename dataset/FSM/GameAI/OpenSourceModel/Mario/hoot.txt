@@ -1,0 +1,18 @@
+<States>
+        <State name="Start" type="initial"/>
+        <State name="SLEEP_IN_TREE" />
+        <State name="TALK" />
+        <State name="READY_TO_FLY" />
+        <State name="ASCENT" />
+        <State name="CARRY_MARIO" />
+        <State name="TIRED" />
+</States>
+      
+<Transitions>
+        <Transition from="Start" to="SLEEP_IN_TREE" event="init_done"/>
+        <Transition from="SLEEP_IN_TREE" to="TALK" event="mario_near"/>
+        <Transition from="TALK" to="READY_TO_FLY" event="dialog_end"/>
+        <Transition from="READY_TO_FLY" to="ASCENT" event="grab_mario"/>
+        <Transition from="ASCENT" to="CARRY_MARIO" event="reach_height"/>
+        <Transition from="CARRY_MARIO" to="TIRED" event="dialog_end_2"/>
+</Transitions>

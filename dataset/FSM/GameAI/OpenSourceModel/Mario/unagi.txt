@@ -1,0 +1,25 @@
+<States>
+    <State name="INIT" type="initial"/>
+    <State name="IDLE"/>
+    <State name="SWIM_PATH"/>
+    <State name="RESET_PATH"/>
+    <State name="HIDE_IN_HOLE"/>
+    <State name="ATTACK_PREP"/>
+    <State name="SWIM_BACK"/>
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="INIT" to="IDLE" event="path_loaded"/>
+    <Transition from="INIT" to="HIDE_IN_HOLE" event="is_big_eel"/>
+
+    <!-- 游动逻辑 -->
+    <Transition from="IDLE" to="SWIM_PATH" event="mario_near"/>
+    <Transition from="SWIM_PATH" to="RESET_PATH" event="path_end"/>
+    <Transition from="RESET_PATH" to="SWIM_PATH" event="reset_done"/>
+
+    <!-- 洞穴攻击逻辑 -->
+    <Transition from="HIDE_IN_HOLE" to="ATTACK_PREP" event="mario_near_hole"/>
+    <Transition from="ATTACK_PREP" to="SWIM_BACK" event="charge_forward"/>
+    <Transition from="SWIM_BACK" to="HIDE_IN_HOLE" event="returned_to_hole"/>
+</Transitions>

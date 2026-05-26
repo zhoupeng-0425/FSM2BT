@@ -1,0 +1,16 @@
+<States>
+        <State name="StartClock" type="initial"/>
+        <State name="WAIT_READY" />
+        <State name="DETECT_ENTER" />
+        <State name="STOPPED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartClock" to="WAIT_READY" event="init_done"/>
+        
+        <Transition from="WAIT_READY" to="DETECT_ENTER" event="mario_stand_safe"/>
+        <Transition from="DETECT_ENTER" to="STOPPED" event="mario_touch_painting"/>
+        
+        <Transition from="START" to="STOPPED" event="mario_touch_painting"/>
+        <Transition from="WAIT_READY" to="STOPPED" event="mario_touch_painting"/>
+</Transitions>

@@ -1,0 +1,29 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="LUNGE" />
+    <State name="WALK" />
+    <State name="DEAD" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE" event="init_done"/>
+
+    <!-- 闲置 → 冲刺（水面转向完成） -->
+    <Transition from="IDLE" to="LUNGE" event="turn_complete"/>
+
+    <!-- 闲置 → 行走（在地面上） -->
+    <Transition from="IDLE" to="WALK" event="on_ground"/>
+
+    <!-- 冲刺 → 闲置（离开水面/速度归零） -->
+    <Transition from="LUNGE" to="IDLE" event="lunge_complete"/>
+
+    <!-- 行走 → 闲置（离开地面/随机切换） -->
+    <Transition from="WALK" to="IDLE" event="walk_finish"/>
+
+    <!-- 全局：被攻击 → 死亡 -->
+    <Transition from="IDLE" to="DEAD" event="attacked"/>
+    <Transition from="LUNGE" to="DEAD" event="attacked"/>
+    <Transition from="WALK" to="DEAD" event="attacked"/>
+</Transitions>

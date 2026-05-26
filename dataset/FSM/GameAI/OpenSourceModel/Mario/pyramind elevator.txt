@@ -1,0 +1,21 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="START_MOVING" />
+    <State name="CONSTANT_VELOCITY" />
+    <State name="AT_BOTTOM" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE" event="init_done"/>
+
+    <!-- 待机 → 启动下沉 -->
+    <Transition from="IDLE" to="START_MOVING" event="mario_stands_on"/>
+
+    <!-- 启动动画 → 匀速下沉 -->
+    <Transition from="START_MOVING" to="CONSTANT_VELOCITY" event="start_anim_done"/>
+
+    <!-- 匀速移动 → 到达底部 -->
+    <Transition from="CONSTANT_VELOCITY" to="AT_BOTTOM" event="reached_bottom"/>
+</Transitions>

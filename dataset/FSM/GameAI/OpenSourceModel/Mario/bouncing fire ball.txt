@@ -1,0 +1,13 @@
+<States>
+        <State name="StartF" type="initial"/>
+        <State name="IDLE" />
+        <State name="SPAWNING" />
+        <State name="COOLDOWN" />
+</States>
+      
+<Transitions>
+        <Transition from="StartF" to="IDLE" event="init_done"/>
+        <Transition from="IDLE" to="SPAWNING" event="mario_near"/>
+        <Transition from="SPAWNING" to="COOLDOWN" event="spawn_done"/>
+        <Transition from="COOLDOWN" to="IDLE" event="cooldown_done"/>
+</Transitions>

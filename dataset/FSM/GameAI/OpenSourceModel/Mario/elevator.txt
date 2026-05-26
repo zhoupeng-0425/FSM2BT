@@ -1,0 +1,21 @@
+<States>
+        <State name="StartElevator" type="initial"/>
+        <State name="IDLE" />
+        <State name="MOVE_UP" />
+        <State name="MOVE_DOWN" />
+        <State name="STOP_AT_TOP" />
+        <State name="STOP_AT_BOTTOM" />
+</States>
+      
+<Transitions>
+        <Transition from="StartElevator" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="MOVE_UP" event="mario_stand_on_and_below_mid"/>
+        <Transition from="IDLE" to="MOVE_DOWN" event="mario_stand_on_and_above_mid"/>
+        
+        <Transition from="MOVE_UP" to="STOP_AT_TOP" event="reach_top"/>
+        <Transition from="MOVE_DOWN" to="STOP_AT_BOTTOM" event="reach_bottom"/>
+        
+        <Transition from="STOP_AT_TOP" to="IDLE" event="mario_leave"/>
+        <Transition from="STOP_AT_BOTTOM" to="IDLE" event="mario_leave"/>
+</Transitions>

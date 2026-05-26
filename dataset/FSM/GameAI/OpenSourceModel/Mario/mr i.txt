@@ -1,0 +1,29 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="LOOK_AROUND" />
+    <State name="ATTACK" />
+    <State name="DEATH" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE" event="init_done"/>
+
+    <!-- 正常流程 -->
+    <Transition from="IDLE" to="LOOK_AROUND" event="mario_in_1500"/>
+    <Transition from="LOOK_AROUND" to="ATTACK" event="mario_close_700"/>
+    <Transition from="ATTACK" to="LOOK_AROUND" event="mario_far_800"/>
+
+    <!-- 死亡流程 -->
+    <Transition from="ATTACK" to="DEATH" event="spin_too_much"/>
+
+    <!-- 远离重置 -->
+    <Transition from="LOOK_AROUND" to="IDLE" event="mario_far_3000"/>
+    <Transition from="ATTACK" to="IDLE" event="mario_far_3000"/>
+
+    <!-- 被攻击 → 死亡） -->
+    <Transition from="IDLE" to="DEATH" event="attacked_by_mario"/>
+    <Transition from="LOOK_AROUND" to="DEATH" event="attacked_by_mario"/>
+    <Transition from="ATTACK" to="DEATH" event="attacked_by_mario"/>
+</Transitions>

@@ -1,0 +1,22 @@
+<States>
+        <State name="StartPlatform" type="initial"/>
+        <State name="IDLE" />
+        <State name="SHAKE" />
+        <State name="FALL" />
+        <State name="DESPAWN" />
+	<State name="DESPAWN" />
+</States>
+      
+<Transitions>
+        <Transition from="StartPlatform" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="SHAKE" event="mario_stand_on"/>
+        <Transition from="SHAKE" to="FALL" event="shake_finish"/>
+        
+        <Transition from="FALL" to="DESPAWN" event="hit_ground"/>
+        <Transition from="IDLE" to="DESPAWN" event="mario_far_away"/>
+        <Transition from="SHAKE" to="DESPAWN" event="mario_far_away"/>
+        <Transition from="FALL" to="DESPAWN" event="mario_far_away"/>
+        
+        <Transition from="DESPAWN" to="DELETED" event="finish_explode_or_unload"/>
+</Transitions>

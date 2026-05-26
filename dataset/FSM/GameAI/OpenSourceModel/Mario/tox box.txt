@@ -1,0 +1,34 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="INIT"/>
+    <State name="ROLL_FORWARD"/>
+    <State name="ROLL_BACKWARD"/>
+    <State name="ROLL_RIGHT"/>
+    <State name="ROLL_LEFT"/>
+    <State name="ROLL_LAND"/>
+    <State name="IDLE"/>
+</States>
+
+<Transitions>
+    <!-- 初始化 → 读取动作表 -->
+    <Transition from="START" to="INIT" event="init_done"/>
+
+    <!-- 四个方向滚动 → 落地 -->
+    <Transition from="ROLL_FORWARD" to="ROLL_LAND" event="roll_7_frames"/>
+    <Transition from="ROLL_BACKWARD" to="ROLL_LAND" event="roll_7_frames"/>
+    <Transition from="ROLL_RIGHT" to="ROLL_LAND" event="roll_7_frames"/>
+    <Transition from="ROLL_LEFT" to="ROLL_LAND" event="roll_7_frames"/>
+
+    <!-- 落地 → 动作表下一个指令 -->
+    <Transition from="ROLL_LAND" to="IDLE" event="land_20_frames"/>
+    <Transition from="ROLL_LAND" to="ROLL_FORWARD" event="land_20_frames"/>
+    <Transition from="ROLL_LAND" to="ROLL_BACKWARD" event="land_20_frames"/>
+    <Transition from="ROLL_LAND" to="ROLL_RIGHT" event="land_20_frames"/>
+    <Transition from="ROLL_LAND" to="ROLL_LEFT" event="land_20_frames"/>
+
+    <!-- 待机 → 动作表下一个指令 -->
+    <Transition from="IDLE" to="ROLL_FORWARD" event="idle_20_frames"/>
+    <Transition from="IDLE" to="ROLL_BACKWARD" event="idle_20_frames"/>
+    <Transition from="IDLE" to="ROLL_RIGHT" event="idle_20_frames"/>
+    <Transition from="IDLE" to="ROLL_LEFT" event="idle_20_frames"/>
+</Transitions>

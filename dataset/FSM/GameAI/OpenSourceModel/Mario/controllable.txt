@@ -1,0 +1,34 @@
+<States>
+        <State name="StartPlatform" type="initial"/>
+        <State name="IDLE" />
+        <State name="MOVE_FORWARD" />
+        <State name="MOVE_BACKWARD" />
+        <State name="MOVE_RIGHT" />
+        <State name="MOVE_LEFT" />
+        <State name="SHAKE" />
+        <State name="HIDE" />
+</States>
+      
+<Transitions>
+        <Transition from="StartPlatform" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="MOVE_FORWARD" event="press_forward"/>
+        <Transition from="IDLE" to="MOVE_BACKWARD" event="press_backward"/>
+        <Transition from="IDLE" to="MOVE_RIGHT" event="press_right"/>
+        <Transition from="IDLE" to="MOVE_LEFT" event="press_left"/>
+        
+        <Transition from="MOVE_FORWARD" to="SHAKE" event="hit_wall"/>
+        <Transition from="MOVE_BACKWARD" to="SHAKE" event="hit_wall"/>
+        <Transition from="MOVE_RIGHT" to="SHAKE" event="hit_wall"/>
+        <Transition from="MOVE_LEFT" to="SHAKE" event="hit_wall"/>
+        
+        <Transition from="SHAKE" to="IDLE" event="shake_done"/>
+        
+        <Transition from="IDLE" to="HIDE" event="mario_far"/>
+        <Transition from="MOVE_FORWARD" to="HIDE" event="mario_far"/>
+        <Transition from="MOVE_BACKWARD" to="HIDE" event="mario_far"/>
+        <Transition from="MOVE_RIGHT" to="HIDE" event="mario_far"/>
+        <Transition from="MOVE_LEFT" to="HIDE" event="mario_far"/>
+        
+        <Transition from="HIDE" to="IDLE" event="mario_near"/>
+</Transitions>

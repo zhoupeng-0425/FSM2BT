@@ -1,0 +1,22 @@
+<States>
+        <State name="StartDoor" type="initial"/>
+        <State name="CLOSED" />
+        <State name="OPEN_LEFT" />
+        <State name="OPEN_RIGHT" />
+        <State name="WARP_OPEN" />
+        <State name="WARP_OPEN_REVERSE" />
+</States>
+      
+<Transitions>
+        <Transition from="StartDoor" to="CLOSED" event="init_done"/>
+        
+        <Transition from="CLOSED" to="OPEN_LEFT" event="mario_open_left"/>
+        <Transition from="CLOSED" to="OPEN_RIGHT" event="mario_open_right"/>
+        <Transition from="CLOSED" to="WARP_OPEN" event="warp_trigger"/>
+        <Transition from="CLOSED" to="WARP_OPEN_REVERSE" event="warp_reverse"/>
+        
+        <Transition from="OPEN_LEFT" to="CLOSED" event="anim_finish"/>
+        <Transition from="OPEN_RIGHT" to="CLOSED" event="anim_finish"/>
+        <Transition from="WARP_OPEN" to="CLOSED" event="anim_finish"/>
+        <Transition from="WARP_OPEN_REVERSE" to="CLOSED" event="anim_finish"/>
+</Transitions>

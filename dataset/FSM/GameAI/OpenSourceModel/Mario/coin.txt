@@ -1,0 +1,29 @@
+<States>
+        <State name="StartCoin" type="initial"/>
+        <State name="IDLE" />
+        <State name="SPAWNED" />
+        <State name="BOUNCE" />
+        <State name="INSIDE_BOO" />
+        <State name="RELEASED" />
+        <State name="COLLECTED" />
+        <State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartCoin" to="IDLE" event="normal_coin"/>
+        <Transition from="StartCoin" to="SPAWNED" event="spawned_coin"/>
+        <Transition from="StartCoin" to="INSIDE_BOO" event="coin_in_boo"/>
+        
+        <Transition from="SPAWNED" to="BOUNCE" event="hit_ground"/>
+        <Transition from="BOUNCE" to="IDLE" event="stop_bouncing"/>
+        
+        <Transition from="INSIDE_BOO" to="RELEASED" event="boo_defeated"/>
+        <Transition from="RELEASED" to="IDLE" event="landed"/>
+        
+        <Transition from="IDLE" to="COLLECTED" event="mario_touch"/>
+        <Transition from="SPAWNED" to="COLLECTED" event="mario_touch"/>
+        <Transition from="BOUNCE" to="COLLECTED" event="mario_touch"/>
+        <Transition from="RELEASED" to="COLLECTED" event="mario_touch"/>
+        
+        <Transition from="COLLECTED" to="DELETED" event="finish_spawn_sparkles"/>
+</Transitions>

@@ -1,0 +1,25 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE_DIALOG" />
+    <State name="FOLLOW_PATH" />
+    <State name="ROLL_TO_SPOT" />
+    <State name="JUMPING" />
+    <State name="LANDED" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE_DIALOG" event="init_done"/>
+
+    <!-- 对话同意 → 沿轨迹滚动 -->
+    <Transition from="IDLE_DIALOG" to="FOLLOW_PATH" event="dialog_yes"/>
+
+    <!-- 到达路径终点 → 自由滚动 -->
+    <Transition from="FOLLOW_PATH" to="ROLL_TO_SPOT" event="path_end_reached"/>
+
+    <!-- 滚到目标点 → 跳跃 -->
+    <Transition from="ROLL_TO_SPOT" to="JUMPING" event="reach_target_pos"/>
+
+    <!-- 落地 → 静止 -->
+    <Transition from="JUMPING" to="LANDED" event="landed_on_ground"/>
+</Transitions>

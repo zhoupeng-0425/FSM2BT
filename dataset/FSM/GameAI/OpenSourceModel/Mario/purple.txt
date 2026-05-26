@@ -1,0 +1,31 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="PRESSED" />
+    <State name="TICKING" />
+    <State name="WAIT_FOR_MARIO_TO_GET_OFF" />
+    <State name="UNPRESSED" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE" event="init_done"/>
+
+    <!-- 闲置 → 被踩下 -->
+    <Transition from="IDLE" to="PRESSED" event="mario_step_on_switch"/>
+
+    <!-- 按下动画 → 计时开始 -->
+    <Transition from="PRESSED" to="TICKING" event="press_anim_done"/>
+
+    <!-- 计时中 → 时间到等待离开 -->
+    <Transition from="TICKING" to="WAIT_FOR_MARIO_TO_GET_OFF" event="time_up"/>
+
+    <!-- 等待马里奥离开 -->
+    <Transition from="WAIT_FOR_MARIO_TO_GET_OFF" to="UNPRESSED" event="mario_stepped_off"/>
+
+    <!-- 弹起动画 → 回到闲置 -->
+    <Transition from="UNPRESSED" to="IDLE" event="unpress_anim_done"/>
+
+    <!-- 特殊：类型1 马里奥离开立即弹起 -->
+    <Transition from="TICKING" to="UNPRESSED" event="mario_stepped_off_type1"/>
+</Transitions>

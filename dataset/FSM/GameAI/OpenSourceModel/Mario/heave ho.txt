@@ -1,0 +1,15 @@
+<States>
+        <State name="Start" type="initial"/>
+        <State name="HIDDEN" />
+        <State name="READY" />
+        <State name="CHASE" />
+        <State name="THROW" />
+</States>
+      
+<Transitions>
+        <Transition from="Start" to="HIDDEN" event="init_done"/>
+        <Transition from="HIDDEN" to="READY" event="mario_near_and_not_in_water"/>
+        <Transition from="READY" to="CHASE" event="animation_done"/>
+        <Transition from="CHASE" to="THROW" event="grab_mario"/>
+        <Transition from="THROW" to="READY" event="throw_animation_end"/>
+</Transitions>

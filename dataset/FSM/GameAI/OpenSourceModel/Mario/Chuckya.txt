@@ -1,0 +1,33 @@
+<States>
+        <State name="StartChuckya" type="initial"/>
+        <State name="IDLE" />
+        <State name="CHASE" />
+        <State name="RETURN_HOME" />
+        <State name="GRAB_MARIO" />
+        <State name="THROW_MARIO" />
+        <State name="COOLDOWN" />
+        <State name="DEATH" />
+</States>
+      
+<Transitions>
+        <Transition from="StartChuckya" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="CHASE" event="mario_near"/>
+        <Transition from="CHASE" to="IDLE" event="mario_far"/>
+        <Transition from="CHASE" to="RETURN_HOME" event="too_far_from_home"/>
+        <Transition from="RETURN_HOME" to="IDLE" event="arrived_home"/>
+        
+        <Transition from="IDLE" to="GRAB_MARIO" event="catch_mario"/>
+        <Transition from="CHASE" to="GRAB_MARIO" event="catch_mario"/>
+        
+        <Transition from="GRAB_MARIO" to="THROW_MARIO" event="throw_start"/>
+        <Transition from="THROW_MARIO" to="COOLDOWN" event="throw_finish"/>
+        <Transition from="COOLDOWN" to="IDLE" event="cooldown_finish"/>
+        
+        <Transition from="IDLE" to="DEATH" event="hit_wall"/>
+        <Transition from="CHASE" to="DEATH" event="hit_wall"/>
+        <Transition from="RETURN_HOME" to="DEATH" event="hit_wall"/>
+        <Transition from="GRAB_MARIO" to="DEATH" event="hit_wall"/>
+        <Transition from="THROW_MARIO" to="DEATH" event="hit_wall"/>
+        <Transition from="COOLDOWN" to="DEATH" event="hit_wall"/>
+</Transitions>

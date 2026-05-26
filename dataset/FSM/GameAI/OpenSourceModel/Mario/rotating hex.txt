@@ -1,0 +1,15 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="WAIT_FOR_MARIO" />
+    <State name="SPAWN_FLAMES" />
+    <State name="ROTATE" />
+    <State name="RESET" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="WAIT_FOR_MARIO" event="init_done"/>
+    <Transition from="WAIT_FOR_MARIO" to="SPAWN_FLAMES" event="mario_in_range"/>
+    <Transition from="SPAWN_FLAMES" to="ROTATE" event="flames_spawned"/>
+    <Transition from="ROTATE" to="RESET" event="mario_far_away"/>
+    <Transition from="RESET" to="WAIT_FOR_MARIO" event="reset_done"/>
+</Transitions>

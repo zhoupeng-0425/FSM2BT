@@ -1,0 +1,40 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="SELECT_HOLE" />
+    <State name="RISE_FROM_HOLE" />
+    <State name="SPAWN_ROCK" />
+    <State name="BEGIN_JUMP_INTO_HOLE" />
+    <State name="THROW_ROCK" />
+    <State name="JUMP_INTO_HOLE" />
+    <State name="HIDE" />
+    <State name="JUMP_OUT_OF_HOLE" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="SELECT_HOLE" event="init_done"/>
+
+    <!-- 正常出洞流程 -->
+    <Transition from="SELECT_HOLE" to="RISE_FROM_HOLE" event="found_hole_normal"/>
+    <Transition from="SELECT_HOLE" to="JUMP_OUT_OF_HOLE" event="found_hole_jump"/>
+
+    <Transition from="RISE_FROM_HOLE" to="SPAWN_ROCK" event="rise_done"/>
+    <Transition from="SPAWN_ROCK" to="THROW_ROCK" event="spawn_rock_success"/>
+    <Transition from="SPAWN_ROCK" to="BEGIN_JUMP_INTO_HOLE" event="no_rock_or_mario_far"/>
+
+    <Transition from="THROW_ROCK" to="BEGIN_JUMP_INTO_HOLE" event="throw_done"/>
+    <Transition from="BEGIN_JUMP_INTO_HOLE" to="JUMP_INTO_HOLE" event="ready_to_jump"/>
+    <Transition from="JUMP_INTO_HOLE" to="HIDE" event="near_floor"/>
+    <Transition from="HIDE" to="SELECT_HOLE" event="hidden_and_reset"/>
+
+    <!-- 跳跃出洞 -->
+    <Transition from="JUMP_OUT_OF_HOLE" to="BEGIN_JUMP_INTO_HOLE" event="landed"/>
+
+    <!-- 被攻击 → 强制躲回洞里-->
+    <Transition from="SELECT_HOLE" to="HIDE" event="attacked_by_mario"/>
+    <Transition from="RISE_FROM_HOLE" to="HIDE" event="attacked_by_mario"/>
+    <Transition from="SPAWN_ROCK" to="HIDE" event="attacked_by_mario"/>
+    <Transition from="BEGIN_JUMP_INTO_HOLE" to="HIDE" event="attacked_by_mario"/>
+    <Transition from="THROW_ROCK" to="HIDE" event="attacked_by_mario"/>
+    <Transition from="JUMP_INTO_HOLE" to="HIDE" event="attacked_by_mario"/>
+    <Transition from="JUMP_OUT_OF_HOLE" to="HIDE" event="attacked_by_mario"/>
+</Transitions>

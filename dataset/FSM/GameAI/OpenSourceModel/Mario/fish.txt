@@ -1,0 +1,20 @@
+<States>
+        <State name="StartFish" type="initial"/>
+        <State name="INIT" />
+        <State name="ROAM" />
+        <State name="FLEE" />
+        <State name="DESPAWN" />
+</States>
+      
+<Transitions>
+        <Transition from="StartFish" to="INIT" event="init_done"/>
+        
+        <Transition from="INIT" to="ROAM" event="setup_finish"/>
+        
+        <Transition from="ROAM" to="FLEE" event="mario_too_close"/>
+        
+        <Transition from="FLEE" to="ROAM" event="mario_far_away"/>
+        
+        <Transition from="ROAM" to="DESPAWN" event="out_of_water_or_respawn"/>
+        <Transition from="FLEE" to="DESPAWN" event="out_of_water_or_respawn"/>
+</Transitions>

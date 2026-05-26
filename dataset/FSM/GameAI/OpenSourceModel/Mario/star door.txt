@@ -1,0 +1,24 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="CLOSED" />
+    <State name="OPENING" />
+    <State name="OPENED" />
+    <State name="CLOSING" />
+</States>
+
+<Transitions>
+    <!-- 初始化 → 关闭状态 -->
+    <Transition from="START" to="CLOSED" event="init_done"/>
+
+    <!-- 关闭 → 开门（马里奥互动/双门同步） -->
+    <Transition from="CLOSED" to="OPENING" event="mario_interact_or_partner_open"/>
+
+    <!-- 开门中 → 完全打开（15帧） -->
+    <Transition from="OPENING" to="OPENED" event="timer_15"/>
+
+    <!-- 完全打开 → 关门（30帧后） -->
+    <Transition from="OPENED" to="CLOSING" event="timer_30"/>
+
+    <!-- 关门中 → 关闭（15帧） -->
+    <Transition from="CLOSING" to="CLOSED" event="timer_15"/>
+</Transitions>

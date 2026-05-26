@@ -1,0 +1,29 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE_DIALOG" />
+    <State name="PATROL" />
+    <State name="CHASE" />
+    <State name="GRAB_MARIO" />
+    <State name="THROW_MARIO" />
+    <State name="THROWN" />
+    <State name="DAMAGED" />
+    <State name="RETURN_HOME" />
+    <State name="DEFEAT_DIALOG" />
+    <State name="DEATH" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="IDLE_DIALOG" event="mario_near"/>
+    <Transition from="IDLE_DIALOG" to="PATROL" event="dialog_end"/>
+    <Transition from="PATROL" to="CHASE" event="mario_in_range"/>
+    <Transition from="CHASE" to="GRAB_MARIO" event="contact_mario"/>
+    <Transition from="GRAB_MARIO" to="THROW_MARIO" event="mario_escape_fail"/>
+    <Transition from="THROW_MARIO" to="CHASE" event="throw_complete"/>
+    <Transition from="CHASE" to="THROWN" event="mario_grab_from_back"/>
+    <Transition from="THROWN" to="DAMAGED" event="land_on_ground"/>
+    <Transition from="DAMAGED" to="CHASE" event="hurt_anim_end"/>
+    <Transition from="THROWN" to="RETURN_HOME" event="thrown_off_hill"/>
+    <Transition from="RETURN_HOME" to="IDLE_DIALOG" event="back_to_spawn"/>
+    <Transition from="DAMAGED" to="DEFEAT_DIALOG" event="health_zero"/>
+    <Transition from="DEFEAT_DIALOG" to="DEATH" event="defeat_dialog_end"/>
+</Transitions>

@@ -1,0 +1,35 @@
+<States>
+        <State name="StartB" type="initial"/>
+        <State name="PATROL" />
+        <State name="CHASE_MARIO" />
+        <State name="HELD" />
+        <State name="THROWN" />
+        <State name="DROPPED" />
+        <State name="LAUNCHED" />
+        <State name="EXPLODE" />
+        <State name="LAVA_DEATH" />
+        <State name="DEATH_PLANE_DEATH" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartB" to="PATROL" event="init_done"/>
+        <Transition from="PATROL" to="CHASE_MARIO" event="mario_detected"/>
+        <Transition from="PATROL" to="HELD" event="grabbed_by_mario"/>
+        <Transition from="PATROL" to="LAUNCHED" event="attacked"/>
+        <Transition from="CHASE_MARIO" to="HELD" event="grabbed_by_mario"/>
+        <Transition from="CHASE_MARIO" to="LAUNCHED" event="attacked"/>
+        <Transition from="HELD" to="THROWN" event="thrown"/>
+        <Transition from="HELD" to="DROPPED" event="dropped"/>
+        <Transition from="HELD" to="EXPLODE" event="fuse_expire"/>
+        <Transition from="THROWN" to="LAUNCHED" event="in_air"/>
+        <Transition from="DROPPED" to="PATROL" event="landed"/>
+        <Transition from="LAUNCHED" to="EXPLODE" event="landed"/>
+        <Transition from="LAUNCHED" to="LAVA_DEATH" event="fall_in_lava"/>
+        <Transition from="LAUNCHED" to="DEATH_PLANE_DEATH" event="fall_off_level"/>
+        <Transition from="CHASE_MARIO" to="EXPLODE" event="fuse_expire_or_hit"/>
+        <Transition from="PATROL" to="EXPLODE" event="attacked_explode"/>
+        <Transition from="EXPLODE" to="DELETED" event="exploded"/>
+        <Transition from="LAVA_DEATH" to="DELETED" event="despawn"/>
+        <Transition from="DEATH_PLANE_DEATH" to="DELETED" event="despawn"/>
+</Transitions>

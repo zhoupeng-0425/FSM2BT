@@ -1,0 +1,24 @@
+<States>
+        <State name="StartBoo" type="initial"/>
+        <State name="INIT" />
+        <State name="CHASE" />
+        <State name="BOUNCED" />
+        <State name="DYING" />
+        <State name="DIALOG" />
+        <State name="INIT_MOVE" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBoo" to="INIT" event="init_done"/>
+        <Transition from="INIT" to="INIT_MOVE" event="start_merry_go_round"/>
+        <Transition from="INIT" to="CHASE" event="mario_near"/>
+        <Transition from="INIT_MOVE" to="CHASE" event="move_done"/>
+        <Transition from="CHASE" to="BOUNCED" event="bounced_on"/>
+        <Transition from="CHASE" to="DYING" event="attacked"/>
+        <Transition from="CHASE" to="INIT" event="mario_far"/>
+        <Transition from="BOUNCED" to="CHASE" event="recover"/>
+        <Transition from="DYING" to="DIALOG" event="dead"/>
+        <Transition from="DYING" to="DELETED" event="dead_default"/>
+        <Transition from="DIALOG" to="DELETED" event="dialog_end"/>
+</Transitions>

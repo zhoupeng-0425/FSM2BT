@@ -1,0 +1,17 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="APPEAR" />
+    <State name="WALK" />
+    <State name="DESPAWN" />
+    <State name="COLLECTED" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="APPEAR" event="init_done"/>
+    <Transition from="APPEAR" to="WALK" event="appear_done"/>
+    <Transition from="WALK" to="DESPAWN" event="timeout"/>
+
+    <Transition from="APPEAR" to="COLLECTED" event="mario_collect"/>
+    <Transition from="WALK" to="COLLECTED" event="mario_collect"/>
+    <Transition from="DESPAWN" to="COLLECTED" event="mario_collect"/>
+</Transitions>

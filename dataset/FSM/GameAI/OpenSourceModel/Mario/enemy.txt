@@ -1,0 +1,22 @@
+<States>
+        <State name="StartLakitu" type="initial"/>
+        <State name="HIDDEN" />
+        <State name="ACTIVE" />
+        <State name="HOLD_SPINY" />
+        <State name="THROW_SPINY" />
+        <State name="DEATH" />
+</States>
+      
+<Transitions>
+        <Transition from="StartLakitu" to="HIDDEN" event="init_done"/>
+        
+        <Transition from="HIDDEN" to="ACTIVE" event="mario_approach"/>
+        
+        <Transition from="ACTIVE" to="HOLD_SPINY" event="spawn_spiny"/>
+        <Transition from="HOLD_SPINY" to="THROW_SPINY" event="ready_to_throw"/>
+        <Transition from="THROW_SPINY" to="ACTIVE" event="throw_finish"/>
+        
+        <Transition from="ACTIVE" to="DEATH" event="attacked_by_mario"/>
+        <Transition from="HOLD_SPINY" to="DEATH" event="attacked_by_mario"/>
+        <Transition from="THROW_SPINY" to="DEATH" event="attacked_by_mario"/>
+</Transitions>

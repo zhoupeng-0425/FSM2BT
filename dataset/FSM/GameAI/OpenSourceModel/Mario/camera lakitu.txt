@@ -1,0 +1,17 @@
+<States>
+        <State name="StartLakitu" type="initial"/>
+        <State name="TRIGGER_CUTSCENE" />
+        <State name="SPAWN_CLOUD" />
+        <State name="SHOW_DIALOG" />
+        <State name="FOLLOW_CAMERA" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartLakitu" to="TRIGGER_CUTSCENE" event="init_done"/>
+        <Transition from="StartLakitu" to="FOLLOW_CAMERA" event="is_mirror_lakitu"/>
+        
+        <Transition from="TRIGGER_CUTSCENE" to="SPAWN_CLOUD" event="mario_on_bridge"/>
+        <Transition from="SPAWN_CLOUD" to="SHOW_DIALOG" event="cutscene_start"/>
+        <Transition from="SHOW_DIALOG" to="DELETED" event="fly_away"/>
+</Transitions>

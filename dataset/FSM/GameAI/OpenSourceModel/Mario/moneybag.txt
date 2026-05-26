@@ -1,0 +1,24 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="APPEAR" />
+    <State name="MOVE_AROUND" />
+    <State name="RETURN_HOME" />
+    <State name="DISAPPEAR" />
+    <State name="DEATH" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="APPEAR" event="init_done"/>
+    <Transition from="APPEAR" to="MOVE_AROUND" event="fade_in_done"/>
+    
+    <Transition from="MOVE_AROUND" to="RETURN_HOME" event="mario_far"/>
+    <Transition from="RETURN_HOME" to="MOVE_AROUND" event="mario_near"/>
+    
+    <Transition from="RETURN_HOME" to="DISAPPEAR" event="reach_home"/>
+
+  
+    <Transition from="APPEAR" to="DEATH" event="attacked_by_mario"/>
+    <Transition from="MOVE_AROUND" to="DEATH" event="attacked_by_mario"/>
+    <Transition from="RETURN_HOME" to="DEATH" event="attacked_by_mario"/>
+    <Transition from="DISAPPEAR" to="DEATH" event="attacked_by_mario"/>
+</Transitions>

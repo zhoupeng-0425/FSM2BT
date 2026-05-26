@@ -1,0 +1,21 @@
+<States>
+        <State name="StartBox" type="initial"/>
+        <State name="IDLE_MOVE" />
+        <State name="HELD" />
+        <State name="THROWN" />
+        <State name="DROPPED" />
+        <State name="LAVA_DEATH" />
+        <State name="DESPAWN" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBox" to="IDLE_MOVE" event="init_done"/>
+        <Transition from="IDLE_MOVE" to="HELD" event="picked_up"/>
+        <Transition from="HELD" to="THROWN" event="throw"/>
+        <Transition from="HELD" to="DROPPED" event="drop"/>
+        <Transition from="THROWN" to="IDLE_MOVE" event="land"/>
+        <Transition from="DROPPED" to="IDLE_MOVE" event="land"/>
+        <Transition from="IDLE_MOVE" to="LAVA_DEATH" event="hit_lava"/>
+        <Transition from="IDLE_MOVE" to="DESPAWN" event="hit_wall_break"/>
+        <Transition from="IDLE_MOVE" to="DESPAWN" event="timeout_despawn"/>
+</Transitions>

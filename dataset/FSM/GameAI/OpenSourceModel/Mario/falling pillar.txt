@@ -1,0 +1,20 @@
+<States>
+        <State name="StartPillar" type="initial"/>
+        <State name="IDLE" />
+        <State name="TURNING" />
+        <State name="FALLING" />
+        <State name="DEACTIVATED" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartPillar" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="TURNING" event="mario_enter_radius"/>
+        
+        <Transition from="TURNING" to="FALLING" event="turn_timer_finish"/>
+        
+        <Transition from="FALLING" to="DEACTIVATED" event="fall_90_degrees"/>
+        
+        <Transition from="DEACTIVATED" to="DELETED" event="despawn"/>
+</Transitions>

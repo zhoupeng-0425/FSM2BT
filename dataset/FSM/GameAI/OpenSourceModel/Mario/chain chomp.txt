@@ -1,0 +1,27 @@
+<States>
+        <State name="StartChomp" type="initial"/>
+        <State name="UNINITIALIZED" />
+        <State name="MOVE" />
+        <State name="UNLOAD_CHAIN" />
+        <State name="RELEASED_TRIGGER" />
+        <State name="RELEASED_LUNGE" />
+        <State name="BREAK_GATE" />
+        <State name="JUMP_AWAY" />
+        <State name="END_CUTSCENE" />
+</States>
+      
+<Transitions>
+        <Transition from="StartChomp" to="UNINITIALIZED" event="init_done"/>
+        <Transition from="UNINITIALIZED" to="MOVE" event="mario_near"/>
+        
+        <Transition from="MOVE" to="UNLOAD_CHAIN" event="mario_far"/>
+        <Transition from="MOVE" to="RELEASED_TRIGGER" event="post_pounded"/>
+        
+        <Transition from="RELEASED_TRIGGER" to="RELEASED_LUNGE" event="cutscene_start"/>
+        <Transition from="RELEASED_LUNGE" to="BREAK_GATE" event="lunge_done"/>
+        <Transition from="BREAK_GATE" to="JUMP_AWAY" event="gate_broken"/>
+        <Transition from="JUMP_AWAY" to="END_CUTSCENE" event="landed"/>
+        <Transition from="END_CUTSCENE" to="UNLOAD_CHAIN" event="cutscene_end"/>
+        
+        <Transition from="UNLOAD_CHAIN" to="UNINITIALIZED" event="chain_unloaded"/>
+</Transitions>

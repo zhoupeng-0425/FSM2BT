@@ -1,0 +1,45 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="SPAWN_SNOWBALL" />
+    <State name="HIDE_UNHIDE" />
+    <State name="RISE_FROM_GROUND" />
+    <State name="ROTATE" />
+    <State name="THROW_SNOWBALL" />
+    <State name="BURROW" />
+    <State name="DEATH" />
+    <State name="JUMP" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="HIDE_UNHIDE" event="init_normal"/>
+    <Transition from="START" to="JUMP" event="init_jumping_type"/>
+
+    <!-- 正常出现流程 -->
+    <Transition from="HIDE_UNHIDE" to="RISE_FROM_GROUND" event="mario_in_1000"/>
+    <Transition from="RISE_FROM_GROUND" to="ROTATE" event="rise_done"/>
+
+    <!-- 旋转瞄准 -->
+    <Transition from="ROTATE" to="THROW_SNOWBALL" event="aimed_at_mario"/>
+    <Transition from="ROTATE" to="BURROW" event="mario_far_1500"/>
+    <Transition from="ROTATE" to="DEATH" event="dizziness_too_high"/>
+
+    <!-- 扔雪球 -->
+    <Transition from="THROW_SNOWBALL" to="SPAWN_SNOWBALL" event="throw_done"/>
+
+    <!-- 钻地/隐藏 -->
+    <Transition from="SPAWN_SNOWBALL" to="HIDE_UNHIDE" event="under_ground"/>
+    <Transition from="SPAWN_SNOWBALL" to="ROTATE" event="above_ground"/>
+    <Transition from="BURROW" to="SPAWN_SNOWBALL" event="burrow_done"/>
+
+    <!-- 死亡重置 -->
+    <Transition from="DEATH" to="SPAWN_SNOWBALL" event="reset_after_death"/>
+
+    <!-- 被攻击 → 死亡 -->
+    <Transition from="SPAWN_SNOWBALL" to="DEATH" event="attacked"/>
+    <Transition from="HIDE_UNHIDE" to="DEATH" event="attacked"/>
+    <Transition from="RISE_FROM_GROUND" to="DEATH" event="attacked"/>
+    <Transition from="ROTATE" to="DEATH" event="attacked"/>
+    <Transition from="THROW_SNOWBALL" to="DEATH" event="attacked"/>
+    <Transition from="BURROW" to="DEATH" event="attacked"/>
+</Transitions>

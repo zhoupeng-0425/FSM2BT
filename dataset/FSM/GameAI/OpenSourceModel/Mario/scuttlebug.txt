@@ -1,0 +1,40 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="FALLING" />
+    <State name="WALKING" />
+    <State name="TURNING" />
+    <State name="ATTACKED" />
+    <State name="FLYING_BACK" />
+    <State name="LANDING" />
+    <State name="RECOVERING" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="FALLING" event="init_done"/>
+
+    <!-- 落地 → 正常行走 -->
+    <Transition from="FALLING" to="WALKING" event="landed_on_ground"/>
+
+    <!-- 正常行走 → 转向（撞墙/悬崖） -->
+    <Transition from="WALKING" to="TURNING" event="hit_wall_or_edge"/>
+
+    <!-- 转向完成 → 恢复行走 -->
+    <Transition from="TURNING" to="WALKING" event="turn_done"/>
+
+    <!-- 被攻击 → 受击后仰 -->
+    <Transition from="WALKING" to="ATTACKED" event="attacked"/>
+    <Transition from="TURNING" to="ATTACKED" event="attacked"/>
+
+    <!-- 后仰 → 向后飞 -->
+    <Transition from="ATTACKED" to="FLYING_BACK" event="launch_done"/>
+
+    <!-- 向后飞 → 落地 -->
+    <Transition from="FLYING_BACK" to="LANDING" event="landed"/>
+
+    <!-- 落地 → 硬直恢复 -->
+    <Transition from="LANDING" to="RECOVERING" event="land_anim_done"/>
+
+    <!-- 恢复 → 重新落地循环 -->
+    <Transition from="RECOVERING" to="FALLING" event="recover_done"/>
+</Transitions>

@@ -1,0 +1,23 @@
+<States>
+        <State name="StartCloud" type="initial"/>
+        <State name="FWOOSH_HIDDEN" />
+        <State name="SPAWN_PARTS" />
+        <State name="MAIN" />
+        <State name="UNLOAD" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartCloud" to="FWOOSH_HIDDEN" event="is_fwoosh"/>
+        <Transition from="StartCloud" to="SPAWN_PARTS" event="is_lakitu_cloud"/>
+        
+        <Transition from="FWOOSH_HIDDEN" to="SPAWN_PARTS" event="mario_near"/>
+        
+        <Transition from="SPAWN_PARTS" to="MAIN" event="parts_spawned"/>
+        
+        <Transition from="MAIN" to="UNLOAD" event="mario_far"/>
+        <Transition from="MAIN" to="UNLOAD" event="parent_lakitu_despawned"/>
+        
+        <Transition from="UNLOAD" to="FWOOSH_HIDDEN" event="is_fwoosh"/>
+        <Transition from="UNLOAD" to="DELETED" event="is_lakitu_cloud"/>
+</Transitions>

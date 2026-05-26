@@ -1,0 +1,34 @@
+<States>
+        <State name="StartHand" type="initial"/>
+        <State name="SLEEP" />
+        <State name="IDLE" />
+        <State name="OPEN" />
+        <State name="SHOW_EYE" />
+        <State name="CLOSE" />
+        <State name="ATTACKED" />
+        <State name="RECOVER" />
+        <State name="DIE" />
+        <State name="RETREAT" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartHand" to="SLEEP" event="init_done"/>
+        
+        <Transition from="SLEEP" to="IDLE" event="eyerok_wake_up"/>
+        
+        <Transition from="IDLE" to="OPEN" event="fight_start"/>
+        <Transition from="OPEN" to="SHOW_EYE" event="open_anim_end"/>
+        
+        <Transition from="SHOW_EYE" to="CLOSE" event="eye_close"/>
+        <Transition from="SHOW_EYE" to="ATTACKED" event="hit_by_mario"/>
+        
+        <Transition from="CLOSE" to="IDLE" event="close_anim_end"/>
+        <Transition from="CLOSE" to="RETREAT" event="return_to_idle_position"/>
+        
+        <Transition from="ATTACKED" to="RECOVER" event="hit_anim_end"/>
+        <Transition from="RECOVER" to="IDLE" event="recover_anim_end"/>
+        <Transition from="ATTACKED" to="DIE" event="health_zero"/>
+        
+        <Transition from="DIE" to="DELETED" event="death_anim_finish"/>
+</Transitions>

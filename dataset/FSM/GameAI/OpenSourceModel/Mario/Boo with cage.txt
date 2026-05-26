@@ -1,0 +1,17 @@
+<States>
+        <State name="StartCageBoo" type="initial"/>
+        <State name="INIT" />
+        <State name="CHASE" />
+        <State name="BOUNCED" />
+        <State name="DYING" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartCageBoo" to="INIT" event="init_done"/>
+        <Transition from="INIT" to="CHASE" event="mario_near"/>
+        <Transition from="CHASE" to="BOUNCED" event="bounced_on"/>
+        <Transition from="CHASE" to="DYING" event="attacked"/>
+        <Transition from="BOUNCED" to="CHASE" event="recover"/>
+        <Transition from="DYING" to="DELETED" event="dead"/>
+</Transitions>

@@ -1,0 +1,25 @@
+<States>
+        <State name="StartBullet" type="initial"/>
+        <State name="RESET" />
+        <State name="WAIT" />
+        <State name="FIRE" />
+        <State name="RETURN" />
+        <State name="HIT" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBullet" to="RESET" event="init_done"/>
+        <Transition from="RESET" to="WAIT" event="ready"/>
+        <Transition from="WAIT" to="FIRE" event="mario_in_range"/>
+        <Transition from="FIRE" to="RETURN" event="hit_wall"/>
+        <Transition from="FIRE" to="RETURN" event="timeout"/>
+        <Transition from="RETURN" to="RESET" event="arrived_home"/>
+        
+        <!-- 从任意状态被攻击 → 进入被击中状态 -->
+        <Transition from="RESET" to="HIT" event="hit_by_mario"/>
+        <Transition from="WAIT" to="HIT" event="hit_by_mario"/>
+        <Transition from="FIRE" to="HIT" event="hit_by_mario"/>
+        <Transition from="RETURN" to="HIT" event="hit_by_mario"/>
+        
+        <Transition from="HIT" to="RESET" event="despawn"/>
+</Transitions>

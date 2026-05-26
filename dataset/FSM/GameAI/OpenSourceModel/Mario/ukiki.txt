@@ -1,0 +1,32 @@
+<States>
+    <State name="IDLE" type="initial"/>
+    <State name="RUN"/>
+    <State name="TURN_TO_MARIO"/>
+    <State name="JUMP"/>
+    <State name="GO_TO_CAGE"/>
+    <State name="WAIT_TO_RESPAWN"/>
+    <State name="RETURN_HOME"/>
+</States>
+
+<Transitions>
+    <!-- 基础行为 -->
+    <Transition from="IDLE" to="RUN" event="mario_near"/>
+    <Transition from="IDLE" to="TURN_TO_MARIO" event="need_to_face_mario"/>
+    <Transition from="TURN_TO_MARIO" to="IDLE" event="faced_mario"/>
+    <Transition from="RUN" to="TURN_TO_MARIO" event="distance_stable"/>
+
+    <!-- 跳跃 -->
+    <Transition from="RUN" to="JUMP" event="hit_wall_or_fall_edge"/>
+    <Transition from="JUMP" to="RUN" event="landed_on_floor"/>
+
+    <!-- 偷帽猴子专用 -->
+    <Transition from="IDLE" to="RETURN_HOME" event="fell_off_map"/>
+    <Transition from="RETURN_HOME" to="IDLE" event="returned_to_home"/>
+
+    <!-- 重置机制 -->
+    <Transition from="IDLE" to="WAIT_TO_RESPAWN" event="entered_water"/>
+    <Transition from="WAIT_TO_RESPAWN" to="IDLE" event="mario_far_away"/>
+
+    <!-- 笼子猴子专用 -->
+    <Transition from="IDLE" to="GO_TO_CAGE" event="text_go_to_cage"/>
+</Transitions>

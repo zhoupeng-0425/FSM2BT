@@ -1,0 +1,20 @@
+<States>
+        <State name="StartFlyGuy" type="initial"/>
+        <State name="IDLE" />
+        <State name="APPROACH_MARIO" />
+        <State name="LUNGE" />
+        <State name="SHOOT_FIRE" />
+</States>
+      
+<Transitions>
+        <Transition from="StartFlyGuy" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="APPROACH_MARIO" event="mario_in_range"/>
+        <Transition from="APPROACH_MARIO" to="IDLE" event="mario_far_away"/>
+        
+        <Transition from="APPROACH_MARIO" to="LUNGE" event="ready_to_attack"/>
+        <Transition from="APPROACH_MARIO" to="SHOOT_FIRE" event="ready_to_shoot"/>
+        
+        <Transition from="LUNGE" to="APPROACH_MARIO" event="lunge_finish"/>
+        <Transition from="SHOOT_FIRE" to="IDLE" event="shoot_finish"/>
+</Transitions>

@@ -1,0 +1,20 @@
+<States>
+        <State name="StartBigBoo" type="initial"/>
+        <State name="WAIT" />
+        <State name="CHASE" />
+        <State name="BOUNCED" />
+        <State name="HURT" />
+        <State name="DEATH" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBigBoo" to="WAIT" event="init_done"/>
+        <Transition from="WAIT" to="CHASE" event="activate"/>
+        <Transition from="CHASE" to="BOUNCED" event="bounced_on"/>
+        <Transition from="CHASE" to="HURT" event="attacked"/>
+        <Transition from="BOUNCED" to="CHASE" event="recover"/>
+        <Transition from="HURT" to="CHASE" event="recover"/>
+        <Transition from="HURT" to="DEATH" event="health_zero"/>
+        <Transition from="DEATH" to="DELETED" event="dead"/>
+</Transitions>

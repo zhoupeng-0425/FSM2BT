@@ -1,0 +1,14 @@
+<States>
+        <State name="Start" type="initial"/>
+        <State name="IDLE" />
+        <State name="SHAKING" />
+        <State name="FALLING" />
+        <State name="FELLED" />
+</States>
+      
+<Transitions>
+        <Transition from="Start" to="IDLE" event="init_done"/>
+        <Transition from="IDLE" to="SHAKING" event="mario_attack"/>
+        <Transition from="SHAKING" to="FALLING" event="strong_attack_from_above"/>
+        <Transition from="FALLING" to="FELLED" event="fall_animation_end"/>
+</Transitions>

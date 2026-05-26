@@ -1,0 +1,25 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="JUMP_RISE" />
+    <State name="SLIDE_AWAY" />
+    <State name="SLOW_DOWN" />
+    <State name="WAIT_DESPAWN" />
+    <State name="FLICKER" />
+    <State name="COLLECTED" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="JUMP_RISE" event="init_done"/>
+    <Transition from="JUMP_RISE" to="SLIDE_AWAY" event="timer_15_end"/>
+    <Transition from="SLIDE_AWAY" to="SLOW_DOWN" event="mario_far_1000"/>
+    <Transition from="SLIDE_AWAY" to="WAIT_DESPAWN" event="hit_wall"/>
+    <Transition from="SLOW_DOWN" to="SLIDE_AWAY" event="mario_in_500_range"/>
+    <Transition from="SLOW_DOWN" to="WAIT_DESPAWN" event="timer_150_end"/>
+    <Transition from="WAIT_DESPAWN" to="FLICKER" event="timer_60_end"/>
+    
+    <Transition from="JUMP_RISE" to="COLLECTED" event="mario_collect"/>
+    <Transition from="SLIDE_AWAY" to="COLLECTED" event="mario_collect"/>
+    <Transition from="SLOW_DOWN" to="COLLECTED" event="mario_collect"/>
+    <Transition from="WAIT_DESPAWN" to="COLLECTED" event="mario_collect"/>
+    <Transition from="FLICKER" to="COLLECTED" event="mario_collect"/>
+</Transitions>

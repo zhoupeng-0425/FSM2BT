@@ -1,0 +1,25 @@
+<States>
+    <State name="ACT_0_IDLE" type="initial"/>
+    <State name="ACT_1_CHASE_MARIO"/>
+    <State name="ACT_2_RUN_AWAY"/>
+    <State name="ACT_3_DIVE"/>
+    <State name="ACT_4_LAND"/>
+    <State name="ACT_5_FOLLOW_MOTHER"/>
+</States>
+
+<Transitions>
+    <Transition from="ACT_0_IDLE" to="ACT_1_CHASE_MARIO" event="mario_in_range"/>
+    <Transition from="ACT_0_IDLE" to="ACT_2_RUN_AWAY" event="mario_too_close"/>
+    <Transition from="ACT_0_IDLE" to="ACT_5_FOLLOW_MOTHER" event="mother_nearby"/>
+    
+    <Transition from="ACT_1_CHASE_MARIO" to="ACT_0_IDLE" event="too_far_or_too_close"/>
+    <Transition from="ACT_2_RUN_AWAY" to="ACT_0_IDLE" event="distance_normal"/>
+
+    <Transition from="ACT_0_IDLE" to="ACT_3_DIVE" event="mario_dive_sliding"/>
+    <Transition from="ACT_1_CHASE_MARIO" to="ACT_3_DIVE" event="mario_dive_sliding"/>
+    <Transition from="ACT_2_RUN_AWAY" to="ACT_3_DIVE" event="mario_dive_sliding"/>
+    <Transition from="ACT_5_FOLLOW_MOTHER" to="ACT_3_DIVE" event="mario_dive_sliding"/>
+    
+    <Transition from="ACT_3_DIVE" to="ACT_4_LAND" event="mario_stop_dive"/>
+    <Transition from="ACT_4_LAND" to="ACT_0_IDLE" event="land_animation_end"/>
+</Transitions>

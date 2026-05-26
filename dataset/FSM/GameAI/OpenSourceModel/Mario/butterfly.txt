@@ -1,0 +1,17 @@
+<States>
+        <State name="StartButterfly" type="initial"/>
+        <State name="RESTING" />
+        <State name="FOLLOW_MARIO" />
+        <State name="RETURN_HOME" />
+</States>
+      
+<Transitions>
+        <Transition from="StartButterfly" to="RESTING" event="init_done"/>
+        
+        <Transition from="RESTING" to="FOLLOW_MARIO" event="mario_near"/>
+        <Transition from="FOLLOW_MARIO" to="RETURN_HOME" event="too_far_from_home"/>
+        <Transition from="RETURN_HOME" to="RESTING" event="arrived_home"/>
+        
+        <Transition from="FOLLOW_MARIO" to="FOLLOW_MARIO" event="still_near_mario"/>
+        <Transition from="RESTING" to="RESTING" event="mario_far"/>
+</Transitions>

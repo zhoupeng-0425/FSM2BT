@@ -1,0 +1,13 @@
+<States>
+        <State name="StartFree" type="initial"/>
+        <State name="IDLE" />
+        <State name="ROLL" />
+        <State name="RESET" />
+</States>
+      
+<Transitions>
+        <Transition from="StartFree" to="IDLE" event="init_done"/>
+        <Transition from="IDLE" to="ROLL" event="mario_near"/>
+        <Transition from="ROLL" to="RESET" event="mario_far"/>
+        <Transition from="RESET" to="IDLE" event="return_idle"/>
+</Trans>

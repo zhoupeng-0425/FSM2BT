@@ -1,0 +1,28 @@
+<States>
+        <State name="StartBox" type="initial"/>
+        <State name="CHECK_CAP" />
+        <State name="INVISIBLE_OUTLINE" />
+        <State name="ACTIVE" />
+        <State name="BOUNCE" />
+        <State name="SPAWN_CONTENTS" />
+        <State name="HIDDEN_RESPAWN" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBox" to="CHECK_CAP" event="init_done"/>
+        
+        <Transition from="CHECK_CAP" to="INVISIBLE_OUTLINE" event="cap_not_collected"/>
+        <Transition from="CHECK_CAP" to="ACTIVE" event="cap_collected_or_normal_box"/>
+        
+        <Transition from="INVISIBLE_OUTLINE" to="ACTIVE" event="cap_collected"/>
+        
+        <Transition from="ACTIVE" to="BOUNCE" event="hit_by_mario"/>
+        
+        <Transition from="BOUNCE" to="SPAWN_CONTENTS" event="bounce_anim_finish"/>
+        
+        <Transition from="SPAWN_CONTENTS" to="HIDDEN_RESPAWN" event="is_cap_box"/>
+        <Transition from="SPAWN_CONTENTS" to="DELETED" event="is_normal_box"/>
+        
+        <Transition from="HIDDEN_RESPAWN" to="ACTIVE" event="respawn_time_up"/>
+</Transitions>

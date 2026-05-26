@@ -1,0 +1,17 @@
+<States>
+        <State name="StartCoffin" type="initial"/>
+        <State name="IDLE" />
+        <State name="STAND_UP" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartCoffin" to="IDLE" event="init_done"/>
+        
+        <Transition from="IDLE" to="STAND_UP" event="mario_near"/>
+        <Transition from="STAND_UP" to="IDLE" event="stand_done"/>
+        
+        <Transition from="StartCoffin" to="DELETED" event="spawner_unload"/>
+        <Transition from="IDLE" to="DELETED" event="spawner_unload"/>
+        <Transition from="STAND_UP" to="DELETED" event="spawner_unload"/>
+</Transitions>

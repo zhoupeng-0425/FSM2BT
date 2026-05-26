@@ -1,0 +1,15 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="FREE" />
+    <State name="HELD" />
+    <State name="THROWN" />
+    <State name="DESTROYED" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="FREE" event="init_done"/>
+    <Transition from="FREE" to="HELD" event="mario_grab"/>
+    <Transition from="HELD" to="THROWN" event="throw_or_drop"/>
+    <Transition from="THROWN" to="DESTROYED" event="delete"/>
+    <Transition from="FREE" to="DESTROYED" event="stop_riding"/>
+</Transitions>

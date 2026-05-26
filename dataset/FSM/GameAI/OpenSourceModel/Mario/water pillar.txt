@@ -1,0 +1,28 @@
+<States>
+    <State name="INIT" type="initial"/>
+    <State name="WAIT_FOR_POUND"/>
+    <State name="MOVING_DOWN"/>
+    <State name="WAIT_OTHER_PILLAR"/>
+    <State name="WAIT_BOTH_PILLARS"/>
+    <State name="DRAIN_WATER"/>
+    <State name="DONE"/>
+    <State name="ALREADY_DRAINED"/>
+</States>
+
+<Transitions>
+    <!-- 未排水流程 -->
+    <Transition from="INIT" to="WAIT_FOR_POUND" event="start"/>
+
+    <Transition from="WAIT_FOR_POUND" to="MOVING_DOWN" event="mario_ground_pounded"/>
+
+    <Transition from="MOVING_DOWN" to="WAIT_OTHER_PILLAR" event="move_done"/>
+
+    <Transition from="WAIT_OTHER_PILLAR" to="WAIT_BOTH_PILLARS" event="other_pillar_ready"/>
+
+    <Transition from="WAIT_BOTH_PILLARS" to="DRAIN_WATER" event="both_pillars_ready"/>
+
+    <Transition from="DRAIN_WATER" to="DONE" event="water_level_reached"/>
+
+    <!-- 已排水流程 -->
+    <Transition from="INIT" to="ALREADY_DRAINED" event="save_flag_moat_drained"/>
+</Transitions>

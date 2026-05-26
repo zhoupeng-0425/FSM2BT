@@ -1,0 +1,32 @@
+<States>
+        <State name="StartCap" type="initial"/>
+        <State name="FLY" />
+        <State name="GROUND" />
+        <State name="SINK_QUICKSAND" />
+        <State name="SINK_MOVING_QUICKSAND" />
+        <State name="DESPAWN" />
+	<State name="DELETED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartCap" to="FLY" event="init_done"/>
+        
+        <Transition from="FLY" to="GROUND" event="landed"/>
+        <Transition from="GROUND" to="GROUND" event="stay_on_ground"/>
+        
+        <Transition from="FLY" to="SINK_QUICKSAND" event="touch_quicksand"/>
+        <Transition from="GROUND" to="SINK_QUICKSAND" event="touch_quicksand"/>
+        <Transition from="FLY" to="SINK_MOVING_QUICKSAND" event="touch_moving_quicksand"/>
+        <Transition from="GROUND" to="SINK_MOVING_QUICKSAND" event="touch_moving_quicksand"/>
+        
+        <Transition from="SINK_QUICKSAND" to="DESPAWN" event="sink_finish"/>
+        <Transition from="SINK_MOVING_QUICKSAND" to="DESPAWN" event="sink_finish"/>
+        
+        <Transition from="StartCap" to="DESPAWN" event="time_out"/>
+        <Transition from="FLY" to="DESPAWN" event="time_out"/>
+        <Transition from="GROUND" to="DESPAWN" event="time_out"/>
+        <Transition from="SINK_QUICKSAND" to="DESPAWN" event="time_out"/>
+        <Transition from="SINK_MOVING_QUICKSAND" to="DESPAWN" event="time_out"/>
+        
+        <Transition from="DESPAWN" to="DELETED" event="picked_up"/>
+</Transitions>

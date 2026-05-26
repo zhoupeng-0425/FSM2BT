@@ -1,0 +1,51 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="SLEEPING" />
+    <State name="WOKEN_UP" />
+    <State name="BITING" />
+    <State name="STOPPED_BITING" />
+    <State name="ATTACKED" />
+    <State name="SHRINK_AND_DIE" />
+    <State name="WAIT_TO_RESPAWN" />
+    <State name="RESPAWN" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE" event="init_done"/>
+
+    <!-- 待机 → 睡眠 -->
+    <Transition from="IDLE" to="SLEEPING" event="mario_in_1200"/>
+
+    <!-- 睡眠被打扰 -->
+    <Transition from="SLEEPING" to="WOKEN_UP" event="mario_too_close_or_fast"/>
+    <Transition from="SLEEPING" to="ATTACKED" event="attacked_by_mario"/>
+
+    <!-- 苏醒 → 攻击 -->
+    <Transition from="WOKEN_UP" to="BITING" event="wake_anim_done"/>
+    <Transition from="WOKEN_UP" to="ATTACKED" event="attacked_by_mario"/>
+
+    <!-- 攻击循环 -->
+    <Transition from="BITING" to="STOPPED_BITING" event="mario_far_500"/>
+    <Transition from="BITING" to="ATTACKED" event="hit_metal_mario"/>
+
+    <!-- 停止攻击 → 睡眠 / 重新攻击 -->
+    <Transition from="STOPPED_BITING" to="SLEEPING" event="anim_end"/>
+    <Transition from="STOPPED_BITING" to="BITING" event="mario_close_again"/>
+    <Transition from="STOPPED_BITING" to="ATTACKED" event="attacked_by_mario"/>
+
+    <!-- 被攻击 → 死亡流程 -->
+    <Transition from="ATTACKED" to="SHRINK_AND_DIE" event="fall_anim_done"/>
+    <Transition from="SHRINK_AND_DIE" to="WAIT_TO_RESPAWN" event="shrink_done"/>
+    <Transition from="WAIT_TO_RESPAWN" to="RESPAWN" event="mario_far_1200"/>
+    <Transition from="RESPAWN" to="IDLE" event="respawn_done"/>
+
+    <!-- 远距离重置（所有非死亡状态）-->
+    <Transition from="SLEEPING" to="IDLE" event="mario_far_away"/>
+    <Transition from="WOKEN_UP" to="IDLE" event="mario_far_away"/>
+    <Transition from="BITING" to="IDLE" event="mario_far_away"/>
+    <Transition from="STOPPED_BITING" to="IDLE" event="mario_far_away"/>
+    <Transition from="ATTACKED" to="IDLE" event="mario_far_away"/>
+    <Transition from="SHRINK_AND_DIE" to="IDLE" event="mario_far_away"/>
+</Transitions>

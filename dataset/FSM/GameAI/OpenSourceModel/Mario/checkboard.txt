@@ -1,0 +1,19 @@
+<States>
+        <State name="StartPlatform" type="initial"/>
+        <State name="INIT" />
+        <State name="MOVE_UP" />
+        <State name="ROTATE_DOWN" />
+        <State name="MOVE_DOWN" />
+        <State name="ROTATE_UP" />
+</States>
+      
+<Transitions>
+        <Transition from="StartPlatform" to="INIT" event="init_done"/>
+        <Transition from="INIT" to="MOVE_UP" event="start_up"/>
+        <Transition from="INIT" to="MOVE_DOWN" event="start_down"/>
+        
+        <Transition from="MOVE_UP" to="ROTATE_DOWN" event="up_done"/>
+        <Transition from="ROTATE_DOWN" to="MOVE_DOWN" event="rotate_down_done"/>
+        <Transition from="MOVE_DOWN" to="ROTATE_UP" event="down_done"/>
+        <Transition from="ROTATE_UP" to="MOVE_UP" event="rotate_up_done"/>
+</Transitions>

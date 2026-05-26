@@ -1,0 +1,15 @@
+<States>
+        <State name="StartSwitch" type="initial"/>
+        <State name="INIT" />
+        <State name="IDLE" />
+        <State name="PRESSED" />
+        <State name="ACTIVATED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartSwitch" to="INIT" event="init_done"/>
+        <Transition from="INIT" to="IDLE" event="not_unlocked"/>
+        <Transition from="INIT" to="ACTIVATED" event="already_unlocked"/>
+        <Transition from="IDLE" to="PRESSED" event="mario_step_on"/>
+        <Transition from="PRESSED" to="ACTIVATED" event="dialog_end"/>
+</Transitions>

@@ -1,0 +1,17 @@
+<States>
+        <State name="StartPlant" type="initial"/>
+        <State name="HIDE" />
+        <State name="GROW" />
+        <State name="ATTACKED" />
+</States>
+      
+<Transitions>
+        <Transition from="StartPlant" to="HIDE" event="init_done"/>
+        
+        <Transition from="HIDE" to="GROW" event="mario_in_range_and_slot_available"/>
+        
+        <Transition from="GROW" to="HIDE" event="timeout_shrink"/>
+        
+        <Transition from="GROW" to="HIDE" event="attacked_by_mario"/>
+        <Transition from="HIDE" to="DEAD" event="health_zero"/>
+</Transitions>

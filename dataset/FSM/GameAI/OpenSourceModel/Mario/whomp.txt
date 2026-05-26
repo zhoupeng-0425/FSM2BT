@@ -1,0 +1,47 @@
+<States>
+    <State name="INIT" type="initial"/>
+    <State name="PATROL"/>
+    <State name="KING_CHASE"/>
+    <State name="PREPARE_JUMP"/>
+    <State name="JUMP"/>
+    <State name="LAND"/>
+    <State name="ON_GROUND"/>
+    <State name="TURN"/>
+    <State name="DIE"/>
+    <State name="STOP_MUSIC"/>
+</States>
+
+<Transitions>
+    <!-- 初始化完成 -->
+    <Transition from="INIT" to="PATROL" event="mario_near"/>
+    <Transition from="INIT" to="KING_CHASE" event="king_init_done"/>
+
+    <!-- 巡逻 / 追击 → 准备扑击 -->
+    <Transition from="PATROL" to="PREPARE_JUMP" event="mario_close"/>
+    <Transition from="KING_CHASE" to="PREPARE_JUMP" event="mario_close"/>
+
+    <!-- 准备 → 跳跃 -->
+    <Transition from="PREPARE_JUMP" to="JUMP" event="anim_end"/>
+
+    <!-- 跳跃 → 落地 -->
+    <Transition from="JUMP" to="LAND" event="pitch_max"/>
+
+    <!-- 落地 → 地面状态 -->
+    <Transition from="LAND" to="ON_GROUND" event="landed"/>
+
+    <!-- 地面状态恢复 → 返回巡逻/追击 -->
+    <Transition from="ON_GROUND" to="PATROL" event="reset_done"/>
+    <Transition from="ON_GROUND" to="KING_CHASE" event="reset_done"/>
+
+    <!-- 巡逻太远 → 转身 -->
+    <Transition from="PATROL" to="TURN" event="too_far_from_home"/>
+
+    <!-- 转身完成 → 巡逻 -->
+    <Transition from="TURN" to="PATROL" event="turn_done"/>
+
+    <!-- 被地面砸死 → 死亡 -->
+    <Transition from="ON_GROUND" to="DIE" event="killed_by_ground_pound"/>
+
+    <!-- 王死亡 → 停止音乐 -->
+    <Transition from="DIE" to="STOP_MUSIC" event="dialog_done"/>
+</Transitions>

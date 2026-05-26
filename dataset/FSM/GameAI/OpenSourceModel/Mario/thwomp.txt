@@ -1,0 +1,26 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="RAISE"/>
+    <State name="IDLE_AT_TOP"/>
+    <State name="LOWER"/>
+    <State name="LAND"/>
+    <State name="IDLE_AT_BOTTOM"/>
+</States>
+
+<Transitions>
+    <!-- 上升 -->
+    <Transition from="START" to="RAISE" event="init_done"/>
+    <Transition from="RAISE" to="IDLE_AT_TOP" event="reach_top"/>
+
+    <!-- 顶部等待 → 俯冲 -->
+    <Transition from="IDLE_AT_TOP" to="LOWER" event="random_timer_done"/>
+
+    <!-- 俯冲 → 落地 -->
+    <Transition from="LOWER" to="LAND" event="reach_bottom"/>
+
+    <!-- 落地震动 → 底部等待 -->
+    <Transition from="LAND" to="IDLE_AT_BOTTOM" event="timer_10"/>
+
+    <!-- 底部等待 → 再次上升（循环） -->
+    <Transition from="IDLE_AT_BOTTOM" to="RAISE" event="random_timer_done"/>
+</Transitions>

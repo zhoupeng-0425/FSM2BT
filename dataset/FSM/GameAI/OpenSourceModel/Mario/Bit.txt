@@ -1,0 +1,16 @@
+<States>
+    <State name="Start" type="initial"/>
+    <State name="Idle" />
+    <State name="WaitDelay" />
+    <State name="Moving" />
+    <State name="ReverseOrStop" />
+</States>
+
+<Transitions>
+    <Transition from="Start" to="Idle" event="init_complete"/>
+    <Transition from="Idle" to="WaitDelay" event="mario_step_on"/>
+    <Transition from="WaitDelay" to="Moving" event="delay_finished"/>
+    <Transition from="Moving" to="ReverseOrStop" event="reach_target_or_far_away"/>
+    <Transition from="ReverseOrStop" to="WaitDelay" event="reverse_continue"/>
+    <Transition from="ReverseOrStop" to="Idle" event="stop_fully"/>
+</Transitions>

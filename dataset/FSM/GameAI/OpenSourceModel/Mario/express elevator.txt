@@ -1,0 +1,22 @@
+<States>
+        <State name="StartElevator" type="initial"/>
+        <State name="WAIT_FOR_MARIO" />
+        <State name="MOVE_DOWN" />
+        <State name="WAIT_AT_BOTTOM" />
+        <State name="MOVE_UP" />
+        <State name="RESET" />
+</States>
+      
+<Transitions>
+        <Transition from="StartElevator" to="WAIT_FOR_MARIO" event="init_done"/>
+        
+        <Transition from="WAIT_FOR_MARIO" to="MOVE_DOWN" event="mario_step_on"/>
+        
+        <Transition from="MOVE_DOWN" to="WAIT_AT_BOTTOM" event="reach_bottom"/>
+        
+        <Transition from="WAIT_AT_BOTTOM" to="MOVE_UP" event="wait_finish"/>
+        
+        <Transition from="MOVE_UP" to="RESET" event="reach_top"/>
+        
+        <Transition from="RESET" to="WAIT_FOR_MARIO" event="mario_leave"/>
+</Transitions>

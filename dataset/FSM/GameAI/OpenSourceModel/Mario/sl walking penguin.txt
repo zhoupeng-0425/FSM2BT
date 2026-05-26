@@ -1,0 +1,24 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="MOVING_FORWARDS" />
+    <State name="TURNING_BACK" />
+    <State name="RETURNING" />
+    <State name="TURNING_FORWARDS" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="MOVING_FORWARDS" event="init_done"/>
+
+    <!-- 不规则前进 → 转身往回走（走到桥尽头） -->
+    <Transition from="MOVING_FORWARDS" to="TURNING_BACK" event="reach_bridge_end"/>
+
+    <!-- 转身完成 → 匀速返回 -->
+    <Transition from="TURNING_BACK" to="RETURNING" event="turn_anim_done"/>
+
+    <!-- 匀速返回 → 转身向前（回到桥起点） -->
+    <Transition from="RETURNING" to="TURNING_FORWARDS" event="reach_bridge_start"/>
+
+    <!-- 转身完成 → 重新开始不规则前进（循环） -->
+    <Transition from="TURNING_FORWARDS" to="MOVING_FORWARDS" event="turn_anim_done"/>
+</Transitions>

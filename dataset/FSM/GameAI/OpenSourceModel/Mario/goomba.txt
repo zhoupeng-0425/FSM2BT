@@ -1,0 +1,16 @@
+<States>
+        <State name="StartGoomba" type="initial"/>
+        <State name="WALK" />
+        <State name="JUMP" />
+        <State name="ATTACKED_MARIO" />
+</States>
+      
+<Transitions>
+        <Transition from="StartGoomba" to="WALK" event="init_done"/>
+        
+        <Transition from="WALK" to="JUMP" event="random_jump_or_chase"/>
+        <Transition from="JUMP" to="WALK" event="land"/>
+        
+        <Transition from="WALK" to="ATTACKED_MARIO" event="hit_mario"/>
+        <Transition from="ATTACKED_MARIO" to="JUMP" event="jump_away"/>
+</Transitions>

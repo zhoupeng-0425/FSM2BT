@@ -1,0 +1,20 @@
+<States>
+        <State name="StartPiece" type="initial"/>
+        <State name="IDLE" />
+        <State name="MOVE_LEFT" />
+        <State name="MOVE_RIGHT" />
+        <State name="MOVE_UP" />
+        <State name="MOVE_DOWN" />
+</States>
+      
+<Transitions>
+        <Transition from="StartPiece" to="IDLE" event="init_done"/>
+        <Transition from="IDLE" to="MOVE_LEFT" event="trigger_left"/>
+        <Transition from="IDLE" to="MOVE_RIGHT" event="trigger_right"/>
+        <Transition from="IDLE" to="MOVE_UP" event="trigger_up"/>
+        <Transition from="IDLE" to="MOVE_DOWN" event="trigger_down"/>
+        <Transition from="MOVE_LEFT" to="IDLE" event="move_done"/>
+        <Transition from="MOVE_RIGHT" to="IDLE" event="move_done"/>
+        <Transition from="MOVE_UP" to="IDLE" event="move_done"/>
+        <Transition from="MOVE_DOWN" to="IDLE" event="move_done"/>
+</Transitions>

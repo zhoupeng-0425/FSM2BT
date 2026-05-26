@@ -1,0 +1,13 @@
+<States>
+    <State name="ACT_0_WAIT" type="initial"/>
+    <State name="ACT_1_SPAWN_PLATFORMS"/>
+    <State name="ACT_2_HIDE"/>
+    <State name="ACT_3_RESET"/>
+</States>
+
+<Transitions>
+    <Transition from="ACT_0_WAIT" to="ACT_1_SPAWN_PLATFORMS" event="mario_near"/>
+    <Transition from="ACT_1_SPAWN_PLATFORMS" to="ACT_2_HIDE" event="spawn_done"/>
+    <Transition from="ACT_2_HIDE" to="ACT_3_RESET" event="mario_far_away"/>
+    <Transition from="ACT_3_RESET" to="ACT_0_WAIT" event="reset_complete"/>
+</Transitions>

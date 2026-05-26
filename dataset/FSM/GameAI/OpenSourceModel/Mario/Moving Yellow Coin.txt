@@ -1,0 +1,20 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="BLINKING" />
+    <State name="LAVA_DEATH" />
+    <State name="DEATH_PLANE_DEATH" />
+    <State name="COLLECTED" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="IDLE" event="init_done"/>
+    <Transition from="IDLE" to="BLINKING" event="timer_300_end"/>
+    <Transition from="IDLE" to="LAVA_DEATH" event="touch_lava"/>
+    <Transition from="IDLE" to="DEATH_PLANE_DEATH" event="fall_off_level"/>
+    <Transition from="BLINKING" to="LAVA_DEATH" event="touch_lava"/>
+    <Transition from="BLINKING" to="DEATH_PLANE_DEATH" event="fall_off_level"/>
+    
+    <Transition from="IDLE" to="COLLECTED" event="mario_collect"/>
+    <Transition from="BLINKING" to="COLLECTED" event="mario_collect"/>
+</Transitions>

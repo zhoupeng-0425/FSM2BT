@@ -1,0 +1,15 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="WAIT_FOR_MARIO_APPROACH"/>
+    <State name="SPAWN_PLATFORMS"/>
+    <State name="ACTIVE"/>
+    <State name="RESET"/>
+</States>
+
+<Transitions>
+    <Transition from="START" to="WAIT_FOR_MARIO_APPROACH" event="init_done"/>
+    <Transition from="WAIT_FOR_MARIO_APPROACH" to="SPAWN_PLATFORMS" event="mario_approaches"/>
+    <Transition from="SPAWN_PLATFORMS" to="ACTIVE" event="spawn_done"/>
+    <Transition from="ACTIVE" to="RESET" event="mario_far_away"/>
+    <Transition from="RESET" to="WAIT_FOR_MARIO_APPROACH" event="reset_done"/>
+</Transitions>

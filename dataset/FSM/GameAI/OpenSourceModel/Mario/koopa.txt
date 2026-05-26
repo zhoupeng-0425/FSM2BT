@@ -1,0 +1,52 @@
+<States>
+    <State name="START" type="initial"/>
+    
+    <!-- 有壳状态 -->
+    <State name="SHELLED_STOPPED" />
+    <State name="SHELLED_WALK" />
+    <State name="SHELLED_RUN_FROM_MARIO" />
+    <State name="SHELLED_LYING" />
+    
+    <!-- 无壳状态 -->
+    <State name="UNSHELLED_RUN" />
+    <State name="UNSHELLED_DIVE" />
+    <State name="UNSHELLED_LYING" />
+    
+    <!-- 赛跑专家 Koopa the Quick -->
+    <State name="RACE_WAIT" />
+    <State name="RACE_DIALOG" />
+    <State name="RACE_ACTIVE" />
+    <State name="RACE_FINISH" />
+    <State name="RACE_AFTER" />
+</States>
+
+<Transitions>
+    <!-- 有壳基础循环 -->
+    <Transition from="START" to="SHELLED_STOPPED" event="init"/>
+    <Transition from="SHELLED_STOPPED" to="SHELLED_WALK" event="timer_end"/>
+    <Transition from="SHELLED_WALK" to="SHELLED_STOPPED" event="walk_done"/>
+    
+    <!-- 看到马里奥 → 逃跑 -->
+    <Transition from="SHELLED_STOPPED" to="SHELLED_RUN_FROM_MARIO" event="mario_near"/>
+    <Transition from="SHELLED_WALK" to="SHELLED_RUN_FROM_MARIO" event="mario_near"/>
+    <Transition from="SHELLED_RUN_FROM_MARIO" to="SHELLED_STOPPED" event="mario_far"/>
+    
+    <!-- 被攻击 → 掉壳 -->
+     <Transition from="SHELLED_STOPPED" to="UNSHELLED_LYING" event="attacked"/>
+    <Transition from="SHELLED_WALK" to="UNSHELLED_LYING" event="attacked"/>
+    <Transition from="SHELLED_RUN_FROM_MARIO" to="UNSHELLED_LYING" event="attacked"/>
+    
+    <!-- 无壳行为 -->
+    <Transition from="UNSHELLED_LYING" to="UNSHELLED_RUN" event="get_up"/>
+    <Transition from="UNSHELLED_RUN" to="UNSHELLED_DIVE" event="shell_near"/>
+    <Transition from="UNSHELLED_DIVE" to="SHELLED_LYING" event="catch_shell"/>
+    <Transition from="UNSHELLED_DIVE" to="UNSHELLED_RUN" event="miss_shell"/>
+    
+    <!-- 赛跑专家流程 -->
+    <Transition from="START" to="RACE_WAIT" event="init_race"/>
+    <Transition from="RACE_WAIT" to="RACE_DIALOG" event="mario_near"/>
+    <Transition from="RACE_DIALOG" to="RACE_ACTIVE" event="accept_race"/>
+    <Transition from="RACE_ACTIVE" to="RACE_FINISH" event="reach_end"/>
+    <Transition from="RACE_FINISH" to="RACE_AFTER" event="stop_anim"/>
+    <Transition from="RACE_AFTER" to="RACE_WAIT" event="dialog_end"/>
+</Transitions>

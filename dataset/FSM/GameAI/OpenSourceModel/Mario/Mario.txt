@@ -1,0 +1,29 @@
+<States>
+    <State name="SmallMario" type="initial"/>
+    <State name="SuperMario"/>
+    <State name="FireMario"/>
+    <State name="CapeMario"/>
+    <State name="DeadMario"/>
+</States>
+
+<Transitions>
+    <!-- Initial State Transitions -->
+    <Transition from="SmallMario" to="SuperMario" event="Mushroom"/>
+    <Transition from="SmallMario" to="FireMario" event="FireFlower"/>
+    <Transition from="SmallMario" to="CapeMario" event="Feather"/>
+    <Transition from="SmallMario" to="DeadMario" event="no more lifes"/>
+    <Transition from="SmallMario" to="SmallMario" event="Monster"/>
+
+    <!-- SuperMario Transitions -->
+    <Transition from="SuperMario" to="SmallMario" event="Monster"/>
+    <Transition from="SuperMario" to="FireMario" event="FireFlower"/>
+    <Transition from="SuperMario" to="CapeMario" event="Feather"/>
+
+    <!-- FireMario Transitions -->
+    <Transition from="FireMario" to="SmallMario" event="Monster"/>
+    <Transition from="FireMario" to="CapeMario" event="Feather"/>
+
+    <!-- CapeMario Transitions -->
+    <Transition from="CapeMario" to="SmallMario" event="Monster"/>
+    <Transition from="CapeMario" to="FireMario" event="FireFlower"/>
+</Transitions>

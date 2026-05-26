@@ -1,0 +1,14 @@
+<States>
+        <State name="StartBub" type="initial"/>
+        <State name="INIT" />
+        <State name="SWIM" />
+        <State name="FLEE" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBub" to="INIT" event="init_done"/>
+        <Transition from="INIT" to="SWIM" event="setup_complete"/>
+        <Transition from="SWIM" to="FLEE" event="hit_by_mario"/>
+        <Transition from="SWIM" to="FLEE" event="mario_near"/>
+        <Transition from="FLEE" to="SWIM" event="flee_done"/>
+</Transitions>

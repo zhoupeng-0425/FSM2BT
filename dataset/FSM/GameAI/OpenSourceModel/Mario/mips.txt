@@ -1,0 +1,31 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="WAIT_FOR_MARIO" />
+    <State name="FOLLOW_PATH" />
+    <State name="WAIT_ANIM_DONE" />
+    <State name="IDLE" />
+    <State name="FALL_DOWN" />
+    <State name="HELD" />
+    <State name="THROWN" />
+    <State name="DROPPED" />
+</States>
+
+<Transitions>
+    <Transition from="START" to="WAIT_FOR_MARIO" event="star_req_meet"/>
+    
+    <Transition from="WAIT_FOR_MARIO" to="FOLLOW_PATH" event="mario_near"/>
+    <Transition from="FOLLOW_PATH" to="WAIT_FOR_MARIO" event="path_end"/>
+    
+    <Transition from="FOLLOW_PATH" to="WAIT_ANIM_DONE" event="no_waypoint"/>
+    <Transition from="WAIT_ANIM_DONE" to="IDLE" event="anim_end"/>
+    
+    <Transition from="ANY_FREE" to="HELD" event="mario_grab"/>
+    <Transition from="HELD" to="DROPPED" event="drop"/>
+    <Transition from="HELD" to="THROWN" event="throw"/>
+    
+    <Transition from="THROWN" to="FALL_DOWN" event="in_air"/>
+    <Transition from="FALL_DOWN" to="WAIT_ANIM_DONE" event="land"/>
+    <Transition from="DROPPED" to="IDLE" event="drop_end"/>
+    
+    <Transition from="IDLE" to="WAIT_FOR_MARIO" event="reset"/>
+</Transitions>

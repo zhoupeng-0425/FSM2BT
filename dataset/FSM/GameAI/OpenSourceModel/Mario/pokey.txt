@@ -1,0 +1,23 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="UNINITIALIZED" />
+    <State name="WANDER" />
+    <State name="UNLOAD_PARTS" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="UNINITIALIZED" event="init_done"/>
+
+    <!-- 未激活 → 激活游荡 -->
+    <Transition from="UNINITIALIZED" to="WANDER" event="mario_in_2000"/>
+
+    <!-- 游荡 → 卸载部件 -->
+    <Transition from="WANDER" to="UNLOAD_PARTS" event="mario_far_2500"/>
+
+    <!-- 卸载 → 回到未激活 -->
+    <Transition from="UNLOAD_PARTS" to="UNINITIALIZED" event="reset_done"/>
+
+    <!-- 全部死亡 -->
+    <Transition from="WANDER" to="DESTROYED" event="all_parts_dead"/>
+</Transitions>

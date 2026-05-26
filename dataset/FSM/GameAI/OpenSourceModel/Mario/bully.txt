@@ -1,0 +1,37 @@
+<States>
+        <State name="StartBully" type="initial"/>
+        <State name="PATROL" />
+        <State name="CHASE_MARIO" />
+        <State name="KNOCKBACK" />
+        <State name="BACK_UP" />
+        <State name="LAVA_DEATH" />
+        <State name="DEATH_PLANE_DEATH" />
+</States>
+
+<Transitions>
+        <Transition from="StartBully" to="PATROL" event="init_done"/>
+
+        <Transition from="PATROL" to="CHASE_MARIO" event="mario_near"/>
+        <Transition from="CHASE_MARIO" to="PATROL" event="mario_far"/>
+
+        <Transition from="PATROL" to="BACK_UP" event="hit_wall"/>
+        <Transition from="CHASE_MARIO" to="BACK_UP" event="hit_wall"/>
+        <Transition from="BACK_UP" to="PATROL" event="backup_done"/>
+
+        <Transition from="PATROL" to="KNOCKBACK" event="hit_by_mario"/>
+        <Transition from="CHASE_MARIO" to="KNOCKBACK" event="hit_by_mario"/>
+        <Transition from="BACK_UP" to="KNOCKBACK" event="hit_by_mario"/>
+        <Transition from="KNOCKBACK" to="CHASE_MARIO" event="recover"/>
+
+        <Transition from="StartBully" to="LAVA_DEATH" event="fall_in_lava"/>
+        <Transition from="PATROL" to="LAVA_DEATH" event="fall_in_lava"/>
+        <Transition from="CHASE_MARIO" to="LAVA_DEATH" event="fall_in_lava"/>
+        <Transition from="KNOCKBACK" to="LAVA_DEATH" event="fall_in_lava"/>
+        <Transition from="BACK_UP" to="LAVA_DEATH" event="fall_in_lava"/>
+
+        <Transition from="StartBully" to="DEATH_PLANE_DEATH" event="fall_off_map"/>
+        <Transition from="PATROL" to="DEATH_PLANE_DEATH" event="fall_off_map"/>
+        <Transition from="CHASE_MARIO" to="DEATH_PLANE_DEATH" event="fall_off_map"/>
+        <Transition from="KNOCKBACK" to="DEATH_PLANE_DEATH" event="fall_off_map"/>
+        <Transition from="BACK_UP" to="DEATH_PLANE_DEATH" event="fall_off_map"/>
+</Transitions>

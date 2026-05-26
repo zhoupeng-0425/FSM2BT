@@ -1,0 +1,20 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="IDLE" />
+    <State name="TALKING" />
+    <State name="BLOWING" />
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="START" to="IDLE" event="init_done"/>
+
+    <!-- 待机 → 对话（马里奥靠近桥中心） -->
+    <Transition from="IDLE" to="TALKING" event="mario_near_bridge"/>
+
+    <!-- 对话结束 → 开始吹风 -->
+    <Transition from="TALKING" to="BLOWING" event="dialog_end"/>
+
+    <!-- 吹风：仅在马里奥范围内生效 -->
+    <Transition from="BLOWING" to="BLOWING" event="mario_in_range"/>
+</Transitions>

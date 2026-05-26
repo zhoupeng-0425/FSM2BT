@@ -1,0 +1,11 @@
+<States>
+        <State name="StartBomb" type="initial"/>
+        <State name="IDLE" />
+        <State name="EXPLODE" />
+</States>
+      
+<Transitions>
+        <Transition from="StartBomb" to="IDLE" event="init_done"/>
+        <Transition from="IDLE" to="EXPLODE" event="hit_mario"/>
+        <Transition from="IDLE" to="EXPLODE" event="hit_mine"/>
+        <Transition from="EXPLODE" to="DELETED" event="timer_done"/>

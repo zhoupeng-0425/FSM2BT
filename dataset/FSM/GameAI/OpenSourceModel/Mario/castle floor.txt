@@ -1,0 +1,21 @@
+<States>
+        <State name="StartTrap" type="initial"/>
+        <State name="WAIT_OPEN" />
+        <State name="OPENING" />
+        <State name="WAIT_CLOSE" />
+        <State name="CLOSING" />
+        <State name="PERMANENT_OPEN" />
+</States>
+      
+<Transitions>
+        <Transition from="StartTrap" to="WAIT_OPEN" event="init_done"/>
+        <Transition from="WAIT_OPEN" to="OPENING" event="mario_step_on"/>
+        <Transition from="OPENING" to="WAIT_CLOSE" event="open_finish"/>
+        <Transition from="WAIT_CLOSE" to="CLOSING" event="mario_far"/>
+        <Transition from="CLOSING" to="WAIT_OPEN" event="close_finish"/>
+        
+        <Transition from="WAIT_OPEN" to="PERMANENT_OPEN" event="special_exit"/>
+        <Transition from="OPENING" to="PERMANENT_OPEN" event="special_exit"/>
+        <Transition from="WAIT_CLOSE" to="PERMANENT_OPEN" event="special_exit"/>
+        <Transition from="CLOSING" to="PERMANENT_OPEN" event="special_exit"/>
+</Transitions>

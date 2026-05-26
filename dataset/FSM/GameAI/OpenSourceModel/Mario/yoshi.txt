@@ -1,0 +1,36 @@
+<States>
+    <State name="INIT" type="initial"/>
+    <State name="IDLE"/>
+    <State name="WALK"/>
+    <State name="TALK"/>
+    <State name="GIVE_PRESENT"/>
+    <State name="WALK_JUMP_OFF_ROOF"/>
+    <State name="FINISH_JUMPING_AND_DESPAWN"/>
+    <State name="CREDITS"/>
+    <State name="DESTROYED"/>
+</States>
+
+<Transitions>
+    <Transition from="INIT" to="IDLE" event="has_120_stars_and_alive"/>
+
+    <Transition from="IDLE" to="WALK" event="random_walk_triggered"/>
+    <Transition from="WALK" to="IDLE" event="reached_home_point"/>
+
+    <Transition from="IDLE" to="TALK" event="mario_interacted"/>
+    <Transition from="WALK" to="TALK" event="mario_interacted"/>
+
+    <Transition from="TALK" to="GIVE_PRESENT" event="dialog_finished"/>
+
+    <Transition from="GIVE_PRESENT" to="WALK_JUMP_OFF_ROOF" event="lives_at_100"/>
+
+    <Transition from="WALK_JUMP_OFF_ROOF" to="FINISH_JUMPING_AND_DESPAWN" event="reached_roof_edge"/>
+
+    <Transition from="FINISH_JUMPING_AND_DESPAWN" to="DESTROYED" event="fell_off_roof"/>
+
+    <Transition from="IDLE" to="CREDITS" event="credits_camera_event"/>
+    <Transition from="WALK" to="CREDITS" event="credits_camera_event"/>
+    <Transition from="TALK" to="CREDITS" event="credits_camera_event"/>
+    <Transition from="GIVE_PRESENT" to="CREDITS" event="credits_camera_event"/>
+    <Transition from="WALK_JUMP_OFF_ROOF" to="CREDITS" event="credits_camera_event"/>
+    <Transition from="FINISH_JUMPING_AND_DESPAWN" to="CREDITS" event="credits_camera_event"/>
+</Transitions>

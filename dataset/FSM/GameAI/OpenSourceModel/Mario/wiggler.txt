@@ -1,0 +1,34 @@
+<States>
+    <State name="UNINITIALIZED" type="initial"/>
+    <State name="WALK"/>
+    <State name="KNOCKBACK"/>
+    <State name="JUMPED_ON"/>
+    <State name="SHRINK"/>
+    <State name="FALL_THROUGH_FLOOR"/>
+</States>
+
+<Transitions>
+    <!-- 初始化 -->
+    <Transition from="UNINITIALIZED" to="WALK" event="segments_initialized"/>
+
+    <!-- 行走中被踩踏 -->
+    <Transition from="WALK" to="JUMPED_ON" event="attacked_from_above"/>
+
+    <!-- 行走中被拳击/踢击 -->
+    <Transition from="WALK" to="KNOCKBACK" event="attacked_from_side"/>
+
+    <!-- 击退恢复 -->
+    <Transition from="KNOCKBACK" to="WALK" event="velocity_zero_and_facing_up"/>
+
+    <!-- 踩踏结束 -->
+    <Transition from="JUMPED_ON" to="WALK" event="unsquished_and_dialog_done"/>
+
+    <!-- 踩踏结束 → 血量 1 → 缩小 -->
+    <Transition from="JUMPED_ON" to="SHRINK" event="health_became_1"/>
+
+    <!-- 缩小完成 -->
+    <Transition from="SHRINK" to="FALL_THROUGH_FLOOR" event="scale_reached_1"/>
+
+    <!-- 掉落到指定高度 -->
+    <Transition from="FALL_THROUGH_FLOOR" to="WALK" event="fell_below_1700"/>
+</Transitions>

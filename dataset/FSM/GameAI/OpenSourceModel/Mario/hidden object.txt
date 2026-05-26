@@ -1,0 +1,23 @@
+<States>
+    <State name="START" type="initial"/>
+    <State name="INACTIVE"/>
+    <State name="ACTIVE"/>
+    <State name="BROKEN"/>
+</States>
+
+<Transitions>
+    <!-- 初始化 → 隐藏未激活 -->
+    <Transition from="START" to="INACTIVE" event="init_done"/>
+
+    <!-- 未激活 → 激活显示（紫色开关按下） -->
+    <Transition from="INACTIVE" to="ACTIVE" event="purple_switch_activated"/>
+
+    <!-- 激活 → 未激活（时间到/闪烁消失） -->
+    <Transition from="ACTIVE" to="INACTIVE" event="time_up"/>
+
+    <!-- 激活 → 破碎（仅箱子：被攻击/砸地） -->
+    <Transition from="ACTIVE" to="BROKEN" event="attacked_or_ground_pounded"/>
+
+    <!-- 破碎 → 未激活（开关复位） -->
+    <Transition from="BROKEN" to="INACTIVE" event="switch_reset"/>
+</States>
