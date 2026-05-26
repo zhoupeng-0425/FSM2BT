@@ -1,0 +1,50 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_70_OpportunisticPredator_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <WeakPreyVisible/>
+          <SinglePreyVisible/>
+          <PreyInAttackRange/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <PreyNotInHaven/>
+              <PreyAlive/>
+            </Fallback>
+            <Attack/>
+          </Sequence>
+          <Maneuver/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+        <Sequence>
+          <VeryHungry/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <ThreatNearby/>
+          <LowHealth/>
+        </Fallback>
+        <Fallback>
+          <Hide/>
+          <FindSafe/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

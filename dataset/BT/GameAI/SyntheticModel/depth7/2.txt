@@ -1,0 +1,59 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_62_CautiousEscape_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <PredatorVeryClose/>
+          <ThreatNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <LowHealth/>
+                <SafeZoneNearby/>
+              </Sequence>
+              <PredatorNearby/>
+            </Fallback>
+            <SeekSafety/>
+          </Sequence>
+          <Sequence>
+            <NearHideSpot/>
+            <Hide/>
+          </Sequence>
+          <Flee/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <InSafeZone/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <FoodNearby/>
+            <Forage/>
+          </Sequence>
+          <Sequence>
+            <InFoodZone/>
+            <Eat/>
+          </Sequence>
+        </Fallback>
+        <Wander/>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

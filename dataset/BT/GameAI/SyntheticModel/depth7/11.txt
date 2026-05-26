@@ -1,0 +1,55 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_71_PeacefulFlocker_D7">
+    <Fallback>
+      <Sequence>
+        <PredatorNearby/>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <PredatorVeryClose/>
+              <ThreatNearby/>
+            </Fallback>
+            <Flee/>
+          </Sequence>
+          <Sequence>
+            <SafeZoneNearby/>
+            <SeekSafety/>
+          </Sequence>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <AllyNearby/>
+          <Fallback>
+            <Sequence>
+              <AllyNumberHigh/>
+              <Flock/>
+            </Sequence>
+            <Assist/>
+          </Fallback>
+        </Sequence>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <InFoodZone/>
+          <Tired/>
+        </Fallback>
+        <Fallback>
+          <Eat/>
+          <Resting/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Wander/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

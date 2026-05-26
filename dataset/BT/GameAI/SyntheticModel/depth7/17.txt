@@ -1,0 +1,57 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_77_SafeZoneDependent_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <LowHealth/>
+          <NeedRecovery/>
+          <PredatorNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <SafeZoneNearby/>
+                <InSafeZone/>
+              </Sequence>
+              <NearHideSpot/>
+            </Fallback>
+            <Resting/>
+          </Sequence>
+          <Sequence>
+            <FindSafe/>
+            <SeekSafety/>
+          </Sequence>
+          <Hide/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <AllyNearby/>
+          <AllyAttacking/>
+        </Fallback>
+        <Fallback>
+          <Flock/>
+          <Assist/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Wander/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

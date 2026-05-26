@@ -1,0 +1,56 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_75_FoodZoneGuard_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <InFoodZone/>
+          <FoodNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <PredatorNearby/>
+              <ThreatNearby/>
+            </Fallback>
+            <SeekSafety/>
+          </Sequence>
+          <Sequence>
+            <Fallback>
+              <DeadPreyNearby/>
+              <VeryHungry/>
+            </Fallback>
+            <Feast/>
+          </Sequence>
+          <Eat/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <AllyNearby/>
+          <Tired/>
+        </Fallback>
+        <Fallback>
+          <Flock/>
+          <Resting/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Wander/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

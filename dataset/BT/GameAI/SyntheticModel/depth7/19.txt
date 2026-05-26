@@ -1,0 +1,54 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_79_ScoutPatrol_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <ThreatNearby/>
+          <PredatorNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <PredatorVeryClose/>
+              <LowHealth/>
+            </Fallback>
+            <Flee/>
+          </Sequence>
+          <Sequence>
+            <SafeZoneNearby/>
+            <SeekSafety/>
+          </Sequence>
+          <Hide/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <FoodNearby/>
+          <DeadPreyNearby/>
+        </Fallback>
+        <Fallback>
+          <Forage/>
+          <Feast/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+        <Wander/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

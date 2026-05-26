@@ -1,0 +1,56 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_66_HungerPriority_D7">
+    <Fallback>
+      <Sequence>
+        <VeryHungry/>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <DeadPreyNearby/>
+              <FoodNearby/>
+            </Fallback>
+            <Fallback>
+              <Feast/>
+              <Eat/>
+            </Fallback>
+          </Sequence>
+          <Sequence>
+            <PreyVisible/>
+            <Fallback>
+              <Sequence>
+                <PreyInAttackRange/>
+                <Attack/>
+              </Sequence>
+              <Maneuver/>
+            </Fallback>
+          </Sequence>
+          <Forage/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <InFoodZone/>
+          <FoodNearby/>
+        </Fallback>
+        <Forage/>
+      </Sequence>
+
+      <Fallback>
+        <Roam/>
+        <Wander/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

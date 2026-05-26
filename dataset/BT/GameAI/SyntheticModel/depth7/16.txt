@@ -1,0 +1,57 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_76_RoamSearch_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <PreyRecentlySeen/>
+          <FoodNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <PreyVisible/>
+              <SinglePreyVisible/>
+            </Fallback>
+            <Maneuver/>
+          </Sequence>
+          <Sequence>
+            <Fallback>
+              <InFoodZone/>
+              <DeadPreyNearby/>
+            </Fallback>
+            <Eat/>
+          </Sequence>
+          <Forage/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <ThreatNearby/>
+          <Hide/>
+        </Sequence>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <Tired/>
+          <LowHealth/>
+        </Fallback>
+        <Fallback>
+          <Resting/>
+          <FindSafe/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Roam/>
+        <Wander/>
+        <Patrol/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,52 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_68_TerritoryPatrol_D7">
+    <Fallback>
+      <Sequence>
+        <PreyInTerritory/>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <PreyInAttackRange/>
+                <PreyAlive/>
+              </Sequence>
+              <WeakPreyVisible/>
+            </Fallback>
+            <Attack/>
+          </Sequence>
+          <Sequence>
+            <PreyVisible/>
+            <Maneuver/>
+          </Sequence>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <OutOfTerritory/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <ThreatNearby/>
+          <Hide/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <Tired/>
+          <LowHealth/>
+        </Fallback>
+        <Fallback>
+          <Resting/>
+          <FindSafe/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

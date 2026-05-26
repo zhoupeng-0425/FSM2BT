@@ -1,0 +1,49 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_65_StealthAmbush_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <NearHideSpot/>
+            <Fallback>
+              <Sequence>
+                <PreyNearby/>
+                <SinglePreyVisible/>
+              </Sequence>
+              <PreyVisible/>
+            </Fallback>
+          </Sequence>
+          <ThreatNearby/>
+        </Fallback>
+        <Hide/>
+      </Sequence>
+
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <PreyInAttackRange/>
+            <PreyNotInHaven/>
+          </Sequence>
+          <WeakPreyVisible/>
+        </Fallback>
+        <Attack/>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

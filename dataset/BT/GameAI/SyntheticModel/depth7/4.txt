@@ -1,0 +1,53 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_64_GroupDefense_D7">
+    <Fallback>
+      <Sequence>
+        <AllyNearby/>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <AllyAttacking/>
+                <AllyNumberHigh/>
+              </Sequence>
+              <ThreatNearby/>
+            </Fallback>
+            <Assist/>
+          </Sequence>
+          <Sequence>
+            <AllyNumberHigh/>
+            <Charge/>
+          </Sequence>
+          <Flock/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <FoodNearby/>
+          <InFoodZone/>
+        </Fallback>
+        <Fallback>
+          <Eat/>
+          <Forage/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Wander/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

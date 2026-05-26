@@ -1,0 +1,77 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_80_IntegratedMedium_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <LowHealth/>
+          <NeedRecovery/>
+          <ThreatNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <InSafeZone/>
+                <Tired/>
+              </Sequence>
+              <SafeZoneNearby/>
+            </Fallback>
+            <Resting/>
+          </Sequence>
+          <Sequence>
+            <PredatorNearby/>
+            <Flee/>
+          </Sequence>
+          <FindSafe/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyVisible/>
+          <Fallback>
+            <Sequence>
+              <PreyInAttackRange/>
+              <Attack/>
+            </Sequence>
+            <Sequence>
+              <PreyNotInHaven/>
+              <Maneuver/>
+            </Sequence>
+          </Fallback>
+        </Sequence>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <FoodNearby/>
+          <DeadPreyNearby/>
+          <InFoodZone/>
+        </Fallback>
+        <Fallback>
+          <Eat/>
+          <Feast/>
+          <Forage/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+        <Sequence>
+          <AllyAttacking/>
+          <Assist/>
+        </Sequence>
+        <Patrol/>
+        <Roam/>
+        <Wander/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,52 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_74_CombatSupport_D7">
+    <Fallback>
+      <Sequence>
+        <AllyAttacking/>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <AllyNumberHigh/>
+              <PreyVisible/>
+            </Fallback>
+            <Assist/>
+          </Sequence>
+          <Sequence>
+            <Fallback>
+              <PredatorNearby/>
+              <ThreatNearby/>
+            </Fallback>
+            <Charge/>
+          </Sequence>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyInAttackRange/>
+          <Attack/>
+        </Sequence>
+        <Sequence>
+          <PreyVisible/>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <LowHealth/>
+          <NeedRecovery/>
+        </Fallback>
+        <Fallback>
+          <FindSafe/>
+          <Hide/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Flock/>
+        <Wander/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

@@ -1,0 +1,55 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_69_ExploreForage_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <FoodNearby/>
+              <InFoodZone/>
+            </Fallback>
+            <Fallback>
+              <Eat/>
+              <Forage/>
+            </Fallback>
+          </Sequence>
+          <Sequence>
+            <DeadPreyNearby/>
+            <Feast/>
+          </Sequence>
+        </Fallback>
+        <Fallback>
+          <AllyNearby/>
+          <Wander/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <PreyRecentlySeen/>
+            <Forage/>
+          </Sequence>
+          <PreyVisible/>
+        </Fallback>
+        <Maneuver/>
+      </Sequence>
+
+      <Fallback>
+        <Roam/>
+        <Wander/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

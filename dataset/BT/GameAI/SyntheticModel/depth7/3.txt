@@ -1,0 +1,55 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_63_ActiveHunter_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <PreyInAttackRange/>
+                <PreyAlive/>
+              </Sequence>
+              <WeakPreyVisible/>
+            </Fallback>
+            <Attack/>
+          </Sequence>
+          <Sequence>
+            <Fallback>
+              <PreyVisible/>
+              <SinglePreyVisible/>
+            </Fallback>
+            <Maneuver/>
+          </Sequence>
+        </Fallback>
+        <PreyNotInHaven/>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <LowHealth/>
+          <Tired/>
+        </Fallback>
+        <Fallback>
+          <FindSafe/>
+          <Resting/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

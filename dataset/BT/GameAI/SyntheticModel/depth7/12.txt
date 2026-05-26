@@ -1,0 +1,55 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_72_TacticalChaser_D7">
+    <Fallback>
+      <Sequence>
+        <PreyVisible/>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <PreyInAttackRange/>
+                <PreyNotInHaven/>
+              </Sequence>
+              <WeakPreyVisible/>
+            </Fallback>
+            <Attack/>
+          </Sequence>
+          <Sequence>
+            <Fallback>
+              <SinglePreyVisible/>
+              <PreyAlive/>
+            </Fallback>
+            <Maneuver/>
+          </Sequence>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PreyRecentlySeen/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <DeadPreyNearby/>
+          <Feast/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <LowHealth/>
+          <Tired/>
+        </Fallback>
+        <Fallback>
+          <FindSafe/>
+          <Resting/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>

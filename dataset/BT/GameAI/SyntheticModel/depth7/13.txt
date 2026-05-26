@@ -1,0 +1,56 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_73_DangerAvoider_D7">
+    <Fallback>
+      <Sequence>
+        <Fallback>
+          <PredatorVeryClose/>
+          <ThreatNearby/>
+        </Fallback>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <SafeZoneNearby/>
+                <LowHealth/>
+              </Sequence>
+              <PredatorNearby/>
+            </Fallback>
+            <SeekSafety/>
+          </Sequence>
+          <Sequence>
+            <NearHideSpot/>
+            <Hide/>
+          </Sequence>
+          <Flee/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <InSafeZone/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <FoodNearby/>
+          <InFoodZone/>
+        </Fallback>
+        <Fallback>
+          <Eat/>
+          <Forage/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Wander/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>
