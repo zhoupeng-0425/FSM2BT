@@ -1,0 +1,32 @@
+<BehaviorTree ID="DockSequence">
+    <Sequence>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn />
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+      <Fallback>
+        <IsDocked />
+        <Dock />
+      </Fallback>
+      <Fallback>
+        <IsSitting />
+        <Sit />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOff />
+        <PowerOff />
+      </Fallback>
+      <Fallback>
+        <IsLeaseReleased />
+        <ReleaseLease />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

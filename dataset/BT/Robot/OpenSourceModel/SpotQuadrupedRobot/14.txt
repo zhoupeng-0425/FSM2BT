@@ -1,0 +1,16 @@
+ <BehaviorTree ID="DockThenShutdown">
+    <Sequence>
+      <Fallback>
+        <IsDocked />
+        <Dock />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOff />
+        <PowerOff />
+      </Fallback>
+      <Fallback>
+        <IsLeaseReleased />
+        <ReleaseLease />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

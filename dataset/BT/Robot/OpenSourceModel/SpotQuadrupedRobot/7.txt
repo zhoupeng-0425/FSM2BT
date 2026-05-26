@@ -1,0 +1,16 @@
+<BehaviorTree ID="Startup">
+    <Sequence>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn />
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

@@ -1,0 +1,24 @@
+<BehaviorTree ID="UndockAndMoveReady">
+    <Sequence>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn />
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+      <Fallback>
+        <IsUndocked />
+        <Undock />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

@@ -1,0 +1,24 @@
+ <BehaviorTree ID="StartupThenDock">
+    <Sequence>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn />
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+      <Fallback>
+        <IsDocked />
+        <Dock />
+      </Fallback>
+      <Fallback>
+        <IsSitting />
+        <Sit />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

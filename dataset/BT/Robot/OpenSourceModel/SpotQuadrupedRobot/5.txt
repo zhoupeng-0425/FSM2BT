@@ -1,0 +1,16 @@
+ <BehaviorTree ID="UndockSequence">
+    <Sequence>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed/>
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn/>
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsUndocked/>
+        <Undock />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

@@ -1,0 +1,16 @@
+<BehaviorTree ID="Shutdown">
+    <Sequence>
+      <Fallback>
+        <IsSitting />
+        <Sit />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOff />
+        <PowerOff />
+      </Fallback>
+      <Fallback>
+        <IsLeaseReleased />
+        <ReleaseLease />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>

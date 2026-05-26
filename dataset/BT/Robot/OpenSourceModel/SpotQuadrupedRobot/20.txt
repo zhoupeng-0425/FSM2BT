@@ -1,0 +1,49 @@
+ <BehaviorTree ID="CompleteRoundTrip">
+    <Sequence>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn />
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+      <Fallback>
+        <IsUndocked />
+        <Undock />
+      </Fallback>
+      <Fallback>
+        <IsDocked />
+        <Dock />
+      </Fallback>
+      <Fallback>
+        <IsSitting />
+        <Sit />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOff />
+        <PowerOff />
+      </Fallback>
+      <Fallback>
+        <IsLeaseReleased />
+        <ReleaseLease />
+      </Fallback>
+      <Fallback>
+        <ClaimLease />
+        <IsLeaseClaimed />
+      </Fallback>
+      <Fallback>
+        <IsPoweredOn />
+        <PowerOn />
+      </Fallback>
+      <Fallback>
+        <IsStanding />
+        <Stand />
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
