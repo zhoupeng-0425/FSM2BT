@@ -1,0 +1,20 @@
+<BT>
+  <BehaviorTree ID="Nav2MainBT">
+    <Sequence>
+      <ComputePathToPose/>
+      <Fallback>
+        <FollowPath/>
+        <Sequence>
+          <ClearCostmap/>
+          <RecoverySpin/>
+          <ComputePathToPose/>
+          <FollowPath/>
+        </Sequence>
+        <Sequence>
+          <BackUp/>
+          <WaitRecovery/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

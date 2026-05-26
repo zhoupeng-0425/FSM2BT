@@ -1,0 +1,12 @@
+<BT>
+  <BehaviorTree ID="Navigate">
+    <Sequence>
+    	<ComputePathToPose/>
+        <Fallback>
+        	<FollowPath/>
+		 <RecoverySpin/>
+        <WaitRecovery/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
