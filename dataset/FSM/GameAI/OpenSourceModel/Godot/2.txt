@@ -1,0 +1,25 @@
+<States>
+    <State name="Start" type="initial"/>
+    <State name="idle" />
+    <State name="run" />
+    <State name="jump" />
+    <State name="attack" />
+    <State name="hurt" />
+</States>
+
+<Transitions>
+    <Transition from="Start" to="idle" event="init"/>
+    <Transition from="idle" to="run" event="move_input"/>
+    <Transition from="idle" to="jump" event="jump_input"/>
+    <Transition from="idle" to="attack" event="attack_input"/>
+    <Transition from="run" to="idle" event="no_input"/>
+    <Transition from="run" to="jump" event="jump_input"/>
+    <Transition from="run" to="attack" event="attack_input"/>
+    <Transition from="jump" to="idle" event="landed"/>
+    <Transition from="attack" to="idle" event="attack_finish"/>
+    <Transition from="idle" to="hurt" event="take_damage"/>
+    <Transition from="run" to="hurt" event="take_damage"/>
+    <Transition from="jump" to="hurt" event="take_damage"/>
+    <Transition from="attack" to="hurt" event="take_damage"/>
+    <Transition from="hurt" to="idle" event="hurt_finish"/>
+</Transitions>
