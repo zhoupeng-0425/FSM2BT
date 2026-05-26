@@ -1,0 +1,12 @@
+<BehaviorTree ID="Prey_BT">
+  <Fallback>
+    <SeekSafety/>
+    <Flee/>
+    <Eat/>
+    <Forage/>
+    <Flock/>
+    <Wander/>
+    <Assist/>
+    <Charge/>
+  </Fallback>
+</BehaviorTree>

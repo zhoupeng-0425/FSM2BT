@@ -1,0 +1,50 @@
+<BehaviorTree ID="Predator_BT">
+  <Fallback>
+    <Sequence>
+      <LowHealth/>
+      <Fallback>
+        <Sequence>
+          <InSafeZone/>
+          <Resting/>
+        </Sequence>
+        <Sequence>
+          <SafeZoneNearby/>
+          <Hide/>
+        </Sequence>
+        <FindSafe/>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <VeryHungry/>
+      <FoodNearby/>
+      <Feast/>
+    </Sequence>
+
+    <Sequence>
+      <PreyInAttackRange/>
+      <PreyAlive/>
+      <PreyNotInHaven/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <PreyAlive/>
+      <PreyNotInHaven/>
+      <Maneuver/>
+    </Sequence>
+
+    <Sequence>
+      <PreyRecentlySeen/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <Tired/>
+      <Resting/>
+    </Sequence>
+    <Patrol/>
+    <Roam/>
+  </Fallback>
+</BehaviorTree>

@@ -1,0 +1,28 @@
+<BehaviorTree ID="Prey_BT">
+  <Fallback>
+    <Sequence>
+      <PredatorNearby/>
+      <Fallback>
+        <SeekSafety/>
+        <Flee/>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <InFoodZone/>
+      <Eat/>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <AllyNearby/>
+      <Flock/>
+    </Sequence>
+
+    <Wander/>
+  </Fallback>
+</BehaviorTree>

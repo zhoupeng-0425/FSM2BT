@@ -1,0 +1,31 @@
+<BehaviorTree ID="Predator_BT">
+  <Fallback>
+    <Sequence>
+      <VeryHungry/>
+      <FoodNearby/>
+      <Feast/>
+    </Sequence>
+
+    <Sequence>
+      <VeryHungry/>
+      <PreyVisible/>
+      <PreyAlive/>
+      <PreyNotInHaven/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <Hungry/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <PreyAlive/>
+      <PreyNotInHaven/>
+      <Attack/>
+    </Sequence>
+
+    <Roam/>
+  </Fallback>
+</BehaviorTree>
