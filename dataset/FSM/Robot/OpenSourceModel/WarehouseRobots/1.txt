@@ -1,0 +1,36 @@
+<FSM>
+  <InitialState>SM_ROOT</InitialState>
+
+  <States>
+    <State name="SM_ROOT" type="initial"/>
+    <State name="Move-To cube2"/>
+    <State name="Pick cube2"/>
+    <State name="Move-To delivery"/>
+    <State name="Place cube2"/>
+    <State name="IDLE"/>
+    <State name="Success" type="final"/>
+  </States>
+
+  <Transitions>
+    <Transition from="SM_ROOT" to="Move-To cube2" event="eventStart"/>
+
+  
+    <Transition from="Move-To cube2" to="Pick cube2" event="Cube2 reached"/>
+    <Transition from="Move-To cube2" to="IDLE" event="Movecube2FAILURE"/>
+
+    <Transition from="Pick cube2" to="Move-To delivery" event="Cube2 in Hand"/>
+    <Transition from="Pick cube2" to="IDLE" event="PickFAILURE"/>
+
+    <Transition from="Move-To delivery" to="Place cube2" event="Delivery pose reached"/>
+    <Transition from="Move-To delivery" to="IDLE" event="MovedeliveryFAILURE"/>
+
+    <Transition from="Place cube2" to="Success" event="Cube2 placed"/>
+    <Transition from="Place cube2" to="IDLE" event="PlaceFAILURE"/>
+
+    <Transition from="IDLE" to="Move-To cube2" event="Restart the task"/>
+    <Transition from="IDLE" to="Pick cube2" event="Cube2 reached"/>
+    <Transition from="IDLE" to="Move-To delivery" event="Cube2 in Hand"/>
+    <Transition from="IDLE" to="Place cube2" event="Delivery pose reached"/>
+    <Transition from="IDLE" to="Success" event="Cube2 placed"/>
+  </Transitions>
+</FSM>
