@@ -1,0 +1,17 @@
+<States>
+        <State name="StartS" type="initial"/>
+        <State name="IDLE" />
+        <State name="SWITCH_ACTIVATED" />
+        <State name="ANIMATING_FORWARD" />
+        <State name="ANIMATING_BACKWARD" />
+        <State name="WAIT_FOR_RESET" />
+</States>
+
+<Transitions>
+        <Transition from="StartS" to="IDLE" event="init_complete"/>
+        <Transition from="IDLE" to="SWITCH_ACTIVATED" event="switch_pressed"/>
+        <Transition from="SWITCH_ACTIVATED" to="ANIMATING_FORWARD" event="start_forward_timer"/>
+        <Transition from="ANIMATING_FORWARD" to="WAIT_FOR_RESET" event="forward_animation_done"/>
+        <Transition from="WAIT_FOR_RESET" to="ANIMATING_BACKWARD" event="switch_deactivated"/>
+        <Transition from="ANIMATING_BACKWARD" to="IDLE" event="backward_animation_done"/>
+</Transitions>
