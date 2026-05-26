@@ -1,0 +1,14 @@
+States: [
+    "FIND_WALL",
+    "FOLLOW_WALL",
+    "TURN_LEFT"
+]
+
+Transitions: [
+    {from: "FIND_WALL", to: "FOLLOW_WALL", event: "wall detected"},
+    {from: "FOLLOW_WALL", to: "TURN_LEFT", event: "obstacle detected ahead"},
+    {from: "TURN_LEFT", to: "FIND_WALL", event: "left turn completed"},
+    {from: "FIND_WALL", to: "FIND_WALL", event: "no wall detected"},
+    {from: "FOLLOW_WALL", to: "FOLLOW_WALL", event: "no obstacle ahead"},
+    {from: "TURN_LEFT", to: "TURN_LEFT", event: "left turn not completed"}
+]
