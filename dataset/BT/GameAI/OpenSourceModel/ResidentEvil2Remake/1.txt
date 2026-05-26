@@ -1,0 +1,177 @@
+<BehaviorTree ID="AIBehaviourTree">
+    <Selector>
+    <!-- 眩晕状态 -->
+        <Sequence>
+            <IsStunned/>
+            <PlayAnimation1/>
+        </Sequence>
+
+        <!-- 撤退逻辑 -->
+        <Sequence>
+            <IsBlackboardVariableNull1/>
+            <ShouldRetreat/>
+            <Selector>
+            <!-- 直接前往撤退点 -->
+                <Sequence>
+                    <IsInSameRoomAsVector3/>
+                    <MoveToVector31/>
+                </Sequence>
+
+                <!-- 通过房间路径前往撤退点 -->
+                <Sequence>
+                    <FindDoorPathToVector3/>
+                    <GetDoorFromPath1/>
+                    <GetDoorEntryExitPoint1/>
+                    <MoveTo1/>
+                    <IsAtTarget1/>
+                    <Sequence>
+                        <OpenDoor1/>
+                        <SendAnimationRigSignal1/>
+                        <GetDoorEntryExitPoint2/>
+                        <MoveTo2/>
+                        <IsAtTarget2/>
+                        <SendAnimationRigSignal2/>
+                        <IncrementDoorPathIndex1/>
+                    </Sequence>
+                </Sequence>
+            </Selector>
+        </Sequence>
+
+    <!-- 攻击状态 -->
+        <Selector>
+        <!-- 看见玩家重置追击计时器 -->
+            <Sequence>
+                <CanSeeObject1/>
+                <SetBlackboardVariable1/>
+            </Sequence>
+        <!-- 攻击核心逻辑 -->
+            <Selector>
+            <!-- 追击计时结束，切换搜索状态 -->
+                <Sequence>
+                    <AlterBlackboardVariableByDeltaTimeFloat/>
+                    <CompareBlackboardVariable1/>
+                    <PlayAnimation2/>
+                    <Selector>
+                        <Sequence>
+                            <CanReachObjectRoom1/>
+                            <GetRandomRoomAdjacentToTarget1/>
+                        </Sequence>
+                        <GetRandomRoom1/>
+                    </Selector>
+                    <SetBlackboardVariable2/>
+                </Sequence>
+            <!-- 攻击玩家 -->
+                <Sequence>
+                    <IsAtTarget3/>
+                    <PlayAnimation3/>
+                </Sequence>
+                <!-- 同房间移动到玩家 -->
+                <Sequence>
+                    <IsInSameRoomAs/>
+                    <MoveTo3/>
+                </Sequence>
+                <!-- 跨房间导航追击 -->
+                <Sequence>
+                    <FindDoorPathTo1/>
+                    <GetDoorFromPath2/>
+                    <GetDoorEntryExitPoint3/>
+                    <MoveTo4/>
+                    <IsAtTarget4/>
+                    <Selector>
+                        <!-- 处理锁门 -->
+                        <Sequence>
+                            <CanUseDoor1/>
+                            <CloseDoor1/>
+                            <BangDoor1/>
+                            <IdleNode1/>
+                            <GetRandomRoom2/>
+                            <SetBlackboardVariable3/>
+                        </Sequence>
+                        <!-- 使用门进行房间切换 -->
+                        <Sequence>
+                            <OpenDoor2/>
+                            <SendAnimationRigSignal3/>
+                            <GetDoorEntryExitPoint4/>
+                            <MoveTo5/>
+                            <SendAnimationRigSignal4/>
+                            <IncrementDoorPathIndex2/>
+                        </Sequence>
+                    </Selector>
+                </Sequence>
+            </Selector>
+        </Selector>
+
+    <!-- 搜索状态 -->
+        <Selector>
+        <!-- 初始化搜索房间 -->
+            <Sequence>
+                <IsBlackboardVariableNull2/>
+                <GetRandomRoomAdjacentToTarget2/>
+            </Sequence>
+            <!-- 看见玩家，切换攻击状态 -->
+            <Sequence>
+                <CanSeeObject2/>
+                <SetBlackboardVariable4/>
+            </Sequence>
+            <!-- 听见玩家，切换攻击状态 -->
+            <Sequence>
+                <HasHeardSound/>
+                <CanReachObjectRoom2/>
+                <SetBlackboardVariable5/>
+            </Sequence>
+            <!-- 搜索房间核心逻辑 -->
+            <Selector>
+            <!-- 在目标房间内搜索 -->
+                <Sequence>
+                    <IsInRoom/>
+                    <Sequence>
+                        <GetRandomRoomSearchSpot/>
+                        <MoveTo6/>
+                        <IsAtTarget6/>
+                        <PlayAnimation4/>
+                        <IncrementBlackboardVariable/>
+                    </Sequence>
+                    <CompareBlackboardVariable2/>
+                    <SetBlackboardVariable6/>
+                    <Selector>
+                        <Sequence>
+                            <CanReachObjectRoom3/>
+                            <GetRandomRoomAdjacentToTarget3/>
+                        </Sequence>
+                        <GetRandomRoom3/>
+                    </Selector>
+                </Sequence>
+                <!-- 跨房间前往搜索目标 -->
+                <Sequence>
+                    <FindDoorPathTo2/>
+                    <GetDoorFromPath3/>
+                    <GetDoorEntryExitPoint5/>
+                    <MoveTo7/>
+                    <IsAtTarget7/>
+                    <Selector>
+                    <!-- 处理锁门 -->
+                        <Sequence>
+                            <CanUseDoor2/>
+                            <CloseDoor2/>
+                            <BangDoor2/>
+                            <IdleNode2/>
+                            <GetRandomRoom4/>
+                        </Sequence>
+                        <!-- 使用门进行房间切换 -->
+                        <Sequence>
+                            <OpenDoor3/>
+                            <SendAnimationRigSignal5/>
+                            <GetDoorEntryExitPoint6/>
+                            <MoveTo8/>
+                            <IsAtTarget8/>
+                            <SendAnimationRigSignal6/>
+                            <IncrementDoorPathIndex3/>
+                        </Sequence>
+                    </Selector>
+                </Sequence>
+            </Selector>
+        </Selector>
+        <!-- 空闲状态 -->
+        <IdleNode3/>
+    </Selector>
+</BehaviorTree>
