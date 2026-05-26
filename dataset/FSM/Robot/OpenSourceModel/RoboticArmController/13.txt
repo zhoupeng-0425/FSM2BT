@@ -1,0 +1,34 @@
+<States>
+    <State name="CUSTOM_CONTROL" type="initial"/>
+    <State name="INVALID" />
+    <State name="PASSIVE" />
+    <State name="AUTO_PERLACE_1" />
+    <State name="AUTO_PERLACE_2" />
+    <State name="AUTO_TAKEOUT_1" />
+    <State name="AUTO_TAKEOUT_2" />
+    <State name="LITTLE_SOURCE_LAND" />
+    <State name="BIG_SOURCE_LAND" />
+    <State name="DEFEND" />
+</States>
+<Transitions>
+<Transition from="CUSTOM_CONTROL" to="PASSIVE" event="COMMAND_PASSIVE"/>
+<Transition from="CUSTOM_CONTROL" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="INVALID" to="CUSTOM_CONTROL" event="COMMAND_CUSTOM_CONTROL"/>
+<Transition from="INVALID" to="AUTO_PERLACE_2" event="COMMAND_AUTO_PERLACE_2"/>
+<Transition from="PASSIVE" to="LITTLE_SOURCE_LAND" event="COMMAND_LITTLE_SOURCE_LAND"/>
+<Transition from="AUTO_PERLACE_1" to="INVALID" event="COMMAND_INVALID"/>
+<Transition from="AUTO_PERLACE_1" to="AUTO_TAKEOUT_1" event="COMMAND_AUTO_TAKEOUT_1"/>
+<Transition from="AUTO_PERLACE_2" to="BIG_SOURCE_LAND" event="COMMAND_BIG_SOURCE_LAND"/>
+<Transition from="AUTO_TAKEOUT_1" to="PASSIVE" event="COMMAND_PASSIVE"/>
+<Transition from="AUTO_TAKEOUT_2" to="CUSTOM_CONTROL" event="COMMAND_CUSTOM_CONTROL"/>
+<Transition from="AUTO_TAKEOUT_2" to="AUTO_PERLACE_1" event="COMMAND_AUTO_PERLACE_1"/>
+<Transition from="LITTLE_SOURCE_LAND" to="AUTO_TAKEOUT_2" event="COMMAND_AUTO_TAKEOUT_2"/>
+<Transition from="BIG_SOURCE_LAND" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="DEFEND" to="LITTLE_SOURCE_LAND" event="COMMAND_LITTLE_SOURCE_LAND"/>
+<Transition from="DEFEND" to="BIG_SOURCE_LAND" event="COMMAND_BIG_SOURCE_LAND"/>
+<Transition from="CUSTOM_CONTROL" to="AUTO_PERLACE_2" event="COMMAND_AUTO_PERLACE_2"/>
+<Transition from="INVALID" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="PASSIVE" to="AUTO_PERLACE_1" event="COMMAND_AUTO_PERLACE_1"/>
+<Transition from="AUTO_PERLACE_2" to="DEFEND" event="COMMAND_DEFEND"/>
+<Transition from="LITTLE_SOURCE_LAND" to="PASSIVE" event="COMMAND_PASSIVE"/>
+</Transitions>
