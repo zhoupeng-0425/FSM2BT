@@ -1,0 +1,43 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_81_SurvivalForage_D8">
+    <Sequence>
+      <Fallback>
+        <LowHealth/>
+        <FindSafe/>
+      </Fallback>
+      <Fallback>
+        <PredatorNearby/>
+        <Sequence>
+          <Fallback>
+            <InSafeZone/>
+            <Sequence>
+              <Fallback>
+                <SafeZoneNearby/>
+                <NearHideSpot/>
+              </Fallback>
+              <Fallback>
+                <SeekSafety/>
+                <Hide/>
+              </Fallback>
+            </Sequence>
+          </Fallback>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <InFoodZone/>
+        <Sequence>
+          <Fallback>
+            <FoodNearby/>
+            <Forage/>
+          </Fallback>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <AllyNearby/>
+        <Wander/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
