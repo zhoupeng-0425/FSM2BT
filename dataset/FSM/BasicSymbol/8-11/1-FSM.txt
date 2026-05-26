@@ -1,0 +1,28 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="A" />
+    <State name="D" />
+    <State name="G" />
+    <State name="J" />
+    <State name="M" />
+    <State name="Q" />
+    <State name="T" />
+    <State name="X" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="A" event="eventStartA"/>
+    <Transition from="A" to="D" event="eventAD"/>
+    <Transition from="D" to="G" event="eventDG"/>
+    <Transition from="G" to="J" event="eventGJ"/>
+    <Transition from="J" to="M" event="eventJM"/>
+    <Transition from="M" to="Q" event="eventMQ"/>
+    <Transition from="Q" to="T" event="eventQT"/>
+    <Transition from="T" to="X" event="eventTX"/>
+    <Transition from="X" to="A" event="eventXA"/>
+    <Transition from="A" to="J" event="eventAJ"/>
+    <Transition from="D" to="Q" event="eventDQ"/>
+    <Transition from="M" to="X" event="eventMX"/>
+  </Transitions>
+</FSM>
