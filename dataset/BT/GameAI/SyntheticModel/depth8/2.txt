@@ -1,0 +1,35 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_82_HuntExecute_D8">
+    <Sequence>
+      <Fallback>
+        <LowHealth/>
+        <Hide/>
+      </Fallback>
+      <Fallback>
+        <PreyVisible/>
+        <Sequence>
+          <Fallback>
+            <PreyRecentlySeen/>
+            <Forage/>
+          </Fallback>
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyNotInHaven/>
+                <WeakPreyVisible/>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <DeadPreyNearby/>
+        <Feast/>
+      </Fallback>
+      <Patrol/>
+    </Sequence>
+  </BehaviorTree>
+</BT>

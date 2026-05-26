@@ -1,0 +1,50 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_96_RoamSearch_D8">
+    <Sequence>
+      <Fallback>
+        <SearchComplete/>
+        <Sequence>
+          <Fallback>
+            <PreyRecentlySeen/>
+            <Sequence>
+              <Fallback>
+                <FoodNearby/>
+                <Sequence>
+                  <Fallback>
+                    <PreyVisible/>
+                    <SinglePreyVisible/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Forage/>
+            </Sequence>
+          </Fallback>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <SafeToMove/>
+        <Sequence>
+          <Fallback>
+            <ThreatNearby/>
+            <PredatorVeryClose/>
+          </Fallback>
+          <Fallback>
+            <Hide/>
+            <Flee/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Sequence>
+          <Tired/>
+          <Resting/>
+        </Sequence>
+        <Wander/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

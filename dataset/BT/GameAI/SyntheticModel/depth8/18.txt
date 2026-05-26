@@ -1,0 +1,47 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_98_FastAttack_D8">
+    <Sequence>
+      <Fallback>
+        <AttackFinished/>
+        <Sequence>
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <WeakPreyVisible/>
+                <Sequence>
+                  <Fallback>
+                    <PreyAlive/>
+                    <PreyNotInHaven/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <TargetReached/>
+        <Sequence>
+          <Fallback>
+            <PreyVisible/>
+            <SinglePreyVisible/>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Sequence>
+          <VeryHungry/>
+          <Forage/>
+        </Sequence>
+        <Patrol/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

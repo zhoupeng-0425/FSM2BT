@@ -1,0 +1,34 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_86_TerritoryDefense_D8">
+    <Sequence>
+      <Fallback>
+        <PreyInTerritory/>
+        <Patrol/>
+      </Fallback>
+      <Fallback>
+        <PreyVisible/>
+        <Sequence>
+          <Fallback>
+            <PreyInAttackRange/>
+            <Sequence>
+              <Fallback>
+                <PreyAlive/>
+                <WeakPreyVisible/>
+              </Fallback>
+              <Attack/>
+            </Sequence>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <OutOfTerritory/>
+        <Patrol/>
+      </Fallback>
+      <Fallback>
+        <ThreatNearby/>
+        <Hide/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

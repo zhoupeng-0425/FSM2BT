@@ -1,0 +1,50 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_99_ScoutPatrol_D8">
+    <Sequence>
+      <Fallback>
+        <AreaScouted/>
+        <Sequence>
+          <Fallback>
+            <PatrolPointReached/>
+            <Sequence>
+              <Fallback>
+                <PreyVisible/>
+                <Sequence>
+                  <Fallback>
+                    <FoodNearby/>
+                    <PreyRecentlySeen/>
+                  </Fallback>
+                  <Forage/>
+                </Sequence>
+              </Fallback>
+              <Patrol/>
+            </Sequence>
+          </Fallback>
+          <Roam/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <NoThreat/>
+        <Sequence>
+          <Fallback>
+            <PredatorNearby/>
+            <ThreatNearby/>
+          </Fallback>
+          <Fallback>
+            <Flee/>
+            <Hide/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+        <Wander/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

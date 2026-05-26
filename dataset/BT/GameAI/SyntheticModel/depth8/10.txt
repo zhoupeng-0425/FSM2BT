@@ -1,0 +1,34 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_90_SafeZoneDependent_D8">
+    <Sequence>
+      <Fallback>
+        <PredatorNearby/>
+        <SeekSafety/>
+      </Fallback>
+      <Fallback>
+        <InSafeZone/>
+        <Sequence>
+          <Fallback>
+            <NeedRecovery/>
+            <LowHealth/>
+          </Fallback>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <FoodNearby/>
+        <Sequence>
+          <Fallback>
+            <InFoodZone/>
+            <Forage/>
+          </Fallback>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <AllyNearby/>
+        <Flock/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

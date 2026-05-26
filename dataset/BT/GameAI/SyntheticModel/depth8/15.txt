@@ -1,0 +1,50 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_95_FoodZoneGuard_D8">
+    <Sequence>
+      <Fallback>
+        <AtFoodArea/>
+        <Sequence>
+          <Fallback>
+            <InFoodZone/>
+            <Sequence>
+              <Fallback>
+                <FoodNearby/>
+                <Sequence>
+                  <Fallback>
+                    <DeadPreyNearby/>
+                    <VeryHungry/>
+                  </Fallback>
+                  <Feast/>
+                </Sequence>
+              </Fallback>
+              <Forage/>
+            </Sequence>
+          </Fallback>
+          <Eat/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <ZoneSafe/>
+        <Sequence>
+          <Fallback>
+            <PredatorNearby/>
+            <ThreatNearby/>
+          </Fallback>
+          <Fallback>
+            <SeekSafety/>
+            <Hide/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Sequence>
+          <AllyNearby/>
+          <Flock/>
+        </Sequence>
+        <Patrol/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

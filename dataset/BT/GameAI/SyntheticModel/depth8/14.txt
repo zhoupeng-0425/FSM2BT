@@ -1,0 +1,50 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_94_CombatSupport_D8">
+    <Sequence>
+      <Fallback>
+        <SupportDone/>
+        <Sequence>
+          <Fallback>
+            <AllyAttacking/>
+            <Sequence>
+              <Fallback>
+                <AllyNumberHigh/>
+                <Sequence>
+                  <Fallback>
+                    <PreyVisible/>
+                    <ThreatNearby/>
+                  </Fallback>
+                  <Charge/>
+                </Sequence>
+              </Fallback>
+              <Assist/>
+            </Sequence>
+          </Fallback>
+          <Assist/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <EnemyNeutralized/>
+        <Sequence>
+          <Fallback>
+            <PreyInAttackRange/>
+            <PreyVisible/>
+          </Fallback>
+          <Fallback>
+            <Attack/>
+            <Maneuver/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+        <Flock/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

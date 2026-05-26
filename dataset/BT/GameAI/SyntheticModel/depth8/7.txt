@@ -1,0 +1,31 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_87_CooperativeCounter_D8">
+    <Sequence>
+      <Fallback>
+        <AllyAttacking/>
+        <Assist/>
+      </Fallback>
+      <Fallback>
+        <PredatorNearby/>
+        <Sequence>
+          <Fallback>
+            <AllyNumberHigh/>
+            <PredatorVeryClose/>
+          </Fallback>
+          <Fallback>
+            <Charge/>
+            <Flee/>
+          </Fallback>
+        </Sequence>
+      </Fallback>
+      <Fallback>
+        <AllyNearby/>
+        <Flock/>
+      </Fallback>
+      <Fallback>
+        <FoodNearby/>
+        <Forage/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

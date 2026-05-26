@@ -1,0 +1,47 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_92_TacticalChaser_D8">
+    <Sequence>
+      <Fallback>
+        <TargetLocked/>
+        <Sequence>
+          <Fallback>
+            <PreyVisible/>
+            <Sequence>
+              <Fallback>
+                <PreyRecentlySeen/>
+                <Sequence>
+                  <Fallback>
+                    <SinglePreyVisible/>
+                    <WeakPreyVisible/>
+                  </Fallback>
+                  <Maneuver/>
+                </Sequence>
+              </Fallback>
+              <Forage/>
+            </Sequence>
+          </Fallback>
+          <Maneuver/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <PreyInAttackRange/>
+        <Sequence>
+          <Fallback>
+            <PreyAlive/>
+            <PreyNotInHaven/>
+          </Fallback>
+          <Attack/>
+        </Sequence>
+      </Fallback>
+
+      <Fallback>
+        <Sequence>
+          <Tired/>
+          <Resting/>
+        </Sequence>
+        <Patrol/>
+      </Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
