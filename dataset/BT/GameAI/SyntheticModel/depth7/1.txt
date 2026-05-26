@@ -1,0 +1,67 @@
+<BT>
+  <BehaviorTree ID="Agent_BT_61_SurvivalHunter_D7">
+    <Fallback>
+      <Sequence>
+        <LowHealth/>
+        <Fallback>
+          <Sequence>
+            <SafeZoneNearby/>
+            <FindSafe/>
+          </Sequence>
+          <Sequence>
+            <NearHideSpot/>
+            <Hide/>
+          </Sequence>
+          <Resting/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+      </Fallback>
+
+      <Sequence>
+        <Fallback>
+          <Sequence>
+            <Fallback>
+              <Sequence>
+                <PreyInAttackRange/>
+                <PreyNotInHaven/>
+              </Sequence>
+              <WeakPreyVisible/>
+            </Fallback>
+            <Attack/>
+          </Sequence>
+          <Sequence>
+            <PreyVisible/>
+            <Maneuver/>
+          </Sequence>
+        </Fallback>
+        <Fallback>
+          <DeadPreyNearby/>
+          <FoodNearby/>
+        </Fallback>
+      </Sequence>
+
+      <Fallback>
+        <Sequence>
+          <InFoodZone/>
+          <Eat/>
+        </Sequence>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Patrol/>
+        <Roam/>
+      </Fallback>
+    </Fallback>
+  </BehaviorTree>
+</BT>
