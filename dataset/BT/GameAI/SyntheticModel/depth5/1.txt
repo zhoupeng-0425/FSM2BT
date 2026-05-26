@@ -1,0 +1,41 @@
+<BehaviorTree ID="Agent_BT_21_SurvivalFirst_D5">
+  <Fallback>
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <LowHealth/>
+          <FindSafe/>
+        </Sequence>
+        <Sequence>
+          <InSafeZone/>
+          <Resting/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <PredatorVeryClose/>
+          <Flee/>
+        </Sequence>
+        <Sequence>
+          <PredatorNearby/>
+          <SeekSafety/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+
+    <Sequence>
+      <Fallback>
+        <Sequence>
+          <FoodNearby/>
+          <Forage/>
+        </Sequence>
+        <Sequence>
+          <Wander/>
+        </Sequence>
+      </Fallback>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>
