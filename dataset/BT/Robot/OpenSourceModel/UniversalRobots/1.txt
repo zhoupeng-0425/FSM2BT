@@ -1,0 +1,41 @@
+<root BTCPP_format="4" main_tree_to_execute="MainTree">
+  <BehaviorTree ID="MainTree">
+    <Sequence name="Main Sequence">
+        <Sequence name="UR Initial Sequence">
+          <MoveURRobot target="first_pos"/>
+          <MoveRobotiqGripper action="close"/>
+          <MoveURRobot target="second_pos"/>
+          <MoveURRobot target="third_pos"/>
+          <MoveURRobot target="fourth_pos"/>
+        </Sequence>
+        <Sequence name="MiR Initial Sequence">
+          <MoveMiRPlatform target="pos1"/>
+          <MoveMiRPlatform target="pos2"/>
+          <MoveMiRPlatform target="pos3"/>
+          <MoveMiRPlatform target="pos4"/>
+        </Sequence>
+      <!-- 中间流程 -->
+      <Sequence name="Intermediate Sequence">
+        <MoveURRobot target="fifth_pos"/>
+        <MoveRobotiqGripper action="open"/>
+        <MoveURRobot target="sixth_pos"/>
+        <MoveMiRPlatform target="move_away"/>
+      </Sequence>
+      <!-- MiR 小车返回点位 -->
+      <Sequence name="MiR Return Sequence">
+        <MoveMiRPlatform target="pos1"/>
+        <MoveMiRPlatform target="pos2"/>
+        <MoveMiRPlatform target="pos3"/>
+        <MoveMiRPlatform target="pos4"/>
+      </Sequence>
+      <!-- 机械臂最终流程 -->
+      <Sequence name="Final UR Sequence">
+        <MoveURRobot target="fifth_pos"/>
+        <MoveRobotiqGripper action="close"/>
+        <MoveURRobot target="sixth_pos"/>
+      </Sequence>
+      <!-- 最终移动离开 -->
+      <MoveMiRPlatform target="move_away"/>
+    </Sequence>
+  </BehaviorTree>
+</root>
