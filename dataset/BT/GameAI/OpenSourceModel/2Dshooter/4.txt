@@ -1,0 +1,14 @@
+<BehaviorTree ID="RandomPatrol">
+  <Sequence>
+    <GenerateRandomNumberR1/>
+
+    <Selector>
+      <RMoreThan0.5/>
+      <Sequence>
+        <MoveToRandomPosition/>
+      </Sequence>
+    </Selector>
+
+    <ReleaseRFromStack1/>
+  </Sequence>
+</BehaviorTree>

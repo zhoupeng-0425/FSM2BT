@@ -1,0 +1,12 @@
+<BehaviorTree ID="RangedShooter">
+  <Sequence>
+    <Selector>
+      <DistanceToPlayerLessThanL/>
+      <Sequence>
+        <MoveToPlayerPosition/>
+      </Sequence>
+    </Selector>
+
+    <NormalShot/>
+  </Sequence>
+</BehaviorTree>
