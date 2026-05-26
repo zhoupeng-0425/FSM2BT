@@ -1,0 +1,18 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove30/><Recharge/></Fallback>
+      <Fallback>
+        <HeavyBoxInZone/>
+        <Sequence>
+          <Fallback><HeavyBoxFound/><SearchHeavyBox/></Fallback>
+          <Fallback><RobotAtHeavyBox/><MoveToHeavyBox/></Fallback>
+          <Fallback><HeavyBoxClamped/><ClampHeavyBox/></Fallback>
+          <Fallback><RobotAtHeavyLoadArea/><MoveToHeavyLoadArea/></Fallback>
+          <ReleaseHeavyBox/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

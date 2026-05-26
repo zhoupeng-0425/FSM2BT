@@ -1,0 +1,18 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove20/><Recharge/></Fallback>
+      <Fallback>
+        <MedicalBoxDelivered/>
+        <Sequence>
+          <Fallback><MedicalBoxFound/><SearchMedicalBox/></Fallback>
+          <Fallback><RobotAtMedicalBox/><MoveToMedicalBox/></Fallback>
+          <Fallback><MedicalBoxInHand/><PickMedicalBox/></Fallback>
+          <Fallback><RobotAtSafeDelivery/><MoveToSafeDelivery/></Fallback>
+          <PlaceMedicalBox/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>

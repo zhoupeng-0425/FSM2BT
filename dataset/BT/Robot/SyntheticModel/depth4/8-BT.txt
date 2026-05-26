@@ -1,0 +1,18 @@
+<BT>
+  <BehaviorTree ID="BT">
+    <Sequence>
+      <Fallback><BatteryAbove20/><Recharge/></Fallback>
+      <Fallback>
+        <PalletInStorage/>
+        <Sequence>
+          <Fallback><PalletFound/><SearchPallet/></Fallback>
+          <Fallback><RobotAtPallet/><MoveToPallet/></Fallback>
+          <Fallback><PalletSecured/><LiftPallet/></Fallback>
+          <Fallback><RobotAtStorageZone/><MoveToStorageZone/></Fallback>
+          <DropPallet/>
+        </Sequence>
+      </Fallback>
+      <Fallback><RobotAtInspection/><Dock/></Fallback>
+    </Sequence>
+  </BehaviorTree>
+</BT>
