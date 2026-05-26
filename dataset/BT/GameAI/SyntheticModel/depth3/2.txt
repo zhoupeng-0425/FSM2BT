@@ -1,0 +1,32 @@
+<BehaviorTree ID="Agent_BT_02_HunterAttackFirst">
+  <Fallback>
+    <Sequence>
+      <PreyInAttackRange/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <Maneuver/>
+    </Sequence>
+
+    <Sequence>
+      <PreyRecentlySeen/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <DeadPreyNearby/>
+      <Feast/>
+    </Sequence>
+
+    <Sequence>
+      <Tired/>
+      <Resting/>
+    </Sequence>
+
+    <Sequence>
+      <Roam/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

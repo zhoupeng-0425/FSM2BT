@@ -1,0 +1,39 @@
+<BehaviorTree ID="Agent_BT_09_CautiousSafe">
+  <Fallback>
+    <Sequence>
+      <LowHealth/>
+      <Hide/>
+    </Sequence>
+
+
+   <Sequence>
+      <InFoodZone/>
+      <Eat/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorVeryClose/>
+      <Flee/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorNearby/>
+      <FindSafe/>
+    </Sequence>
+
+    <Sequence>
+      <AllyNearby/>
+      <Flock/>
+    </Sequence>
+
+
+    <Sequence>
+      <Tired/>
+      <Resting/>
+    </Sequence>
+
+    <Sequence>
+      <Wander/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

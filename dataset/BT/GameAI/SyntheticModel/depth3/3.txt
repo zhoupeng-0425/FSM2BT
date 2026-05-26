@@ -1,0 +1,37 @@
+<BehaviorTree ID="Agent_BT_03_PreyDefensive">
+  <Fallback>
+    <Sequence>
+      <PredatorVeryClose/>
+      <Flee/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorNearby/>
+      <SeekSafety/>
+    </Sequence>
+
+    <Sequence>
+      <AllyAttacking/>
+      <Assist/>
+    </Sequence>
+
+    <Sequence>
+      <AllyNumberHigh/>
+      <Charge/>
+    </Sequence>
+
+    <Sequence>
+      <InFoodZone/>
+      <Eat/>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <Wander/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

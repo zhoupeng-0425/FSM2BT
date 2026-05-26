@@ -1,0 +1,62 @@
+<BehaviorTree ID="Agent_BT_10_IntegratedAgent">
+  <Fallback>
+    <Sequence>
+      <LowHealth/>
+      <FindSafe/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorVeryClose/>
+      <Flee/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorNearby/>
+      <SeekSafety/>
+    </Sequence>
+
+    <Sequence>
+      <PreyInAttackRange/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <Maneuver/>
+    </Sequence>
+
+    <Sequence>
+      <DeadPreyNearby/>
+      <Feast/>
+    </Sequence>
+
+    <Sequence>
+      <InFoodZone/>
+      <Eat/>
+    </Sequence>
+
+    <Sequence>
+      <AllyAttacking/>
+      <Assist/>
+    </Sequence>
+
+    <Sequence>
+      <AllyNearby/>
+      <Flock/>
+    </Sequence>
+
+    <Sequence>
+      <Tired/>
+      <Resting/>
+    </Sequence>
+
+    <Sequence>
+      <PreyRecentlySeen/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <Roam/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

@@ -1,0 +1,32 @@
+<BehaviorTree ID="Agent_BT_06_HungerDriven">
+  <Fallback>
+    <Sequence>
+      <VeryHungry/>
+      <Feast/>
+    </Sequence>
+
+    <Sequence>
+      <InFoodZone/>
+      <Eat/>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorNearby/>
+      <Flee/>
+    </Sequence>
+
+  <Sequence>
+      <PreyVisible/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <Roam/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

@@ -1,0 +1,32 @@
+<BehaviorTree ID="Agent_BT_04_StealthAmbush">
+  <Fallback>
+    <Sequence>
+      <LowHealth/>
+      <Hide/>
+    </Sequence>
+
+    <Sequence>
+      <NearHideSpot/>
+      <Hide/>
+    </Sequence>
+
+    <Sequence>
+      <PreyInAttackRange/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <PreyVisible/>
+      <Maneuver/>
+    </Sequence>
+
+    <Sequence>
+      <PreyRecentlySeen/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <Patrol/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>

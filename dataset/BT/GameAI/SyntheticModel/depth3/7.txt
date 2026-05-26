@@ -1,0 +1,32 @@
+<BehaviorTree ID="Agent_BT_07_RecoverAndDefend">
+  <Fallback>
+    <Sequence>
+      <NeedRecovery/>
+      <FindSafe/>
+    </Sequence>
+
+    <Sequence>
+      <InSafeZone/>
+      <Resting/>
+    </Sequence>
+
+    <Sequence>
+      <ThreatNearby/>
+      <Hide/>
+    </Sequence>
+
+    <Sequence>
+      <PreyInAttackRange/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorNearby/>
+      <SeekSafety/>
+    </Sequence>
+
+    <Sequence>
+      <Patrol/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>
