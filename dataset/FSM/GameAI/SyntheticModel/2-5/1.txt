@@ -1,0 +1,27 @@
+<FSM ID="FSM_Predator_HuntBasic">
+  <States>
+    <State name="StartPredatorHunt" type="initial"/>
+    <State name="Patrol"/>
+    <State name="Maneuver"/>
+    <State name="Attack"/>
+    <State name="Feast"/>
+    <State name="Resting"/>
+  </States>
+
+  <Transitions>
+    <Transition from="StartPredatorHunt" to="Patrol" event="Start"/>
+
+    <Transition from="Patrol" to="Maneuver" event="PreyVisible"/>
+    <Transition from="Patrol" to="Resting" event="Tired"/>
+    <Transition from="Patrol" to="Patrol" event="NoTarget"/>
+
+    <Transition from="Maneuver" to="Attack" event="PreyInRange"/>
+    <Transition from="Maneuver" to="Patrol" event="PreyLost"/>
+
+    <Transition from="Attack" to="Feast" event="PreyDown"/>
+    <Transition from="Attack" to="Maneuver" event="AttackMissed"/>
+
+    <Transition from="Feast" to="Resting" event="Full"/>
+    <Transition from="Resting" to="Patrol" event="Recovered"/>
+  </Transitions>
+</FSM>
