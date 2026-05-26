@@ -1,0 +1,61 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="OrderCheck" />
+    <State name="ScanShelf" />
+    <State name="SearchCubes" />
+    <State name="VerifyCube" />
+    <State name="ClassifyCube" />
+    <State name="PlanPath" />
+    <State name="WaitPath" />
+    <State name="MoveToCube" />
+    <State name="AvoidObstacle" />
+    <State name="FinePosition" />
+    <State name="AlignToCube" />
+    <State name="PickCube" />
+    <State name="LoadCheck" />
+    <State name="QualityCheck" />
+    <State name="MoveToDelivery" />
+    <State name="WaitDelivery" />
+    <State name="PlaceCube" />
+    <State name="ReturnToBase" />
+    <State name="Dock" />
+    <State name="Recharge" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="OrderCheck" event="SortTaskAssigned"/>
+    <Transition from="OrderCheck" to="ScanShelf" event="OrderParsed"/>
+    <Transition from="ScanShelf" to="SearchCubes" event="ShelfScanDone"/>
+    <Transition from="SearchCubes" to="VerifyCube" event="CubeDetected"/>
+    <Transition from="SearchCubes" to="ReturnToBase" event="SortBatchFinished"/>
+    <Transition from="ReturnToBase" to="Idel" event="BasePoseReached"/>
+    <Transition from="VerifyCube" to="ClassifyCube" event="CubeVerified"/>
+    <Transition from="VerifyCube" to="SearchCubes" event="CubeRejected"/>
+    <Transition from="ClassifyCube" to="PlanPath" event="SortClassSelected"/>
+    <Transition from="PlanPath" to="MoveToCube" event="PathPlanned"/>
+    <Transition from="PlanPath" to="WaitPath" event="PathPlanFailed"/>
+    <Transition from="WaitPath" to="PlanPath" event="PathCleared"/>
+    <Transition from="MoveToCube" to="AvoidObstacle" event="ObstacleDetected"/>
+    <Transition from="AvoidObstacle" to="MoveToCube" event="ObstacleCleared"/>
+    <Transition from="MoveToCube" to="FinePosition" event="CubeReached"/>
+    <Transition from="MoveToCube" to="SearchCubes" event="CubeLost"/>
+    <Transition from="FinePosition" to="AlignToCube" event="FinePoseReached"/>
+    <Transition from="AlignToCube" to="PickCube" event="AlignmentDone"/>
+    <Transition from="AlignToCube" to="MoveToCube" event="AlignmentFailed"/>
+    <Transition from="PickCube" to="LoadCheck" event="CubeINHand"/>
+    <Transition from="PickCube" to="AlignToCube" event="GripFailed"/>
+    <Transition from="LoadCheck" to="QualityCheck" event="LoadStable"/>
+    <Transition from="QualityCheck" to="MoveToDelivery" event="CubeQualityOK"/>
+    <Transition from="QualityCheck" to="PlaceCube" event="CubeQualityNG"/>
+    <Transition from="MoveToDelivery" to="WaitDelivery" event="DeliveryPathBlocked"/>
+    <Transition from="WaitDelivery" to="MoveToDelivery" event="DeliveryPathCleared"/>
+    <Transition from="MoveToDelivery" to="PlaceCube" event="DeliveryPoseReached"/>
+    <Transition from="PlaceCube" to="ScanShelf" event="CubePlace"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+  </Transitions>
+</FSM>

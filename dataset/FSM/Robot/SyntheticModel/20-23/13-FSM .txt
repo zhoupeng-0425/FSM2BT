@@ -1,0 +1,57 @@
+<FSM>
+  <InitialState>Start</InitialState>
+  <States>
+    <State name="Start" type="initial"/>
+    <State name="Idel" />
+    <State name="ReceiveOrder" />
+    <State name="TaskInit" />
+    <State name="ScanZone" />
+    <State name="SearchCubes" />
+    <State name="VerifyCube" />
+    <State name="ClassifyCube" />
+    <State name="PlanPath" />
+    <State name="MoveToCube" />
+    <State name="AvoidObstacle" />
+    <State name="AlignToCube" />
+    <State name="PickCube" />
+    <State name="LoadCheck" />
+    <State name="WeightCheck" />
+    <State name="SelectBin" />
+    <State name="MoveToDelivery" />
+    <State name="PlaceCube" />
+    <State name="ReturnToBase" />
+    <State name="Dock" />
+    <State name="Recharge" />
+  </States>
+  <Transitions>
+    <Transition from="Start" to="Idel" event="eventStart"/>
+    <Transition from="Idel" to="ReceiveOrder" event="SortTaskAssigned"/>
+    <Transition from="ReceiveOrder" to="TaskInit" event="OrderParsed"/>
+    <Transition from="TaskInit" to="ScanZone" event="TaskLoaded"/>
+    <Transition from="ScanZone" to="SearchCubes" event="ZoneScanDone"/>
+    <Transition from="SearchCubes" to="VerifyCube" event="CubeDetected"/>
+    <Transition from="SearchCubes" to="ReturnToBase" event="NoCubeFound"/>
+    <Transition from="ReturnToBase" to="Idel" event="BasePoseReached"/>
+    <Transition from="VerifyCube" to="ClassifyCube" event="CubeVerified"/>
+    <Transition from="VerifyCube" to="SearchCubes" event="CubeRejected"/>
+    <Transition from="ClassifyCube" to="PlanPath" event="SortClassSelected"/>
+    <Transition from="PlanPath" to="MoveToCube" event="PathPlanned"/>
+    <Transition from="PlanPath" to="SearchCubes" event="PathPlanFailed"/>
+    <Transition from="MoveToCube" to="AvoidObstacle" event="ObstacleDetected"/>
+    <Transition from="AvoidObstacle" to="MoveToCube" event="ObstacleCleared"/>
+    <Transition from="MoveToCube" to="AlignToCube" event="CubeReached"/>
+    <Transition from="MoveToCube" to="SearchCubes" event="CubeLost"/>
+    <Transition from="AlignToCube" to="PickCube" event="AlignmentDone"/>
+    <Transition from="AlignToCube" to="MoveToCube" event="AlignmentFailed"/>
+    <Transition from="PickCube" to="LoadCheck" event="CubeINHand"/>
+    <Transition from="PickCube" to="AlignToCube" event="GripFailed"/>
+    <Transition from="LoadCheck" to="WeightCheck" event="LoadStable"/>
+    <Transition from="WeightCheck" to="SelectBin" event="WeightOK"/>
+    <Transition from="SelectBin" to="MoveToDelivery" event="BinSelected"/>
+    <Transition from="MoveToDelivery" to="PlaceCube" event="DeliveryPoseReached"/>
+    <Transition from="PlaceCube" to="SearchCubes" event="CubePlace"/>
+    <Transition from="Idel" to="Dock" event="BatteryBelow20%"/>
+    <Transition from="Dock" to="Recharge" event="DockPoseReached"/>
+    <Transition from="Recharge" to="Idel" event="BatteryAbove80%"/>
+  </Transitions>
+</FSM>
