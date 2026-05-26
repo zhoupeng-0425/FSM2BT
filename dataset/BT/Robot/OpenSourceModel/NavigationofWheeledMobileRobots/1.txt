@@ -1,0 +1,10 @@
+<BehaviorTree ID="MainTree">
+        <Sequence >
+            <SetLocations  />
+            <GoToPose1 />
+            <GoToPose2/>
+            <GoToPose3/>
+            <GoToPose4/>
+        </Sequence>
+</BehaviorTree>
+    
