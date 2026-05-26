@@ -1,0 +1,42 @@
+<BehaviorTree ID="Agent_BT_01_SurvivalFirst">
+  <Fallback>
+    <Sequence>
+      <LowHealth/>
+      <FindSafe/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorVeryClose/>
+      <Flee/>
+    </Sequence>
+
+    <Sequence>
+      <PredatorNearby/>
+      <SeekSafety/>
+    </Sequence>
+
+    <Sequence>
+      <PreyInAttackRange/>
+      <Attack/>
+    </Sequence>
+
+    <Sequence>
+      <InFoodZone/>
+      <Eat/>
+    </Sequence>
+
+    <Sequence>
+      <FoodNearby/>
+      <Forage/>
+    </Sequence>
+
+    <Sequence>
+      <AllyNearby/>
+      <Flock/>
+    </Sequence>
+
+    <Sequence>
+      <Patrol/>
+    </Sequence>
+  </Fallback>
+</BehaviorTree>
