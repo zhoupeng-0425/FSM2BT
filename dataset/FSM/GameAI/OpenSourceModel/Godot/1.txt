@@ -1,0 +1,14 @@
+<States>
+    <State name="LimboHSM_Root" type="initial"/>
+    <State name="ActiveState" />
+    <State name="PreviousActiveState" />
+    <State name="InactiveState" />
+</States>
+
+<Transitions>
+    <Transition from="LimboHSM_Root" to="ActiveState" event="set_active(true)"/>
+    <Transition from="ActiveState" to="PreviousActiveState" event="active_state_changed"/>
+    <Transition from="ActiveState" to="InactiveState" event="set_active(false)"/>
+    <Transition from="ActiveState" to="ActiveState" event="transition_triggered"/>
+    <Transition from="InactiveState" to="ActiveState" event="initialize_complete"/>
+</Transitions>
