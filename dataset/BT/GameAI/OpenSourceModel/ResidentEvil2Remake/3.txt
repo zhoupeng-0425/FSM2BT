@@ -1,0 +1,6 @@
+<BehaviorTree ID="Sub_RetreatDirect">
+    <Sequence>
+      <IsInSameRoomAsVector3/>
+      <MoveToVector31/>
+    </Sequence>
+  </BehaviorTree>

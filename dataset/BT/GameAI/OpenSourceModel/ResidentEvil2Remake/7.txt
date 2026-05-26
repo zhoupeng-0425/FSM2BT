@@ -1,0 +1,6 @@
+  <BehaviorTree ID="Sub_AttackAtTarget">
+    <Sequence>
+      <IsAtTarget3/>
+      <PlayAnimation3/>
+    </Sequence>
+  </BehaviorTree>

@@ -1,0 +1,6 @@
+ <BehaviorTree ID="Sub_AttackSameRoomMove">
+    <Sequence>
+      <IsInSameRoomAs/>
+      <MoveTo3/>
+    </Sequence>
+  </BehaviorTree>

@@ -1,0 +1,15 @@
+<BehaviorTree ID="Sub_AttackTimeoutToSearch">
+    <Sequence>
+      <AlterBlackboardVariableByDeltaTimeFloat/>
+      <CompareBlackboardVariable1/>
+      <PlayAnimation2/>
+      <Selector>
+        <Sequence>
+          <CanReachObjectRoom1/>
+          <GetRandomRoomAdjacentToTarget1/>
+        </Sequence>
+        <GetRandomRoom1/>
+      </Selector>
+      <SetBlackboardVariable2/>
+    </Sequence>
+  </BehaviorTree>

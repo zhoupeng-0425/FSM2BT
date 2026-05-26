@@ -1,0 +1,6 @@
+  <BehaviorTree ID="Sub_AttackSeePlayerReset">
+    <Sequence>
+      <CanSeeObject1/>
+      <SetBlackboardVariable1/>
+    </Sequence>
+  </BehaviorTree>

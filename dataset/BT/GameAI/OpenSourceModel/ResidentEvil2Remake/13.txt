@@ -1,0 +1,21 @@
+ <BehaviorTree ID="Sub_SearchInRoom">
+    <Sequence>
+      <IsInRoom/>
+      <Sequence>
+        <GetRandomRoomSearchSpot/>
+        <MoveTo6/>
+        <IsAtTarget6/>
+        <PlayAnimation4/>
+        <IncrementBlackboardVariable/>
+      </Sequence>
+      <CompareBlackboardVariable2/>
+      <SetBlackboardVariable6/>
+      <Selector>
+        <Sequence>
+          <CanReachObjectRoom3/>
+          <GetRandomRoomAdjacentToTarget3/>
+        </Sequence>
+        <GetRandomRoom3/>
+      </Selector>
+    </Sequence>
+  </BehaviorTree>

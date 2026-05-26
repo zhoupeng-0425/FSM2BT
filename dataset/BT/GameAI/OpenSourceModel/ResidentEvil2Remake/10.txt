@@ -1,0 +1,6 @@
+  <BehaviorTree ID="Sub_SearchInitRoom">
+    <Sequence>
+      <IsBlackboardVariableNull2/>
+      <GetRandomRoomAdjacentToTarget2/>
+    </Sequence>
+  </BehaviorTree>

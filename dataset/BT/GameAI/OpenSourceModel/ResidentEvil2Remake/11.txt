@@ -1,0 +1,6 @@
+  <BehaviorTree ID="Sub_SearchSeePlayer">
+    <Sequence>
+      <CanSeeObject2/>
+      <SetBlackboardVariable4/>
+    </Sequence>
+  </BehaviorTree>

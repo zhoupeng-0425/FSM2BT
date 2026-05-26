@@ -1,0 +1,25 @@
+ <BehaviorTree ID="AIBehaviourTree_08_VisionReactive">
+    <Selector>
+      <Sequence>
+        <IsStunned/>
+        <PlayAnimation1/>
+      </Sequence>
+      <Sequence>
+        <CanSeeObject2/>
+        <SetBlackboardVariable4/>
+      </Sequence>
+      <Sequence>
+        <CanSeeObject1/>
+        <SetBlackboardVariable1/>
+      </Sequence>
+      <Sequence>
+        <IsAtTarget3/>
+        <PlayAnimation3/>
+      </Sequence>
+      <Sequence>
+        <IsInSameRoomAs/>
+        <MoveTo3/>
+      </Sequence>
+      <IdleNode3/>
+    </Selector>
+  </BehaviorTree>

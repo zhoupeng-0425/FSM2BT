@@ -1,0 +1,6 @@
+<BehaviorTree ID="Sub_Stunned">
+    <Sequence>
+      <IsStunned/>
+      <PlayAnimation1/>
+    </Sequence>
+  </BehaviorTree>

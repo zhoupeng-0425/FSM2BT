@@ -1,0 +1,7 @@
+ <BehaviorTree ID="Sub_SearchHearPlayer">
+    <Sequence>
+      <HasHeardSound/>
+      <CanReachObjectRoom2/>
+      <SetBlackboardVariable5/>
+    </Sequence>
+  </BehaviorTree>
