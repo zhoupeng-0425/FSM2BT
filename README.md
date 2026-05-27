@@ -74,14 +74,87 @@
 
 下表展示了从开源项目中收集的行为模型信息。
 
-| No | Scenario | Type | Project Address | Description | Num | Total |
-|---|---|---|---|---|---:|---:|
-| 1 | Robot | FSM | https://github.com/ethz-asl/bt_fsm_comparison | Warehouse robotics project, supporting operations such as movement, gripping and charging etc. | 5 | 65 |
-| 2 | Robot | FSM | https://wiki.ros.org/smach/Tutorials | General-purpose robotics library. | 20 | 65 |
-| 3 | Robot | FSM | https://github.com/unitreerobotics/unitree_guide<br>https://github.com/mit-biomimetics/Cheetah-Software | Quadruped robots, including the initial state, stationary state, trotting state, balanced state and free state. | 17 | 65 |
-| 4 | Robot | FSM | https://github.com/robertandreibarbulesscu/FSM_wall_following | FSM for obstacle avoidance and wall-following in mobile robots, primarily comprising the states Wander, WallDetected, FollowWall and Turn. | 1 | 65 |
-| 5 | Robot | FSM | https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller | Mechanical leg. | 1 | 65 |
-| 6 | Robot | FSM | https://github.com/nicholasmiller1/Robot-Line-Follower | The FSM states for the line-following robot include FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos etc. | 1 | 65 |
+<h3>Table 1. Information on Open-source Behavior Models</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Scenario</th>
+      <th>Type</th>
+      <th>Project Address</th>
+      <th>Description</th>
+      <th>Num</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td rowspan="6">Robot</td>
+      <td rowspan="6">FSM</td>
+      <td>
+        <a href="https://github.com/ethz-asl/bt_fsm_comparison">bt_fsm_comparison</a>
+      </td>
+      <td>
+        Warehouse robotics project, supporting operations such as movement, gripping, and charging.
+      </td>
+      <td>5</td>
+      <td rowspan="6">65</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>
+        <a href="https://wiki.ros.org/smach/Tutorials">SMACH Tutorials</a>
+      </td>
+      <td>
+        General-purpose robotics library.
+      </td>
+      <td>20</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>
+        <a href="https://github.com/unitreerobotics/unitree_guide">unitree_guide</a><br>
+        <a href="https://github.com/mit-biomimetics/Cheetah-Software">Cheetah-Software</a>
+      </td>
+      <td>
+        Quadruped robots, including the initial state, stationary state, trotting state, balanced state, and free state.
+      </td>
+      <td>17</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>
+        <a href="https://github.com/robertandreibarbulesscu/FSM_wall_following">FSM_wall_following</a>
+      </td>
+      <td>
+        FSM for obstacle avoidance and wall-following in mobile robots, primarily comprising the states Wander, WallDetected, FollowWall, and Turn.
+      </td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>
+        <a href="https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller">fsm_walking_controller</a>
+      </td>
+      <td>
+        Mechanical leg.
+      </td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>
+        <a href="https://github.com/nicholasmiller1/Robot-Line-Follower">Robot-Line-Follower</a>
+      </td>
+      <td>
+        The FSM states for the line-following robot include FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos.
+      </td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
 
 ---
 
