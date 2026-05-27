@@ -100,86 +100,14 @@
 
 ## 2. 合成行为模型数据集
 
-<h3>Table 2. Information on Synthetic Behavioral Models</h3>
-
-<table>
-  <thead>
-    <tr>
-      <th>Type</th>
-      <th>Scenario</th>
-      <th>Generation Setting</th>
-      <th>Node / Structural Type</th>
-      <th>Total</th>
-    </tr>
-  </thead>
-  <tbody>
-    <!-- BT Synthetic Models -->
-    <tr>
-      <td rowspan="3">BT</td>
-      <td>Basic symbols</td>
-      <td>
-        Set the tree depth to 2–10; for each depth, randomly construct 25 B-trees.
-      </td>
-      <td>
-        Use English letters to represent leaf nodes. The initial number of leaf nodes per level is 3–5, and 3–5 leaf nodes are added for each additional level. Select nodes so that they are evenly distributed, forming a B-tree.
-      </td>
-      <td>225</td>
-    </tr>
-    <tr>
-      <td>Robot</td>
-      <td>
-        Set the tree depth to 2–10; for each depth, randomly construct 15 B-trees.
-      </td>
-      <td>
-        Construct leaf nodes based on the basic behaviors of warehouse robots. The initial number of leaf nodes per level is 3–5, and 3–5 leaf nodes are added for each additional level. Select nodes and arrange them in a uniform distribution to form a BT tree using appropriate behavioral logic.
-      </td>
-      <td>135</td>
-    </tr>
-    <tr>
-      <td>Game AI</td>
-      <td>
-        Set the tree depth to 2–10; for each depth, randomly construct 15 B-trees.
-      </td>
-      <td>
-        Construct leaf nodes based on the fundamental behaviors of the agent AI in the PartoPrey. The initial layer should have 3–5 leaf nodes, and 3–5 leaf nodes should be added with each additional layer. Select nodes and arrange them in a uniform sequence to form a BT using reasonable behavioral logic.
-      </td>
-      <td>135</td>
-    </tr>
-
-    <!-- FSM Synthetic Models -->
-    <tr>
-      <td rowspan="3">FSM</td>
-      <td>Basic symbols</td>
-      <td>
-        The FSMs have 2–26 states and are uniformly distributed, with each state having 1–5 transitions associated with it.
-      </td>
-      <td>
-        States are represented by English characters, and branch structures, chain structures, and loop structures are evenly distributed within the FSM.
-      </td>
-      <td>225</td>
-    </tr>
-    <tr>
-      <td>Robot</td>
-      <td>
-        FSMs with 2–30 states are uniformly distributed, and each state has 1–8 associated transitions.
-      </td>
-      <td>
-        Define states and events based on the basic behaviors of warehouse robots, and construct an FSM using sound logic, ensuring that branch structures, chained structures, and loop structures are evenly distributed within the FSM.
-      </td>
-      <td>135</td>
-    </tr>
-    <tr>
-      <td>Game AI</td>
-      <td>
-        FSMs with 2–30 states are uniformly distributed, and each state has 1–8 associated transitions.
-      </td>
-      <td>
-        Use the basic behaviors of the agent AI in the “Tag” game to construct states and events, and organize them into an FSM using sound logic, ensuring that branching, chained, and looping structures are evenly distributed within the FSM.
-      </td>
-      <td>100</td>
-    </tr>
-  </tbody>
-</table>
+| Type | Scenario | Generation Setting | Node / Structural Type | Total |
+|---|---|---|---|---:|
+| BT | Basic symbols | Set the tree depth to 2–10; for each depth, randomly construct 25 B-trees. | Use English letters to represent leaf nodes. The initial number of leaf nodes per level is 3–5, and 3–5 leaf nodes are added for each additional level. Select nodes so that they are evenly distributed, forming a B-tree. | 225 |
+| BT | Robot | Set the tree depth to 2–10; for each depth, randomly construct 15 B-trees. | Construct leaf nodes based on the basic behaviors of warehouse robots. The initial number of leaf nodes per level is 3–5, and 3–5 leaf nodes are added for each additional level. Select nodes and arrange them in a uniform distribution to form a BT tree using appropriate behavioral logic. | 135 |
+| BT | Game AI | Set the tree depth to 2–10; for each depth, randomly construct 15 B-trees. | Construct leaf nodes based on the fundamental behaviors of the agent AI in the PartoPrey. The initial layer should have 3–5 leaf nodes, and 3–5 leaf nodes should be added with each additional layer. Select nodes and arrange them in a uniform sequence to form a BT using reasonable behavioral logic. | 135 |
+| FSM | Basic symbols | The FSMs have 2–26 states and are uniformly distributed, with each state having 1–5 transitions associated with it. | States are represented by English characters, and branch structures, chain structures, and loop structures are evenly distributed within the FSM. | 225 |
+| FSM | Robot | FSMs with 2–30 states are uniformly distributed, and each state has 1–8 associated transitions. | Define states and events based on the basic behaviors of warehouse robots, and construct an FSM using sound logic, ensuring that branch structures, chained structures, and loop structures are evenly distributed within the FSM. | 135 |
+| FSM | Game AI | FSMs with 2–30 states are uniformly distributed, and each state has 1–8 associated transitions. | Use the basic behaviors of the agent AI in the “Tag” game to construct states and events, and organize them into an FSM using sound logic, ensuring that branching, chained, and looping structures are evenly distributed within the FSM. | 100 |
 
 
 ---
