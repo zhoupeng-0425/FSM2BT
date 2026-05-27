@@ -156,9 +156,6 @@
     <tr>
       <td>7</td>
       <td>
-        https://lonelyranger1@gitee.com/familyyao/Engineer2024_ROS2_Controller
-      </td>
-      <td>
         <a href="https://lonelyranger1@gitee.com/familyyao/Engineer2024_ROS2_Controller">https://lonelyranger1@gitee.com/familyyao/Engineer2024_ROS2_Controller</a>
       </td>
       <td>
