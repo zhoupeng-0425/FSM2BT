@@ -71,30 +71,41 @@
 ---
 
 ## 1. 开源行为模型数据集
-| No. | Scenario | Type | Project Address | Description | Num | Total |
-|---:|---|---|---|---|---:|---:|
-| 1 | Robot | FSM | [bt_fsm_comparison](https://github.com/ethz-asl/bt_fsm_comparison) | Warehouse robotics project, supporting operations such as movement, gripping and charging etc. | 5 | 65 |
-| 2 | Robot | FSM | [SMACH Tutorials](https://wiki.ros.org/smach/Tutorials) | General-purpose robotics library. | 20 | 65 |
-| 3 | Robot | FSM | [unitree_guide](https://github.com/unitreerobotics/unitree_guide)<br>[Cheetah-Software](https://github.com/mit-biomimetics/Cheetah-Software) | Quadruped robots, including the initial state, stationary state, trotting state, balanced state and free state. | 17 | 65 |
-| 4 | Robot | FSM | [FSM_wall_following](https://github.com/robertandreibarbulescu/FSM_wall_following) | FSM for obstacle avoidance and wall-following in mobile robots primarily comprises the states Wander, WallDetected, FollowWall and Turn. | 1 | 65 |
-| 5 | Robot | FSM | [fsm_walking_controller](https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller) | Mechanical leg. | 1 | 65 |
-| 6 | Robot | FSM | [Robot-Line-Follower](https://github.com/nicholasmiller1/Robot-Line-Follower) | The FSM states for the line-following robot include: FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos etc. | 1 | 65 |
-| 7 | Robot | FSM | [Engineer2024_ROS2_Controller](https://lonelyranger1@gitee.com/familyyao/Engineer2024_ROS2_Controller) | Robotic Arm Controller FSM. | 20 | 65 |
-| 8 | Robot | BT | [bt_fsm_comparison](https://github.com/ethzasl/bt_fsm_comparison) | Warehouse robots are capable of performing tasks such as moving, picking up, and charging. | 10 | 96 |
-| 9 | Robot | BT | [nav2_behavior_tree](https://github.com/rosplanning/navigation2/tree/main/nav2_behavior_tree) | ROS2 Nav2 Navigation BT. | 15 | 96 |
-| 10 | Robot | BT | [py_trees_ros_tutorials](https://github.com/splintered-reality/py_trees_ros_tutorials) | Mobile Robot Obstacle Avoidance BT. | 28 | 96 |
-| 11 | Robot | BT | [ros2_turtle_bt_tree](https://gitee.com/weibosi/ros2_turtle_bt_tree) | Robot Patrol. | 1 | 96 |
-| 12 | Robot | BT | [ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration](https://github.com/SMAminNP/ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration) | Industrial hybrid robot featuring a Universal Robots, UR, robotic arm, a Robotiq gripper, and a MiR mobile robot. | 1 | 96 |
-| 13 | Robot | BT | [spot_bt_ros](https://github.com/sandialabs/spot_bt_ros) | The Spot quadruped robot includes officially predefined scenarios such as patrol, marker search, and robotic arm operation. | 20 | 96 |
-| 14 | Robot | BT | [turtlebot3_behavior_demos](https://github.com/seabass/turtlebot3_behavior_demos) | Navigation and Object Search Tasks for Wheeled Mobile Robots. | 21 | 96 |
-| 15 | Game AI | FSM | [PartoPrey-BT-RL](https://github.com/NUDTQI/PartoPrey-BT-RL) | PartoPrey simulation game: Implement AI logic for feeding, attacking, tracking, and patrolling. | 21 | 120 |
-| 16 | Game AI | FSM | [limboai](https://github.com/Metsker/limboai)<br>[godot-platformer-statemachine](https://github.com/FlavioFS/godot-platformer-statemachine/tree/master/godot) | A mainstream open-source BT solution for the Godot ecosystem, covering typical game character behaviors such as enemy patrolling, pursuit, attacks, and reactions to damage. | 2 | 120 |
-| 17 | Game AI | FSM | [cfsm](https://github.com/nhjschulz/cfsm)<br>[sm64](https://gitcode.com/gh_mirrors/sm6/sm64) | Classic Mario FSM, including Mini Mario/Super/Fire/Cloak state switching and various NPC behavior logic. | 97 | 120 |
-| 18 | Game AI | BT | [PartoPrey-BT-RL](https://github.com/NUDTQI/PartoPrey-BT-RL) | PartoPrey simulation game: Implement AI logic for feeding, attacking, tracking, and patrolling. | 21 | 88 |
-| 19 | Game AI | BT | [Resident-Evil-2-Behaviour-Tree-System](https://github.com/Jack-Pettigrew/Resident-Evil-2-Behaviour-Tree-System) | The AI logic behind Mr. X's patrols, room searches, player pursuit, and reactions to being hit in Resident Evil 2 Remake. | 39 | 88 |
-| 20 | Game AI | BT | [limboai](https://github.com/Metsker/limboai)<br>[godot-platformer-state-machine](https://github.com/FlavioFS/godot-platformer-state-machine/tree/master/godot) | A mainstream open-source BT solution for the Godot ecosystem, covering typical game character behaviors such as enemy patrolling, pursuit, attacks, and reactions to damage. | 17 | 88 |
-| 21 | Game AI | BT | [EnemyBehaviorTreeDemo](https://github.com/HoriK816/EnemyBehaviorTreeDemo) | Enemy AI in 2D Shooter Games. | 11 | 88 |
 
+### Table 1. Information on Open-source Behavior Models
+
+| No. | Scenario | Type | Project Address | Description | Num |
+|---:|---|---|---|---|---:|
+| 1 | Robot | FSM | [bt_fsm_comparison](https://github.com/ethz-asl/bt_fsm_comparison) | Warehouse robotics project, supporting operations such as movement, gripping and charging etc. | 5 |
+| 2 | Robot | FSM | [SMACH Tutorials](https://wiki.ros.org/smach/Tutorials) | General-purpose robotics library. | 20 |
+| 3 | Robot | FSM | [unitree_guide](https://github.com/unitreerobotics/unitree_guide)<br>[Cheetah-Software](https://github.com/mit-biomimetics/Cheetah-Software) | Quadruped robots, including the initial state, stationary state, trotting state, balanced state and free state. | 17 |
+| 4 | Robot | FSM | [FSM_wall_following](https://github.com/robertandreibarbulescu/FSM_wall_following) | FSM for obstacle avoidance and wall-following in mobile robots primarily comprises the states Wander, WallDetected, FollowWall and Turn. | 1 |
+| 5 | Robot | FSM | [fsm_walking_controller](https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller) | Mechanical leg. | 1 |
+| 6 | Robot | FSM | [Robot-Line-Follower](https://github.com/nicholasmiller1/Robot-Line-Follower) | The FSM states for the line-following robot include: FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos etc. | 1 |
+| 7 | Robot | FSM | [Engineer2024_ROS2_Controller](https://gitee.com/familyyao/Engineer2024_ROS2_Controller) | Robotic Arm Controller FSM. | 20 |
+| 8 | Robot | BT | [bt_fsm_comparison](https://github.com/ethzasl/bt_fsm_comparison) | Warehouse robots are capable of performing tasks such as moving, picking up, and charging. | 10 |
+| 9 | Robot | BT | [nav2_behavior_tree](https://github.com/rosplanning/navigation2/tree/main/nav2_behavior_tree) | ROS2 Nav2 Navigation BT. | 15 |
+| 10 | Robot | BT | [py_trees_ros_tutorials](https://github.com/splintered-reality/py_trees_ros_tutorials) | Mobile Robot Obstacle Avoidance BT. | 28 |
+| 11 | Robot | BT | [ros2_turtle_bt_tree](https://gitee.com/weibosi/ros2_turtle_bt_tree) | Robot Patrol. | 1 |
+| 12 | Robot | BT | [ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration](https://github.com/SMAminNP/ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration) | Industrial hybrid robot featuring a Universal Robots, UR, robotic arm, a Robotiq gripper, and a MiR mobile robot. | 1 |
+| 13 | Robot | BT | [spot_bt_ros](https://github.com/sandialabs/spot_bt_ros) | The Spot quadruped robot includes officially predefined scenarios such as patrol, marker search, and robotic arm operation. | 20 |
+| 14 | Robot | BT | [turtlebot3_behavior_demos](https://github.com/seabass/turtlebot3_behavior_demos) | Navigation and Object Search Tasks for Wheeled Mobile Robots. | 21 |
+| 15 | Game AI | FSM | [PartoPrey-BT-RL](https://github.com/NUDTQI/PartoPrey-BT-RL) | PartoPrey simulation game: Implement AI logic for feeding, attacking, tracking, and patrolling. | 21 |
+| 16 | Game AI | FSM | [limboai](https://github.com/Metsker/limboai)<br>[godot-platformer-statemachine](https://github.com/FlavioFS/godot-platformer-statemachine/tree/master/godot) | A mainstream open-source BT solution for the Godot ecosystem, covering typical game character behaviors such as enemy patrolling, pursuit, attacks, and reactions to damage. | 2 |
+| 17 | Game AI | FSM | [cfsm](https://github.com/nhjschulz/cfsm)<br>[sm64](https://gitcode.com/gh_mirrors/sm6/sm64) | Classic Mario FSM, including Mini Mario/Super/Fire/Cloak state switching and various NPC behavior logic. | 97 |
+| 18 | Game AI | BT | [PartoPrey-BT-RL](https://github.com/NUDTQI/PartoPrey-BT-RL) | PartoPrey simulation game: Implement AI logic for feeding, attacking, tracking, and patrolling. | 21 |
+| 19 | Game AI | BT | [Resident-Evil-2-Behaviour-Tree-System](https://github.com/Jack-Pettigrew/Resident-Evil-2-Behaviour-Tree-System) | The AI logic behind Mr. X's patrols, room searches, player pursuit, and reactions to being hit in Resident Evil 2 Remake. | 39 |
+| 20 | Game AI | BT | [limboai](https://github.com/Metsker/limboai)<br>[godot-platformer-state-machine](https://github.com/FlavioFS/godot-platformer-state-machine/tree/master/godot) | A mainstream open-source BT solution for the Godot ecosystem, covering typical game character behaviors such as enemy patrolling, pursuit, attacks, and reactions to damage. | 17 |
+| 21 | Game AI | BT | [EnemyBehaviorTreeDemo](https://github.com/HoriK816/EnemyBehaviorTreeDemo) | Enemy AI in 2D Shooter Games. | 11 |
+
+#### Summary of Open-source Behavior Models
+
+| Scenario | Type | Total |
+|---|---|---:|
+| Robot | FSM | 65 |
+| Robot | BT | 96 |
+| Game AI | FSM | 120 |
+| Game AI | BT | 88 |
 
 ---
 
