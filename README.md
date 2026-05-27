@@ -167,6 +167,7 @@
     <!-- Robot / BT -->
     <tr>
       <td>8</td>
+      <td rowspan="14">Robot</td>
       <td rowspan="7">BT</td>
       <td>
         <a href="https://github.com/ethzasl/bt_fsm_comparison">https://github.com/ethzasl/bt_fsm_comparison</a>
