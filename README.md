@@ -72,6 +72,184 @@
 
 ## 1. 开源行为模型数据集
 
+<table>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Scenario</th>
+      <th>Type</th>
+      <th>Project Address</th>
+      <th>Description</th>
+      <th>Num</th>
+      <th>Total</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <!-- Robot / FSM -->
+    <tr>
+      <td>1</td>
+      <td rowspan="14">Robot</td>
+      <td rowspan="7">FSM</td>
+      <td>
+        <a href="https://github.com/ethz-asl/bt_fsm_comparison">https://github.com/ethz-asl/bt_fsm_comparison</a>
+      </td>
+      <td>
+        Warehouse robotics project, supporting operations such as movement, gripping and charging etc.
+      </td>
+      <td>5</td>
+      <td rowspan="7">65</td>
+    </tr>
+
+    <tr>
+      <td>2</td>
+      <td>
+        <a href="https://wiki.ros.org/smach/Tutorials">https://wiki.ros.org/smach/Tutorials</a>
+      </td>
+      <td>
+        General-purpose robotics library.
+      </td>
+      <td>20</td>
+    </tr>
+
+    <tr>
+      <td>3</td>
+      <td>
+        <a href="https://github.com/unitreerobotics/unitree_guide">https://github.com/unitreerobotics/unitree_guide</a><br>
+        <a href="https://github.com/mit-biomimetics/Cheetah-Software">https://github.com/mit-biomimetics/Cheetah-Software</a>
+      </td>
+      <td>
+        Quadruped robots, including the initial state, stationary state, trotting state, balanced state and free state.
+      </td>
+      <td>17</td>
+    </tr>
+
+    <tr>
+      <td>4</td>
+      <td>
+        <a href="https://github.com/robertandreibarbulescu/FSM_wall_following">https://github.com/robertandreibarbulescu/FSM_wall_following</a>
+      </td>
+      <td>
+        FSM for obstacle avoidance and wall-following in mobile robots primarily comprises the states Wander, WallDetected, FollowWall and Turn.
+      </td>
+      <td>1</td>
+    </tr>
+
+    <tr>
+      <td>5</td>
+      <td>
+        <a href="https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller">https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller</a>
+      </td>
+      <td>
+        Mechanical leg.
+      </td>
+      <td>1</td>
+    </tr>
+
+    <tr>
+      <td>6</td>
+      <td>
+        <a href="https://github.com/nicholasmiller1/Robot-Line-Follower">https://github.com/nicholasmiller1/Robot-Line-Follower</a>
+      </td>
+      <td>
+        The FSM states for the line-following robot include: FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos etc.
+      </td>
+      <td>1</td>
+    </tr>
+
+    <tr>
+      <td>7</td>
+      <td>
+        <a href="https://gitee.com/familyyao/Engineer2024_ROS2_Controller">https://gitee.com/familyyao/Engineer2024_ROS2_Controller</a>
+      </td>
+      <td>
+        Robotic Arm Controller FSM.
+      </td>
+      <td>20</td>
+    </tr>
+
+    <!-- Robot / BT -->
+    <tr>
+      <td>8</td>
+      <td rowspan="7">BT</td>
+      <td>
+        <a href="https://github.com/ethz-asl/bt_fsm_comparison">https://github.com/ethz-asl/bt_fsm_comparison</a>
+      </td>
+      <td>
+        Warehouse robots are capable of performing tasks such as moving, picking up, and charging.
+      </td>
+      <td>10</td>
+      <td rowspan="7">96</td>
+    </tr>
+
+    <tr>
+      <td>9</td>
+      <td>
+        <a href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree</a>
+      </td>
+      <td>
+        ROS2 Nav2 Navigation BT.
+      </td>
+      <td>15</td>
+    </tr>
+
+    <tr>
+      <td>10</td>
+      <td>
+        <a href="https://github.com/splintered-reality/py_trees_ros_tutorials">https://github.com/splintered-reality/py_trees_ros_tutorials</a>
+      </td>
+      <td>
+        Mobile Robot Obstacle Avoidance BT.
+      </td>
+      <td>28</td>
+    </tr>
+
+    <tr>
+      <td>11</td>
+      <td>
+        <a href="https://gitee.com/weibosi/ros2_turtle_bt_tree">https://gitee.com/weibosi/ros2_turtle_bt_tree</a>
+      </td>
+      <td>
+        Robot Patrol.
+      </td>
+      <td>1</td>
+    </tr>
+
+    <tr>
+      <td>12</td>
+      <td>
+        <a href="https://github.com/SMAminNP/ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration">https://github.com/SMAminNP/ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration</a>
+      </td>
+      <td>
+        Industrial hybrid robot featuring a Universal Robots UR robotic arm, a Robotiq gripper, and a MiR mobile robot.
+      </td>
+      <td>1</td>
+    </tr>
+
+    <tr>
+      <td>13</td>
+      <td>
+        <a href="https://github.com/sandialabs/spot_bt_ros">https://github.com/sandialabs/spot_bt_ros</a>
+      </td>
+      <td>
+        The Spot quadruped robot includes officially predefined scenarios such as patrol, marker search, and robotic arm operation.
+      </td>
+      <td>20</td>
+    </tr>
+
+    <tr>
+      <td>14</td>
+      <td>
+        <a href="https://github.com/seabass/turtlebot3_behavior_demos">https://github.com/seabass/turtlebot3_behavior_demos</a>
+      </td>
+      <td>
+        Navigation and Object Search Tasks for Wheeled Mobile Robots.
+      </td>
+      <td>21</td>
+    </tr>
+  </tbody>
+</table>
+
 下表展示了从开源项目中收集的行为模型信息。
 <h3>Table 1. Information on Open-source Behavior Models</h3>
 
