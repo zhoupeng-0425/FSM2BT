@@ -73,7 +73,6 @@
 ## 1. 开源行为模型数据集
 
 下表展示了从开源项目中收集的行为模型信息。
-
 <h3>Table 1. Information on Open-source Behavior Models</h3>
 
 <table>
@@ -89,27 +88,20 @@
     </tr>
   </thead>
   <tbody>
+    <!-- Robot / FSM -->
     <tr>
       <td>1</td>
-      <td rowspan="6">Robot</td>
+      <td rowspan="14">Robot</td>
       <td rowspan="6">FSM</td>
-      <td>
-        <a href="https://github.com/ethz-asl/bt_fsm_comparison">bt_fsm_comparison</a>
-      </td>
-      <td>
-        Warehouse robotics project, supporting operations such as movement, gripping, and charging.
-      </td>
+      <td><a href="https://github.com/ethz-asl/bt_fsm_comparison">bt_fsm_comparison</a></td>
+      <td>Warehouse robotics project, supporting operations such as movement, gripping, and charging.</td>
       <td>5</td>
       <td rowspan="6">65</td>
     </tr>
     <tr>
       <td>2</td>
-      <td>
-        <a href="https://wiki.ros.org/smach/Tutorials">SMACH Tutorials</a>
-      </td>
-      <td>
-        General-purpose robotics library.
-      </td>
+      <td><a href="https://wiki.ros.org/smach/Tutorials">SMACH Tutorials</a></td>
+      <td>General-purpose robotics library.</td>
       <td>20</td>
     </tr>
     <tr>
@@ -118,109 +110,142 @@
         <a href="https://github.com/unitreerobotics/unitree_guide">unitree_guide</a><br>
         <a href="https://github.com/mit-biomimetics/Cheetah-Software">Cheetah-Software</a>
       </td>
-      <td>
-        Quadruped robots, including the initial state, stationary state, trotting state, balanced state, and free state.
-      </td>
+      <td>Quadruped robots, including the initial state, stationary state, trotting state, balanced state, and free state.</td>
       <td>17</td>
     </tr>
     <tr>
       <td>4</td>
-      <td>
-        <a href="https://github.com/robertandreibarbulesscu/FSM_wall_following">FSM_wall_following</a>
-      </td>
-      <td>
-        FSM for obstacle avoidance and wall-following in mobile robots, primarily comprising the states Wander, WallDetected, FollowWall, and Turn.
-      </td>
+      <td><a href="https://github.com/robertandreibarbulesscu/FSM_wall_following">FSM_wall_following</a></td>
+      <td>FSM for obstacle avoidance and wall-following in mobile robots, primarily comprising the states Wander, WallDetected, FollowWall, and Turn.</td>
       <td>1</td>
     </tr>
     <tr>
       <td>5</td>
-      <td>
-        <a href="https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller">fsm_walking_controller</a>
-      </td>
-      <td>
-        Mechanical leg.
-      </td>
+      <td><a href="https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller">fsm_walking_controller</a></td>
+      <td>Mechanical leg.</td>
       <td>1</td>
     </tr>
     <tr>
       <td>6</td>
-      <td>
-        <a href="https://github.com/nicholasmiller1/Robot-Line-Follower">Robot-Line-Follower</a>
-      </td>
-      <td>
-        The FSM states for the line-following robot include FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos.
-      </td>
+      <td><a href="https://github.com/nicholasmiller1/Robot-Line-Follower">Robot-Line-Follower</a></td>
+      <td>The FSM states for the line-following robot include FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos.</td>
       <td>1</td>
     </tr>
-  </tbody>
-  <tbody>
+
+    <!-- Robot / BT -->
     <tr>
-      <td>1</td>
-      <td rowspan="6">Robot</td>
-      <td rowspan="6">FSM</td>
-      <td>
-        <a href="https://github.com/ethz-asl/bt_fsm_comparison">bt_fsm_comparison</a>
-      </td>
-      <td>
-        Warehouse robotics project, supporting operations such as movement, gripping, and charging.
-      </td>
-      <td>5</td>
-      <td rowspan="6">65</td>
+      <td>7</td>
+      <td rowspan="8">BT</td>
+      <td><!-- 如果你有第7条图片，可在这里补上链接 --></td>
+      <td><!-- 第7条描述待补充 --></td>
+      <td><!-- 第7条数量待补充 --></td>
+      <td rowspan="8">96</td>
     </tr>
     <tr>
-      <td>2</td>
-      <td>
-        <a href="https://wiki.ros.org/smach/Tutorials">SMACH Tutorials</a>
-      </td>
-      <td>
-        General-purpose robotics library.
-      </td>
+      <td>8</td>
+      <td><a href="https://github.com/ethz-asl/bt_fsm_comparison">bt_fsm_comparison</a></td>
+      <td>Warehouse robots are capable of performing tasks such as moving, picking up, and charging.</td>
+      <td>10</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td><a href="https://github.com/ros-planning/navigation2/tree/main/nav2_behavior_tree">nav2_behavior_tree</a></td>
+      <td>ROS2 Nav2 Navigation BT.</td>
+      <td>15</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td><a href="https://github.com/splintered-reality/py_trees_ros_tutorials">py_trees_ros_tutorials</a></td>
+      <td>Mobile Robot Obstacle Avoidance BT.</td>
+      <td>28</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td><a href="https://gitee.com/weibosi/ros2_turtle_bt_tree">ros2_turtle_bt_tree</a></td>
+      <td>Robot Patrol.</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td><a href="https://github.com/SMARminNP/ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration">ROS-Behavior-Tree-for-UR-Robot-and-MiR-Platform-Integration</a></td>
+      <td>Industrial hybrid robot featuring a Universal Robots (UR) robotic arm, a Robotiq gripper, and a MiR mobile robot.</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td><a href="https://github.com/sandialabs/spot_bt_ros">spot_bt_ros</a></td>
+      <td>The Spot quadruped robot includes officially predefined scenarios such as patrol, marker search, and robotic arm operation.</td>
       <td>20</td>
     </tr>
     <tr>
-      <td>3</td>
+      <td>14</td>
+      <td><a href="https://github.com/seabass/turtlebot3_behavior_demos">turtlebot3_behavior_demos</a></td>
+      <td>Navigation and Object Search Tasks for Wheeled Mobile Robots.</td>
+      <td>21</td>
+    </tr>
+
+    <!-- Game AI / FSM -->
+    <tr>
+      <td>15</td>
+      <td rowspan="7">Game AI</td>
+      <td rowspan="3">FSM</td>
+      <td><a href="https://github.com/NUDTQI/PartoPrey-BT-RL">PartoPrey-BT-RL</a></td>
+      <td>PartoPrey simulation game: Implement AI logic for feeding, attacking, tracking, and patrolling.</td>
+      <td>21</td>
+      <td rowspan="3">120</td>
+    </tr>
+    <tr>
+      <td>16</td>
       <td>
-        <a href="https://github.com/unitreerobotics/unitree_guide">unitree_guide</a><br>
-        <a href="https://github.com/mit-biomimetics/Cheetah-Software">Cheetah-Software</a>
+        <a href="https://github.com/Metsker/limboai">limboai</a><br>
+        <a href="https://github.com/FlavioFS/godot-platformer-statemachine/tree/master/godot">godot-platformer-statemachine</a>
       </td>
+      <td>A mainstream open-source BT solution for the Godot ecosystem, covering typical game character behaviors such as enemy patrolling, pursuit, attacks, and reactions to damage.</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <td>17</td>
       <td>
-        Quadruped robots, including the initial state, stationary state, trotting state, balanced state, and free state.
+        <a href="https://github.com/nhjschulz/cfsm">cfsm</a><br>
+        <a href="https://gitcode.com/gh_mirrors/sm6/sm64">sm64</a>
       </td>
+      <td>Classic Mario FSM: Mini/Mario/Super/Fire/Cloak state switching, various NPC behavior logic.</td>
+      <td>97</td>
+    </tr>
+
+    <!-- Game AI / BT -->
+    <tr>
+      <td>18</td>
+      <td rowspan="4">BT</td>
+      <td><a href="https://github.com/NUDTQI/PartoPrey-BT-RL">PartoPrey-BT-RL</a></td>
+      <td>PartoPrey simulation game: Implement AI logic for feeding, attacking, tracking, and patrolling.</td>
+      <td>21</td>
+      <td rowspan="4">88</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td><a href="https://github.com/Jack-Pettigrew/Resident-Evil-2-Behaviour-Tree-System">Resident-Evil-2-Behaviour-Tree-System</a></td>
+      <td>The AI logic behind Mr. X's patrols, room searches, player pursuit, and reactions to being hit in Resident Evil 2 Remake.</td>
+      <td>39</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>
+        <a href="https://github.com/Metsker/limboai">limboai</a><br>
+        <a href="https://github.com/FlavioFS/godot-platformer-state-machine/tree/master/godot">godot-platformer-state-machine</a>
+      </td>
+      <td>A mainstream open-source BT solution for the Godot ecosystem, covering typical game character behaviors such as enemy patrolling, pursuit, attacks, and reactions to damage.</td>
       <td>17</td>
     </tr>
     <tr>
-      <td>4</td>
-      <td>
-        <a href="https://github.com/robertandreibarbulesscu/FSM_wall_following">FSM_wall_following</a>
-      </td>
-      <td>
-        FSM for obstacle avoidance and wall-following in mobile robots, primarily comprising the states Wander, WallDetected, FollowWall, and Turn.
-      </td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>5</td>
-      <td>
-        <a href="https://neurobionics.github.io/opensourceleg/examples/fsm_walking_controller">fsm_walking_controller</a>
-      </td>
-      <td>
-        Mechanical leg.
-      </td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <td>6</td>
-      <td>
-        <a href="https://github.com/nicholasmiller1/Robot-Line-Follower">Robot-Line-Follower</a>
-      </td>
-      <td>
-        The FSM states for the line-following robot include FSMCentered, FSMTurnLeft, FSMTurnHardLeft, FSMTurnRight, FSMTurnHardRight, and FSMLos.
-      </td>
-      <td>1</td>
+      <td>21</td>
+      <td><a href="https://github.com/HoriK816/EnemyBehaviorTreeDemo">EnemyBehaviorTreeDemo</a></td>
+      <td>Enemy AI in 2D Shooter Games.</td>
+      <td>11</td>
     </tr>
   </tbody>
 </table>
+
 
 ---
 
