@@ -120,4 +120,4 @@ The dataset for this project consists primarily of two parts：
 | FSM | Robot | FSMs with 2–30 states are uniformly distributed, and each state has 1–8 associated transitions. | Define states and events based on the basic behaviors of warehouse robots, and construct an FSM using sound logic, ensuring that branch structures, chained structures, and loop structures are evenly distributed within the FSM. | 135 |
 | FSM | Game AI | FSMs with 2–30 states are uniformly distributed, and each state has 1–8 associated transitions. | Use the basic behaviors of the agent AI in the “Tag” game to construct states and events, and organize them into an FSM using sound logic, ensuring that branching, chained, and looping structures are evenly distributed within the FSM. | 100 |
 
-
+test.smv is a test case for the NuSMV tool
