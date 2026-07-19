@@ -1,0 +1,214 @@
+This ia an example
+MODULE main
+
+VAR
+  state : {
+    Start,
+    Roam,
+    TrackInit,
+    TrackActive,
+    Maneuver,
+    Forage,
+    Feast,
+    Resting,
+    Patrol,
+    FindSafe,
+    Hide
+  };
+
+  event : {
+    E0, E1, E2, E3, E4,
+    E5, E6, E7, E8, E9,
+    E10, E11, E12, E13, E14
+  };
+
+ASSIGN
+  init(state) := Start;
+
+  next(state) :=
+    case
+      state = Start & event = E0 : Roam;
+
+      state = Roam & event = E1 : TrackInit;
+      state = Roam & event = E2 : Maneuver;
+      state = Roam & event = E3 : Patrol;
+      state = Roam & event = E4 : TrackActive;
+
+      state = TrackInit & event = E5 : TrackActive;
+      state = TrackInit & event = E6 : Maneuver;
+
+      state = TrackActive & event = E7 : Maneuver;
+
+      state = Maneuver & event = E8 : Forage;
+
+      state = Forage & event = E9 : Feast;
+      state = Forage & event = E10 : Maneuver;
+
+      state = Feast & event = E11 : Resting;
+
+      state = Resting & event = E12 : TrackActive;
+
+      state = Patrol & event = E13 : FindSafe;
+
+      state = FindSafe & event = E14 : Hide;
+
+      TRUE : state;
+    esac;
+------Deadlock Absence
+SPEC AG EX TRUE
+
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E3 &
+    EX (
+      state = Patrol & event = E13 &
+      EX (
+        state = FindSafe & event = E14 &
+        EX (state = Hide)
+      )
+    )
+  )
+)
+
+----
+------Reachability
+SPEC EF (state = Start)
+SPEC EF (state = Roam)
+SPEC EF (state = TrackInit)
+SPEC EF (state = TrackActive)
+SPEC EF (state = Maneuver)
+SPEC EF (state = Forage)
+SPEC EF (state = Feast)
+SPEC EF (state = Resting)
+SPEC EF (state = Patrol)
+SPEC EF (state = FindSafe)
+SPEC EF (state = Hide)
+
+
+------Completeness/No Additional Behavior/Termination Consistency
+--“Start -> Roam -> Patrol -> FindSafe -> Hide
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E3 &
+    EX (
+      state = Patrol & event = E13 &
+      EX (
+        state = FindSafe & event = E14 &
+        EX (state = Hide)
+      )
+    )
+  )
+)
+
+
+--“Start -> Roam -> Maneuver -> Forage -> Feast -> Resting -> TrackActive -> Maneuver”
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E2 &
+    EX (
+      state = Maneuver & event = E8 &
+      EX (
+        state = Forage & event = E9 &
+        EX (
+          state = Feast & event = E11 &
+          EX (
+            state = Resting & event = E12 &
+            EX (
+              state = TrackActive & event = E7 &
+              EX (
+                state = Maneuver
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+--“Start -> Roam -> Maneuver -> Forage -> Maneuver”
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E2 &
+    EX (
+      state = Maneuver & event = E8 &
+      EX (
+        state = Forage & event = E10 &
+        EX (
+          state = Maneuver
+        )
+      )
+    )
+  )
+)
+--“Start -> Roam -> TrackActive ->  Maneuver -> Forage -> Feast -> Resting -> TrackActive”
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E4 &
+    EX (
+      state = TrackActive & event = E7 &
+      EX (
+        state = Maneuver & event = E8 &
+        EX (
+          state = Forage & event = E9 &
+          EX (
+            state = Feast & event = E11 &
+            EX (
+              state = Resting & event = E12 &
+              EX (
+                state = TrackActive
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+--“Start -> Roam -> TrackInit ->  Maneuver”
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E1 &
+    EX (
+      state = TrackInit & event = E6 &
+      EX (
+        state = Maneuver
+      )
+    )
+  )
+)
+--“Start -> Roam -> TrackInit ->  TrackActive ->  Maneuver -> Forage -> Feast -> Resting -> TrackActive”
+SPEC EF (
+  state = Start & event = E0 &
+  EX (
+    state = Roam & event = E1 &
+    EX (
+      state = TrackInit & event = E5 &
+      EX (
+        state = TrackActive & event = E7 &
+        EX (
+          state = Maneuver & event = E8 &
+          EX (
+            state = Forage & event = E9 &
+            EX (
+              state = Feast & event = E11 &
+              EX (
+                state = Resting & event = E12 &
+                EX (
+                  state = TrackActive
+                )
+              )
+            )
+          )
+        )
+      )
+    )
+  )
+)
+
+----
